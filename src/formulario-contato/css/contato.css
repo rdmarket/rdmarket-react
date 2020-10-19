@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
+*{
+
+ font-family: 'Lato', sans-serif;  
+ font-size: 16px;
+ color: #47525e;
+
+}
+
+
+
+/*------ BARRA VERMELHA ------*/
+
+#barra-vermelha{
+
+    background-color:#C81E21;
+    padding:10px;
+    margin: 0;
+    
+}
+
+.img-phone{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    
+}
+
+
+#titulo-fale-conosco {
+
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+
+}
+
+
+/*---------FORMULÁRIO DE CONTATO-----------*/
+
+.contato{
+
+    margin-top: 5%;
+   
+}
+
+.tamanho-form-contato {
+    width: 80%;
+   
+}
+
+.retorno-contato {
+
+margin-top: -3%;
+padding-bottom: 4%;
+
+}
+
+#msg-retorno-contato {
+
+font-size: 12px;
+
+}
+
+
+.bt-limpar {
+
+    background-color: #969faa;
+    border: solid 1px #969faa;
+    width: 120px;
+    height: 40px;
+
+}
+
+.bt-limpar:hover {
+
+background-color: #47525e;
+border: solid 1px #47525e;
+
+}
+
+
+.bt-enviar {
+
+background-color: #77d353;
+border: solid 1px #77d353;
+width: 200px;
+height: 40px;
+
+}
+
+.bt-enviar:hover {
+
+background-color: #77d340;
+border: solid 1px #77d340;
+
+}
+
+
+.titulo-central-atendimento {
+
+    color: #C81E21;
+    font-weight: bold;
+    font-size: 22px;
+
+}
+
+.img-phone-contato {
+
+    width: 40px;
+    height: 40px;
+
+}
+
+.texto.telefone {
+
+    font-size: 20px;
+}
+
+.texto {
+
+    font-weight: bold;
+}
+
+.img-email {
+
+    width: 30px;
+    height: 30px;
+
+}
+
+.link-email-atendimento {
+
+    color: #47525e;
+}
+
+.link-email-atendimento:hover {
+
+    color: #C81E21;
+}
+
+.link-email-atendimento:active {
+
+    color: #C81E21;
+}
+
+.id-no-disp-1,.id-no-disp-2,.id-no-disp-3,
+.id-no-disp-4,.id-no-disp-5,.id-no-disp-6{
+    display: none;
+}
+
+@media screen and (min-width: 992px) {
+
+
+    .tela-p2 {
+        display: none;
+    }
+
+    .tela-p {
+        display: none;
+    }
+
+    .tela-m {
+        display: none;
+    }
+
+    .tela-g {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+    .tela-g {
+        display: none;
+    }
+
+    .tela-p {
+        display: none;
+    }
+
+    .tela-p {
+        display: none;
+    }
+
+    .bt-limpar {
+        width: 100px;
+    }
+
+    .bt-enviar {
+        width: 150px;
+    }
+}
+
+@media screen and (min-width: 363px) and (max-width: 767px) {
+    .tela-g {
+        display: none;
+    }
+
+    .tela-m {
+        display: none;
+    }
+
+    .tela-p {
+        display: none;
+    }
+
+    .alinha-texto {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 362px) {
+
+    .tela-g {
+        display: none;
+    }
+
+    .tela-m {
+        display: none;
+    }
+
+    .tela-p {
+        display: none;
+    }
+
+    .bt-limpar {
+        width: 80px;
+    }
+
+    .bt-enviar {
+        width: 120px;
+    }
+}

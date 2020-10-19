@@ -1,0 +1,42 @@
+
+.retornar{
+    background-color: white;
+    border: solid 1px #C81E21;
+    padding:10px 50px;
+    color: #C81E21;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+
+}
+.retornar:hover{
+    color: #C81E21;
+    text-decoration: none;
+}
+.avancar{
+ 
+    border: none;
+    padding:12px 50px;
+    background-color:#77D353; 
+    color: white;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.avancar:hover{
+    color: white;
+    text-decoration: none;
+}
+@media screen and (max-width: 575px) {
+    
+    .avancar{
+        display: block;
+    }
+    .retornar{
+        display: block;
+    }
+
+}
+
+

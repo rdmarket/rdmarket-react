@@ -1,0 +1,32 @@
+.filtros{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.text-products{
+    margin-left: 50px;
+    align-self: center;
+    height: 25px;
+}
+.dropdown-filtro{
+    margin-right: 50px;
+    align-self: center;
+}
+.bt-drop{
+    background-color: transparent;
+    color: #47525E;
+    border: 2px solid #77D353;
+    border-radius: 5px;
+}
+.bt-drop :hover{
+    background-color: #c81e21;
+}
+.btn-group-dp :hover{
+    background-color: #c81e21;
+}
+.dropdown-menu{
+    background-color: #c81e21;
+}
+.dropdown-menu :hover{
+    color: white;
+}

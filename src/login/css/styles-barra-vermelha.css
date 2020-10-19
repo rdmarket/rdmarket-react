@@ -1,0 +1,112 @@
+#barra-cinza{
+    border-top:solid 1px lightgray;
+}
+
+#barra-vermelha{
+    background-color:#C81E21;
+    padding:10px;
+    margin: 0;
+    
+}
+
+.img-phone{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    
+}
+#faleConosco{
+
+   display: inline;
+   color: white;
+   font-size: 24px;
+   position: relative;
+   top: 4px;
+   font-weight: bold;
+   
+}
+.font-cab-phone{
+    display: inline;
+    color: white;
+    font-size: 16px;
+    position: relative;
+    
+    
+    font-weight: bold;
+}
+
+.img-icon-phone{
+     width: 20px;
+     height: 20px;
+     position: relative;
+     
+     
+     
+}
+.font-cab-email{
+    display: inline;
+    color: white;
+    font-size: 16px;
+    position: relative;
+    
+    
+    font-weight: bold;
+}
+
+.img-icon-email{
+     width: 20px;
+     height: 20px;
+     position: relative;
+     
+     
+     
+}
+.font-cab-shield{
+    display: inline;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.img-icon-shield{
+     width: 20px;
+     height: 25px;   
+}
+
+#div-faleConosco{
+    display: none;
+}
+.dropdown-menu{
+    padding: 0;
+}
+.dropdown-item{
+
+    background-color:#C81E21;
+    color: white;
+}
+
+.dropdown-toggle{
+    color: white;
+}
+.dropdown-toggle:hover{
+    color: white;
+}
+@media screen and (max-width: 350px) {
+    #img-centro{
+        margin-right:25%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .textos{
+        display: none !important;
+    }
+    #faleConosco{
+        display: none;
+    }
+    #div-faleConosco{
+        display: block;
+    
+    }
+}
+
