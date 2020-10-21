@@ -14,155 +14,155 @@ export default () => {
     return (
         <>
     <Header />
-    <article class="page-item">
-        <nav class="barra-vermelha navbar navbar-expand">
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav diretorio ml-5">
-                    <li class="nav-item active item-barra-vermelha">
-                        <a class="nav-link texto-branco" href="../../home/html/home_flex.html"><span class="text-white">Home {st} </span></a>
+    <article className="page-item">
+        <nav className="barra-vermelha navbar navbar-expand">
+            <div className="collapse navbar-collapse" id="navbarText">
+                <ul className="navbar-nav diretorio ml-5">
+                    <li className="nav-item active item-barra-vermelha">
+                        <a className="nav-link texto-branco" href="../../home/html/home_flex.html"><span className="text-white">Home {st} </span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link texto-branco item-barra-vermelha" href="alimentos-basicos.html"><span class="text-white">Alimentos básicos {st} </span></a>
+                    <li className="nav-item">
+                        <a className="nav-link texto-branco item-barra-vermelha" href="alimentos-basicos.html"><span className="text-white">Alimentos básicos {st} </span></a>
                     </li>
                 </ul>
             </div>
         </nav>
        </article>
-        <section class="container-alimentos">
-            <article class="filtros">
-                <div class="text-products">
+        <section className="container-alimentos">
+            <article className="filtros">
+                <div className="text-products">
                     <p id="txt-produtos">Mostrando 6 de 6 produtos</p>
                 </div>
-                <div class="dropdown-filtro">
-                    <div class="btn-group-dp">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle bt-drop" type="button"
+                <div className="dropdown-filtro">
+                    <div className="btn-group-dp">
+                        <button className="btn btn-secondary btn-sm dropdown-toggle bt-drop" type="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Filtrar por:
                         </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item " href="#">Até R$10,00</a>
-                            <a class="dropdown-item " href="#">Até R$20,00</a>
-                            <a class="dropdown-item " href="#">Até R$30,00</a>
+                        <div className="dropdown-menu">
+                            <a className="dropdown-item " href="#">Até R$10,00</a>
+                            <a className="dropdown-item " href="#">Até R$20,00</a>
+                            <a className="dropdown-item " href="#">Até R$30,00</a>
                         </div>
                     </div>
                 </div>
             </article>
-            <article class="item article1">
+            <article className="item article1">
                 <a href="../../detalhe-produto/html/item-detalhado.html">
                     <img src={require("../imagens/arroz_ajustado.jpg")} height="110px" />
                 </a>
-                <div class="descricao-produto">
+                <div className="descricao-produto">
                     <a href="../../detalhe-produto/html/item-detalhado.html">
                         <p>Arroz Tipo 1 CAMIL Pacote 5kg</p>
                     </a>
                 </div>
-                <div class="preco-produto">
+                <div className="preco-produto">
                     <h5>R$22,99</h5>
                 </div>
-                <div class="container-dos-botoes">
-                    <input type="button" class="menos" value="-"/>
-                    <input type="button" class="quant" value="0"/>
-                    <input type="button" class="mais" value="+"/>
+                <div className="container-dos-botoes">
+                    <input type="button" className="menos" value="-"/>
+                    <input type="button" className="quant" value="0"/>
+                    <input type="button" className="mais" value="+"/>
                     <input id="cart" type="image" src={require("../imagens/cart.png")}/>
                 </div>
             </article>
            
-            <article class="item article2">
+            <article className="item article2">
                 <a href="../../detalhe-produto/html/item-detalhado.html">
                     <img src={require("../imagens/arroz_ajustado.jpg")} height="110px" />
                 </a>
-                <div class="descricao-produto">
+                <div className="descricao-produto">
                     <a href="../../detalhe-produto/html/item-detalhado.html">
                         <p>Arroz Tipo 1 CAMIL Pacote 5kg</p>
                     </a>
                 </div>
-                <div class="preco-produto">
+                <div className="preco-produto">
                     <h5>R$22,99</h5>
                 </div>
-                <div class="container-dos-botoes">
-                    <input type="button" class="menos" value="-"/>
-                    <input type="button" class="quant" value="0"/>
-                    <input type="button" class="mais" value="+"/>
+                <div className="container-dos-botoes">
+                    <input type="button" className="menos" value="-"/>
+                    <input type="button" className="quant" value="0"/>
+                    <input type="button" className="mais" value="+"/>
                     <input id="cart" type="image" src={require("../imagens/cart.png")}/>
                 </div>
             </article>
            
-            <article class="item article3">
+            <article className="item article3">
                 <a href="../../detalhe-produto/html/item-detalhado.html">
                     <img src={require("../imagens/arroz_ajustado.jpg")} height="110px" />
                 </a>
-                <div class="descricao-produto">
+                <div className="descricao-produto">
                     <a href="../../detalhe-produto/html/item-detalhado.html">
                         <p>Arroz Tipo 1 CAMIL Pacote 5kg</p>
                     </a>
                 </div>
-                <div class="preco-produto">
+                <div className="preco-produto">
                     <h5>R$22,99</h5>
                 </div>
-                <div class="container-dos-botoes">
-                    <input type="button" class="menos" value="-"/>
-                    <input type="button" class="quant" value="0"/>
-                    <input type="button" class="mais" value="+"/>
+                <div className="container-dos-botoes">
+                    <input type="button" className="menos" value="-"/>
+                    <input type="button" className="quant" value="0"/>
+                    <input type="button" className="mais" value="+"/>
                     <input id="cart" type="image" src={require("../imagens/cart.png")}/>
                 </div>
             </article>
            
-            <article class="item article4">
+            <article className="item article4">
                 <a href="../../detalhe-produto/html/item-detalhado.html">
                     <img src={require("../imagens/arroz_ajustado.jpg")} height="110px" />
                 </a>
-                <div class="descricao-produto">
+                <div className="descricao-produto">
                     <a href="../../detalhe-produto/html/item-detalhado.html">
                         <p>Arroz Tipo 1 CAMIL Pacote 5kg</p>
                     </a>
                 </div>
-                <div class="preco-produto">
+                <div className="preco-produto">
                     <h5>R$22,99</h5>
                 </div>
-                <div class="container-dos-botoes">
-                    <input type="button" class="menos" value="-"/>
-                    <input type="button" class="quant" value="0"/>
-                    <input type="button" class="mais" value="+"/>
+                <div className="container-dos-botoes">
+                    <input type="button" className="menos" value="-"/>
+                    <input type="button" className="quant" value="0"/>
+                    <input type="button" className="mais" value="+"/>
                     <input id="cart" type="image" src={require("../imagens/cart.png")}/>
                 </div>
             </article>
             
-            <article class="item article5">
+            <article className="item article5">
                 <a href="../../detalhe-produto/html/item-detalhado.html">
                     <img src={require("../imagens/arroz_ajustado.jpg")} height="110px" />
                 </a>
-                <div class="descricao-produto">
+                <div className="descricao-produto">
                     <a href="../../detalhe-produto/html/item-detalhado.html">
                         <p>Arroz Tipo 1 CAMIL Pacote 5kg</p>
                     </a>
                 </div>
-                <div class="preco-produto">
+                <div className="preco-produto">
                     <h5>R$22,99</h5>
                 </div>
-                <div class="container-dos-botoes">
-                    <input type="button" class="menos" value="-"/>
-                    <input type="button" class="quant" value="0"/>
-                    <input type="button" class="mais" value="+"/>
+                <div className="container-dos-botoes">
+                    <input type="button" className="menos" value="-"/>
+                    <input type="button" className="quant" value="0"/>
+                    <input type="button" className="mais" value="+"/>
                     <input id="cart" type="image" src={require("../imagens/cart.png")}/>
                 </div>
             </article>
             
-            <article class="item article6">
+            <article className="item article6">
                 <a href="../../detalhe-produto/html/item-detalhado.html">
                     <img src={require("../imagens/arroz_ajustado.jpg")} height="110px" />
                 </a>
-                <div class="descricao-produto">
+                <div className="descricao-produto">
                     <a href="../../detalhe-produto/html/item-detalhado.html">
                         <p>Arroz Tipo 1 CAMIL Pacote 5kg</p>
                     </a>
                 </div>
-                <div class="preco-produto">
+                <div className="preco-produto">
                     <h5>R$22,99</h5>
                 </div>
-                <div class="container-dos-botoes">
-                    <input type="button" class="menos" value="-"/>
-                    <input type="button" class="quant" value="0"/>
-                    <input type="button" class="mais" value="+"/>
+                <div className="container-dos-botoes">
+                    <input type="button" className="menos" value="-"/>
+                    <input type="button" className="quant" value="0"/>
+                    <input type="button" className="mais" value="+"/>
                     <input id="cart" type="image" src={require("../imagens/cart.png")}/>
                 </div>
             </article>

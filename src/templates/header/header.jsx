@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ListagemCategoria from './listagemCategoria'
 
 export default () => {
 
@@ -59,15 +59,7 @@ export default () => {
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Ofertas</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Novidades</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Descontos</a>
-                                            <a class="dropdown-item itens-menu-show item-categoria"
-                                                href="../../formulario-contato/html/contato.html">Contato</a>
-                                            <a class="dropdown-item item-categoria"
-                                                href="../../categorias-produtos/html/alimentos-basicos.html">Alimentos
-                                        básicos</a>
-                                            <a class="dropdown-item item-categoria" href="#">Higiene pessoal</a>
-                                            <a class="dropdown-item item-categoria" href="#">Limpeza</a>
-                                            <a class="dropdown-item item-categoria"
-                                                href="../../historico-compra/html/historico.html">Meus pedidos</a>
+                                           <ListagemCategoria/>
                                         </div>
                                     </li>
                                     <li class="nav-item itens-menu">
@@ -76,9 +68,7 @@ export default () => {
                                     <li class="nav-item itens-menu">
                                         <a class="nav-link" href="#">Novidades</a>
                                     </li>
-                                    <li class="nav-item itens-menu">
-                                        <a class="nav-link" href="#">Descontos</a>
-                                    </li>
+                                    
                                     <li class="nav-item itens-menu">
                                         <a class="nav-link" href="../../formulario-contato/html/contato.html">Contato</a>
                                     </li>
@@ -105,18 +95,13 @@ export default () => {
                                                 href="../../login/html/login.html">Conta</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Ofertas</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Novidades</a>
-                                            <a class="dropdown-item itens-menu-show item-categoria" href="#">Descontos</a>
                                             <a class="dropdown-item itens-menu-show item-categoria"
                                                 href="../../formulario-contato/html/contato.html">Contato</a>
                                             <a class="dropdown-item item-categoria"
                                                 href="../../historico-compra/html/historico.html">Meus pedidos</a>
                                             <span class="dropdown-item span-drop-down"
-                                                href="#">Departamentos</span>
-                                            <a class="dropdown-item item-categoria"
-                                                href="../../categorias-produtos/html/alimentos-basicos.html">Alimentos
-                                        básicos</a>
-                                            <a class="dropdown-item item-categoria" href="#">Higiene pessoal</a>
-                                            <a class="dropdown-item item-categoria" href="#">Limpeza</a>
+                                                href="#">Categorias</span>
+                                            <ListagemCategoria/>
                                         </div>
                                     </li>
                                 </ul>

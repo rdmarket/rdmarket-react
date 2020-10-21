@@ -5,12 +5,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import Pagina from './home/view/home'
+import Routes from './rotas'
+import Home from './home/view/home'
 
 
 ReactDOM.render(
   <>
-    <Pagina />
+    <Home />
   </>,
   document.getElementById('root')
 );
