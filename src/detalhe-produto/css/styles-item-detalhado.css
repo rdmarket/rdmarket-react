@@ -9,7 +9,8 @@ ul{
 }
 
 #imagem-grande-responsivo{
-    display: none;
+  /* height: 20px !important    ;   */
+  display: none;
 }
 #descricao{
     width: 129px;
@@ -34,7 +35,7 @@ ul{
 }
 
 .grande-img{
-    height: 380px;
+    height: 200px;
     border-style: none;
 }
 
@@ -59,6 +60,20 @@ ul{
     height: 48px;
 }
 
+.tamanhoInput{
+
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    
+  
+}
+
+.img-tamanho{
+    height: 200px !important;
+    width: 200px !important;
+}
+
 .btn-qtde:hover{
     border: solid 1px;
 }
@@ -68,6 +83,8 @@ ul{
     padding: 0px;
     margin-left: 2px;
     margin-right: 2px;
+    position: relative;
+    top: -20px;
 }
 
 .btn-cart{
@@ -99,7 +116,7 @@ ul{
     background-color: #77D353 !important;
     color: white !important;
     width: 158px;
-    height: 48px;
+    height: 45px !important;
     margin-right: 7%;
     border-radius: 10px 10px;
 }

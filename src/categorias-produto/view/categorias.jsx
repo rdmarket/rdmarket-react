@@ -15,7 +15,7 @@ import ListagemProdutos from './listagemProdutos'
 const API = 'http://rdmarket-laravel.test/api/produtos/listarPorTipo/';
 const IMAGE_PATH = 'http://rdmarket-laravel.test/storage/';
 
-export default class AlimentosBasicos extends Component {
+export default class Categorias extends Component {
 
     constructor(props) {
         super(props)
@@ -28,11 +28,16 @@ export default class AlimentosBasicos extends Component {
     componentWillReceiveProps(nextProps){
         this.props=nextProps
         this.preencherImagens()
+
+        this.state.produtos.forEach(element => {
+            document.getElementById(element.id_produto).value=0
+        });
     }
     preencherImagens = () => {
         
         axios.get(`${API}`+this.props.params.desc)
             .then(resp => this.setState({ produtos: resp.data }))
+            
 
     }
     nomeCategoria = () =>{

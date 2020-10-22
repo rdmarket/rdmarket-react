@@ -2,23 +2,44 @@ import React from 'react'
 
 export default (props) =>{
 
+    const somar = (id) =>{
+        
+        let display = document.getElementById(id);
+
+        
+        if(display.value=="")
+            display.value=0
+
+        display.value = parseInt(display.value)+1
+    }
+
+    const subtrair = (id) =>{
+        let display = document.getElementById(id);
+        
+        if(display.value==" ")
+            display.value=0
+        
+        if(display.value > 0)
+           display.value = parseInt(display.value)-1
+    }
+
     return (
-        <>
+        
+         <>
+         {/* #/detalhe/"+item.id_produto+"/"+item.ds_categoria */}
             <div className={props.classe}>
                         <figure className="imagem">
-                            <img src={props.path} />
+                            <a href={"#/detalhe/"+props.id_produto+"/"+props.tipo}><img src={props.path} /></a>
                             <figcaption>{props.desc}</figcaption>
                             <h3 className="h3-align-text">R${props.vlr}</h3>
                             <div className="containerBotoes">
-                                <input type="button" className="menos" value="-" />
-                                <input type="text" className="quant" placeholder="0" />
-                                <input type="button" className="mais" value="+" />
+                                <input onClick={()=>subtrair(props.id_produto+"_"+props.tipo)} type="button" className="menos" value="-" />
+                                <input type="text" id={props.id_produto+"_"+props.tipo} className="quant" placeholder="0" />
+                                <input onClick={()=>somar(props.id_produto+"_"+props.tipo)} type="button" className="mais" value="+" />
                                 <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
                             </div>
                         </figure>
                     </div>
         </>
-
     )
-
 }
