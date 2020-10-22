@@ -1,143 +1,75 @@
-import React from 'react'
+import React, { Component } from 'react'
+import axios from 'axios'
+import BodyContent from './bodyContent'
 
-export default () =>{
-    return (
-        <>
-            <section className="linhaTres all">
-                        <div className="item11">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/imagens-ajustadas/limpeza-brilhante.jpg")} />
-                                <figcaption>Sabão Líquido Brilhante<br />Limpeza Total 3L</figcaption>
-                                <h3 className="h3-align-text">R$22,99</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
-                        <div className="item12">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/imagens-ajustadas/limpeza-desinfetante.jpg")} />
-                                <figcaption>Desinfetante KALIPTO<br />Marine 2 Litros</figcaption>
-                                <h3 className="h3-align-text">R$9,49</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
-                        <div className="item13">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/imagens-ajustadas/Limpeza-omo.jpg")} />
-                                <figcaption>Sabão em Pó Omo Leve<br />1,6kg Pague 1,4kg</figcaption>
-                                <h3 className="h3-align-text">R$16,89</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
-                        <div className="item14">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/imagens-ajustadas/limpeza-brilhante.jpg")} />
-                                <figcaption>Sabão Líquido Brilhante<br />Limpeza Total 3L</figcaption>
-                                <h3 className="h3-align-text">R$22,99</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
-                        <div className="item15">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/imagens-ajustadas/limpeza-desinfetante.jpg")} />
-                                <figcaption>Desinfetante KALIPTO<br />Marine 2 Litros</figcaption>
-                                <h3 className="h3-align-text">R$9,49</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
+const API = 'http://rdmarket-laravel.test/api/produtos/listarDescontos';
+const IMAGE_PATH = 'http://rdmarket-laravel.test/storage/';
 
-                    </section>
-                    <section className="linhaQuatro all">
-                        <div className="item16">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/arroz_ajustado.jpg")} />
-                                <figcaption>Arroz Tipo 1 CAMIL<br /> Pacote 5kg</figcaption>
-                                <h3 className="h3-align-text">R$22,99</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
-                        <div className="item17">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/imagens-ajustadas/feijao.jpg")} />
-                                <figcaption>Feijão Carioca Tipo 1<br />KICALDO Pacote 1kg</figcaption>
-                                <h3 className="h3-align-text">R$7,49</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
-                        <div className="item18">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/imagens-ajustadas/macarrao.jpg")} />
-                                <figcaption>Macarrão Italiano BARILLA<br />Pacote 500g</figcaption>
-                                <h3 className="h3-align-text">R$4,09</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
-                        <div className="item19">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/arroz_ajustado.jpg")} />
-                                <figcaption>Arroz Tipo 1 CAMIL<br /> Pacote 5kg</figcaption>
-                                <h3 className="h3-align-text">R$22,99</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
-                        <div className="item20">
-                            <figure className="imagem">
-                                <img src={require("../../templates/imagens/imagens-ajustadas/feijao.jpg")} />
-                                <figcaption>Feijão Carioca Tipo 1<br />KICALDO Pacote 1kg</figcaption>
-                                <h3 className="h3-align-text">R$7,49</h3>
-                                <div className="containerBotoes">
-                                    <input type="button" className="menos" value="-" />
-                                    <input type="text" className="quant" placeholder="0" />
-                                    <input type="button" className="mais" value="+" />
-                                    <input type="image" src={require("../../templates/imagens/cart.png")} id="cart-button" />
-                                </div>
-                            </figure>
-                        </div>
-                    </section>
-        </>
-    )
+export default class Ofertas extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { ofertas: [] }
+    }
+    componentDidMount() {
+        this.preencherOfertas()
+    }
+
+    preencherOfertas = () => {
+
+        axios.get(`${API}`)
+            .then(resp => this.setState({ ofertas: resp.data }))
+
+    }
+
+    calcularPreco = (n,m) =>{
+        n=parseFloat(n)
+        m=parseFloat(m)
+        m=100-m
+        m=m/100
+        return n*m  
+    }
+
+    render() {
+        let list = this.state.ofertas.map((item)=>item);
+        return (
+            <>
+                <section className="linha1 all">
+
+                    <BodyContent classe="item11" path={`${IMAGE_PATH}` + (new Object(list[0])).caminho_imagem}
+                        desc={(new Object(list[0])).ds_produto} vlr={this.calcularPreco((new Object(list[0])).valor_venda,(new Object(list[0])).p_desconto)} />
+
+                    <BodyContent classe="item12" path={`${IMAGE_PATH}` + (new Object(list[1])).caminho_imagem}
+                        desc={(new Object(list[1])).ds_produto} vlr={this.calcularPreco((new Object(list[1])).valor_venda,(new Object(list[1])).p_desconto)} />
+
+                    <BodyContent classe="item13" path={`${IMAGE_PATH}` + (new Object(list[2])).caminho_imagem}
+                        desc={(new Object(list[2])).ds_produto} vlr={this.calcularPreco((new Object(list[2])).valor_venda,(new Object(list[2])).p_desconto)} />
+
+                    <BodyContent classe="item14" path={`${IMAGE_PATH}` + (new Object(list[3])).caminho_imagem}
+                        desc={(new Object(list[3])).ds_produto} vlr={this.calcularPreco((new Object(list[3])).valor_venda,(new Object(list[3])).p_desconto)} />
+
+
+                    <BodyContent classe="item15" path={`${IMAGE_PATH}` + (new Object(list[4])).caminho_imagem}
+                        desc={(new Object(list[4])).ds_produto} vlr={this.calcularPreco((new Object(list[4])).valor_venda,(new Object(list[4])).p_desconto)} />
+
+                </section>
+                <section className="linha1 all">
+                    <BodyContent classe="item16" path={`${IMAGE_PATH}` + (new Object(list[5])).caminho_imagem}
+                        desc={(new Object(list[5])).ds_produto} vlr={this.calcularPreco((new Object(list[5])).valor_venda,(new Object(list[5])).p_desconto)} />
+
+                    <BodyContent classe="item17" path={`${IMAGE_PATH}` + (new Object(list[6])).caminho_imagem}
+                        desc={(new Object(list[6])).ds_produto} vlr={this.calcularPreco((new Object(list[6])).valor_venda,(new Object(list[6])).p_desconto)} />
+
+                    <BodyContent classe="item18" path={`${IMAGE_PATH}` + (new Object(list[7])).caminho_imagem}
+                        desc={(new Object(list[7])).ds_produto} vlr={this.calcularPreco((new Object(list[7])).valor_venda,(new Object(list[7])).p_desconto)} />
+
+                    <BodyContent classe="item19" path={`${IMAGE_PATH}` + (new Object(list[8])).caminho_imagem}
+                        desc={(new Object(list[8])).ds_produto} vlr={this.calcularPreco((new Object(list[8])).valor_venda,(new Object(list[8])).p_desconto)} />
+
+                    <BodyContent classe="item20" path={`${IMAGE_PATH}` + (new Object(list[9])).caminho_imagem}
+                        desc={(new Object(list[9])).ds_produto} vlr={this.calcularPreco((new Object(list[9])).valor_venda,(new Object(list[9])).p_desconto)} />
+
+                </section>
+            </>
+        )
+    }
 }

@@ -190,7 +190,7 @@
 .item-categoria:hover {
     
     background-color: #ffffff!important;
-    color: #47525e;
+    color: #000000 !important;
 }
 
 
@@ -219,20 +219,35 @@
 
     margin-top:100px;   
     width: 100%;
+    
     background-color: rgba(211, 208, 208, 0.3);
     height: 100px;
     text-align: center;
  }
  
+.btn-comprar-a{
+    border:none;
+    background-color: #77D353 !important;
+    color: white !important;
+    width: 135px;
+    padding: 10px;
+    height: 25px !important;
+    position: relative !important;
+    top: 15px !important;
+    
+    border-radius: 10px 10px;
+}
 
  .btn-comprar{
     border:none;
     background-color: #77D353 !important;
     color: white !important;
     width: 135px;
-    height: 25px;
-    position: relative;
-    top: 25px;
+    left: 3.5%;
+    height: 25px !important;
+    position: relative !important;
+    top: 15px !important;
+    
     border-radius: 10px 10px;
 }
 .h3-align-text{

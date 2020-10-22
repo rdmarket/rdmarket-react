@@ -30,13 +30,13 @@ export default class Home extends Component {
 
                 <div class="meu-jubo">
                     <h3>Novidades</h3>
-                    <button class="btn-comprar">Mais novidades</button>
+                    <a href="#/novidades" className="btn-comprar-a">Mais novidades</a>
                 </div>
                 <Novidades />
                 
                 <div className="meu-jubo">
                     <h3>Ofertas</h3>
-                    <button className="btn-comprar">Mais ofertas</button>
+                    <a href="#/descontos" className="btn-comprar-a">Mais ofertas</a>
                 </div>
                 
                 <Ofertas />

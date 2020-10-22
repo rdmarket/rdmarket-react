@@ -63,10 +63,10 @@ export default () => {
                                         </div>
                                     </li>
                                     <li class="nav-item itens-menu">
-                                        <a class="nav-link" href="#">Ofertas</a>
+                                        <a href="#/descontos" class="nav-link">Ofertas</a>
                                     </li>
                                     <li class="nav-item itens-menu">
-                                        <a class="nav-link" href="#">Novidades</a>
+                                        <a href="#/novidades" class="nav-link">Novidades</a>
                                     </li>
                                     
                                     <li class="nav-item itens-menu">

@@ -1,4 +1,5 @@
 import React from 'react'
+import CarouselList from './carouselList'
 
 export default () =>{
     return(
@@ -10,15 +11,8 @@ export default () =>{
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img src={require("../../templates/imagens/carrossel-ajustado/carrossel2-removebg (3).jpg")} className="d-block w-100" alt="..." />
-                        </div>
-                        <div className="carousel-item">
-                            <img src={require("../../templates/imagens/carrossel-ajustado/carrossel2-removebg.jpg")} className="d-block w-100" alt="..." />
-                        </div>
-                        <div className="carousel-item">
-                            <img src={require("../../templates/imagens/carrossel-ajustado/carrossel2-removebg (3).png")} className="d-block w-100" alt="..." />
-                        </div>
+                    <CarouselList />
+                        
                     </div>
                     <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>

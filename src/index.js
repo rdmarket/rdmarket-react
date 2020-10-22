@@ -6,12 +6,12 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import Routes from './rotas'
-import Home from './home/view/home'
+
 
 
 ReactDOM.render(
   <>
-    <Home />
+    <Routes />
   </>,
   document.getElementById('root')
 );

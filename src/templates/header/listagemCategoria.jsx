@@ -16,6 +16,8 @@ export default class ListagemCategoria extends Component {
         this.preencherCategorias()
     }
 
+   
+
     preencherCategorias = () => {
 
         axios.get(`${API}`)
@@ -25,7 +27,7 @@ export default class ListagemCategoria extends Component {
 
     render() {
         return this.state.categorias.map(item => (
-            <a class="dropdown-item item-categoria" href="#">{item.ds_categoria}</a>
+            <a class="dropdown-item item-categoria" href={"#/categoria/"+item.id_categoria}>{item.ds_categoria}</a>
         )
 
         )
@@ -34,12 +36,4 @@ export default class ListagemCategoria extends Component {
 }
 
 
-{/*
     
-    <a class="dropdown-item item-categoria"
-        href="../../categorias-produtos/html/alimentos-basicos.html">Alimentos
-                                        básicos</a>
-    <a class="dropdown-item item-categoria" href="#">Higiene pessoal</a>
-    <a class="dropdown-item item-categoria" href="#">Limpeza</a>
-    <a class="dropdown-item item-categoria"
-        href="../../historico-compra/html/historico.html">Meus pedidos</a> */}
