@@ -73,7 +73,7 @@ export default () => {
                     <div className="col-5 ">
                         <div className="row justify-content-center mt-5">
                             <h4>Ainda não é nosso cliente?</h4>
-                            <a href="../../cadastro/html/cadastro.html" type="button" className="btn btn-success col-12">Cadastre-se</a>
+                            <a href="#/cadastro" type="button" className="btn btn-success col-12">Cadastre-se</a>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@ export default () => {
                         </form>
                         <hr />
                         <div className="d-flex justify-content-center">
-                            <a href="../../cadastro/html/cadastro.html" type="button" className="btn btn-success col-12">Cadastre-se</a>
+                            <a href="#/cadastro" type="button" className="btn btn-success col-12">Cadastre-se</a>
                         </div>
                     </div>
                 </div>

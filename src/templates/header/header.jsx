@@ -9,7 +9,7 @@ export default () => {
             <div class="container tela-grande">
                 <div class="d-flex justify-content-between mt-5">
                     <div class="borda-flex">
-                        <a id="topo" href="../../home/html/home_flex.html"><img id="logo-img" src={require('../imagens/logo.png')}
+                        <a id="topo" href="#/home"><img id="logo-img" src={require('../imagens/logo.png')}
                             type="img" /></a>
 
                     </div>
@@ -24,7 +24,7 @@ export default () => {
                         </div>
                     </div>
                     <div class="mt-5">
-                        <a href="../../login/html/login.html"><button class="bt-header"><img class="img-icones"
+                        <a href="#/login"><button class="bt-header"><img class="img-icones"
                             src={require("../imagens/conta.svg")} /><span class="fonte-forte">Conta</span></button></a>
                     </div>
                     <div class="mt-5 ">
@@ -70,7 +70,7 @@ export default () => {
                                     </li>
                                     
                                     <li class="nav-item itens-menu">
-                                        <a class="nav-link" href="../../formulario-contato/html/contato.html">Contato</a>
+                                        <a class="nav-link" href="#/contato">Contato</a>
                                     </li>
                                 </ul>
                             </div>
@@ -92,13 +92,13 @@ export default () => {
                                         </a>
                                         <div class="dropdown-menu pt-0 pb-0" aria-labelledby="navbarDropdownMenuLink">
                                             <a class="dropdown-item itens-menu-show item-categoria"
-                                                href="../../login/html/login.html">Conta</a>
-                                            <a class="dropdown-item itens-menu-show item-categoria" href="#">Ofertas</a>
-                                            <a class="dropdown-item itens-menu-show item-categoria" href="#">Novidades</a>
+                                                href="#/login">Conta</a>
+                                            <a class="dropdown-item itens-menu-show item-categoria" href="#/descontos">Ofertas</a>
+                                            <a class="dropdown-item itens-menu-show item-categoria" href="#/novidades">Novidades</a>
                                             <a class="dropdown-item itens-menu-show item-categoria"
-                                                href="../../formulario-contato/html/contato.html">Contato</a>
+                                                href="#/contato">Contato</a>
                                             <a class="dropdown-item item-categoria"
-                                                href="../../historico-compra/html/historico.html">Meus pedidos</a>
+                                                href="#/home">Meus pedidos</a>
                                             <span class="dropdown-item span-drop-down"
                                                 href="#">Categorias</span>
                                             <ListagemCategoria/>
