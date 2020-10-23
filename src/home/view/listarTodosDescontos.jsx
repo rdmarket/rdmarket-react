@@ -11,7 +11,7 @@ import CaminhoHeader from '../../categorias-produto/view/caminhoHeader'
 import Filtro from '../../categorias-produto/view/filtro'
 import ListagemDesconto from './listagemDescontos'
 
-const API = 'http://rdmarket-laravel.test/api/produtos/listarDescontos';
+const API = 'http://rdmarket-laravel.test/api/produtos/listarTodosDescontos';
 const IMAGE_PATH = 'http://rdmarket-laravel.test/storage/';
 
 export default class ListarTodosDescontos extends Component {

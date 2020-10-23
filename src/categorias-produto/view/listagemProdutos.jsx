@@ -51,7 +51,7 @@ export default (props) => {
                 </div>
                 <div className="container-dos-botoes">
                     <input type="button" onClick={()=>subtrair(item.id_produto)} className="menos" value="-" />
-                    <input type="text" id={item.id_produto} className="quant" placeholder="0" />
+                    <input type="text" id={item.id_produto} className="quant" placeholder="0"/>
                     <input type="button" onClick={()=>somar(item.id_produto)} className="mais" value="+" />
                     <input id="cart" type="image" src={require("../imagens/cart.png")} />
                 </div>

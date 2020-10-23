@@ -9,6 +9,10 @@ import { Router, Route, Redirect, hashHistory } from 'react-router';
     import Login from './login/view/login'
     import Contato from './formulario-contato/view/contato'
     import Cadastro from './cadastro/view/cadastro'
+    import Carrinho from './carrinho/view/carrinho'
+    import ConfirmaDados from './checkout/view/Checkout-pagamento'
+    import ResumoCompra from './checkout/view/Checkout-compra'
+    import Historico from './historico-compra/view/historico'
 
 
 export default props => {
@@ -23,6 +27,10 @@ export default props => {
         <Route path='/detalhe/:desc/:path' component={Detalhe}/>
         <Route path='/contato' component={Contato}/>
         <Route path='/cadastro' component={Cadastro}/>
+        <Route path='/carrinho' component={Carrinho}/>  
+        <Route path='/checkout/confirmar/dados/:idcliente/:idpedido' component={ConfirmaDados}/>
+        <Route path='/checkout/resumo' component={ResumoCompra}/> 
+        <Route path='/historico' component={Historico}/>       
         <Redirect from='*' to='/home'/>
     </Router>
 

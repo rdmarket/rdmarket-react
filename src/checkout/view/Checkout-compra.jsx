@@ -20,7 +20,7 @@ export default class CheckoutCompra extends Component {
         return (
             <>
                 <div id="confirmacao_sucesso">
-                    <a href="../../historico-compra/html/historico.html"><img id="img_xis" src={require("../imagens/xis.png")} /></a>
+                    <a href="#/historico"><img id="img_xis" src={require("../imagens/xis.png")} /></a>
                     <img id="img_sucesso" src={require("../imagens/sucesso.png")} />
                     <h2 id="msg-texto">Compra realizada com sucesso!</h2>
                 </div>
@@ -654,7 +654,7 @@ export default class CheckoutCompra extends Component {
 
                         </div>
                         <div className="text-center col-md-6 col-sm-6 col-12 mb-md-0 mb-sm-0 mb-4 order-md-2 order-sm-2 order-1">
-                            <a onClick={()=>this.aparecer()} href="#" id="toggle" className="avancar">Finalizar Compra</a>
+                            <a onClick={()=>this.aparecer()} href="#/checkout/resumo" id="toggle" className="avancar">Finalizar Compra</a>
                         </div>
                     </div>
 

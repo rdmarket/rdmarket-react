@@ -223,7 +223,9 @@ export default () => {
                         </li>
                         <li>
                             <div className="div-btn-comprar mt-3">
-                                <a href="../../checkout/html/checkout-pagamento.html">
+                                {/* aqui não pode estar o id do cliente e pedido fixado,
+                                como vai ficar no local storage, depois tem que arrumar as rotas */}
+                                <a href="#/checkout/confirmar/dados/1/1">
                                     <button className="btn-comprar">Finalizar a compra</button>
                                 </a>
                             </div>

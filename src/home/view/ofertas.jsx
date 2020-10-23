@@ -19,6 +19,7 @@ export default class Ofertas extends Component {
         axios.get(`${API}`)
             .then(resp => this.setState({ ofertas: resp.data }))
 
+        
     }
 
     calcularPreco = (n,m) =>{
@@ -31,6 +32,7 @@ export default class Ofertas extends Component {
 
     render() {
         let list = this.state.ofertas.map((item)=>item);
+
         return (
             <>
                 <section className="linha1 all">

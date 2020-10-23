@@ -63,7 +63,7 @@ export default (props) => {
                             <li id="descricao" className="ml-1">Adicionar o item ao carrinho.</li>
                         </ul>
                         <div className="div-btn-comprar mt-5">
-                            <a href="../../carrinho/html/carrinho.html"><button className="btn-comprar">Ir para o carrinho</button></a>
+                            <a href="#/carrinho"><button className="btn-comprar">Ir para o carrinho</button></a>
                         </div>
                     </div>
                 </div>
