@@ -18,36 +18,41 @@ import FormaPagamento from './formaPagamento'
 import Botoes from './botoes'
 import axios from 'axios'
 
-const API = 'http://rdmarket-laravel.test/api/endereco/listarCliente/';
+const API_ENDERECO = 'http://rdmarket-laravel.test/api/endereco/listarCliente/';
+const API_CARTAO = "http://rdmarket-laravel.test/api/devolverDadosCartao/"
 const IMAGE_PATH = 'http://rdmarket-laravel.test/storage/';
 
 export default class CheckoutPagamento extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { cartao: [],endereco:[]}
+        this.state = { cartao: [], endereco: [] }
     }
     componentDidMount() {
-        
+
         this.preencherDados()
     }
-  
+
     preencherDados = () => {
-        
+
         // devo substituir aqui o this.props.params.idcliente e this.props.params.idpedido
         // pelas variáveis que estão no local storage
 
-        axios.get(`${API}`+this.props.params.idcliente)
+        axios.get(`${API_ENDERECO}` + this.props.params.idcliente)
             .then(resp => this.setState({ endereco: resp.data }))
+
+        axios.get(`${API_CARTAO}` + this.props.params.idcliente)
+            .then(resp => this.setState({ cartao: resp.data }))
 
         // axios.get(`${API}`+this.props.params.desc)
         //     .then(resp => this.setState({ produtos: resp.data }))
-            
+
     }
-    
+
     render() {
-        
+
         const endereco = this.state.endereco;
+        const cartao = this.state.cartao;
 
         return (
 
@@ -63,8 +68,7 @@ export default class CheckoutPagamento extends Component {
                         <div className="row mt-5 fonts-texto">
 
                             <ConfirmaEndereco endereco={endereco} />
-
-                            <FormaPagamento />
+                            <FormaPagamento cartao={cartao} />
 
                         </div>
 

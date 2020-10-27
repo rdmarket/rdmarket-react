@@ -1,11 +1,12 @@
 import React from 'react'
 
-export default (props) =>{
+export default (props) => {
 
-    return props.endereco.map( item => (
-        <>
-            <option>{item.nm_rua+" "+item.num_endereco}</option>
-        </>
+    return (
+        
+          props.endereco.map(item => (
+            <option>{item.nm_rua + " " + item.num_endereco}</option>
+        )
+
     ))
-
 }

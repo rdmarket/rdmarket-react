@@ -1,7 +1,10 @@
 import React from 'react'
 import ListagemCategoria from './listagemCategoria'
+import '../css/styles.css'
 
 export default () => {
+
+    
 
     return (
 
@@ -11,7 +14,6 @@ export default () => {
                     <div class="borda-flex">
                         <a id="topo" href="#/home"><img id="logo-img" src={require('../imagens/logo.png')}
                             type="img" /></a>
-
                     </div>
                     <div id="barra-pesquisa" class="borda-flex-tamanho">
                         <div class="input-group mb-3 mt-5">
@@ -24,13 +26,27 @@ export default () => {
                         </div>
                     </div>
                     <div class="mt-5">
-                        <a href="#/login"><button class="bt-header"><img class="img-icones"
-                            src={require("../imagens/conta.svg")} /><span class="fonte-forte">Conta</span></button></a>
+
+                        <div className="dropdown">
+                        <img className="img-icones" src={require("../imagens/conta.svg")} />
+                            <a className="btn btn-secondary selectConta dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Conta
+                            </a>
+
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a className="dropdown-item selectConta" href="#/login">Login</a>
+                                <a className="dropdown-item selectConta" href="#/historico">Pedido</a>
+                                
+                            </div>
+                        </div>
+                        
+
+
                     </div>
                     <div class="mt-5 ">
 
                         <div class="div-carrinho">
-                            <a href="../../carrinho/html/carrinho.html"><button class="bt-header"><img class="img-icones"
+                            <a href="#/carrinho"><button class="bt-header"><img class="img-icones"
                                 src={require("../imagens/carrinho.svg")} /></button>
                             </a>
                         </div>
@@ -38,7 +54,7 @@ export default () => {
                             0
                 </div>
                         <div class="div-fonte">
-                            <span class="fonte-carrinho-total fonte-forte">Total: R$&lt total &gt</span>
+                            <span class="fonte-carrinho-total fonte-forte">Total: R$ total</span>
                         </div>
                     </div>
 
@@ -59,7 +75,7 @@ export default () => {
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Ofertas</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Novidades</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Descontos</a>
-                                           <ListagemCategoria/>
+                                            <ListagemCategoria />
                                         </div>
                                     </li>
                                     <li class="nav-item itens-menu">
@@ -68,7 +84,7 @@ export default () => {
                                     <li class="nav-item itens-menu">
                                         <a href="#/novidades" class="nav-link">Novidades</a>
                                     </li>
-                                    
+
                                     <li class="nav-item itens-menu">
                                         <a class="nav-link" href="#/contato">Contato</a>
                                     </li>
@@ -101,7 +117,7 @@ export default () => {
                                                 href="#/home">Meus pedidos</a>
                                             <span class="dropdown-item span-drop-down"
                                                 href="#">Categorias</span>
-                                            <ListagemCategoria/>
+                                            <ListagemCategoria />
                                         </div>
                                     </li>
                                 </ul>
