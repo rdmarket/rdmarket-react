@@ -8,6 +8,7 @@ import Routes from './rotas'
 
 ReactDOM.render(
   <>
+    {localStorage.getItem("cart")==null?localStorage.setItem("cart", "[]"):false}
     <Routes />
   </>,
   document.getElementById('root')

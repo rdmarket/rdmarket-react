@@ -14,8 +14,10 @@ export default (props) => {
     }
 
     const adicionarCarrinho = (id, titulo, item) => {
+        
         let display = document.getElementById(id);
         let qtd = parseFloat (display.value);
+        props.funcao(qtd)
 
         if (!qtd == 0){
             let carrinho = JSON.parse(localStorage.getItem("cart"));
@@ -65,7 +67,7 @@ export default (props) => {
         if(display.value > 0)
            display.value = parseInt(display.value)-1
     }
-
+    
     return (props.produtos.map(item => (
 
         <>
