@@ -30,13 +30,13 @@ export default () => {
                     <div class="mt-5 ">
 
                         <div class="div-carrinho">
-                            <a href="../../carrinho/html/carrinho.html"><button class="bt-header"><img class="img-icones"
+                            <a href="#/carrinho"><button class="bt-header"><img class="img-icones"
                                 src={require("../imagens/carrinho.svg")} /></button>
                             </a>
                         </div>
                         <div class="div-quantidade">
                             0
-                </div>
+                        </div>
                         <div class="div-fonte">
                             <span class="fonte-carrinho-total fonte-forte">Total: R$&lt total &gt</span>
                         </div>

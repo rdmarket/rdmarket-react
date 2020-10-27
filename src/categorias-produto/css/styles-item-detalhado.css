@@ -1,90 +1,76 @@
-ul{
+ul,li{
     list-style: none;
     padding: 0px;
+    border: 0px;
 }
-.barra-vermelha {
-    background-color: #c81e21 !important;
-
+.ul-width{
+    width:100%;
 }
-.texto-branco {
-    color: white !important;
-    font-weight: bold;
+#carrinho{
+    display: flex;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: auto; /* Add vertical scrollbar */
+    width: 80%;
+    height: 300px;
+    background-color:  rgba(211, 207, 207, 0.3) !important;
 }
-#titulo-item {
-    font-weight: normal;
-    display: block;
+.tamanho-carrinho{
+    width: 100% !important;
+    height: 84px;
 }
-
-.pequenas-img{
-    height: 68px;
-    border-style: none;
-    margin-left: 60%;
-}
-.pequenas-img:hover{
-    border: solid 1px black;
-}
-
-.grande-img{
-    height: 380px;
-    border-style: none;
-}
-
-.preco{
-    font-size: 28px;
-    font-weight: bold;
+#imagem-carrinho{
+    margin-top: 4px;
+    width: 68px;
+    height: 77px;
 }
 
 .tamanho-titulo{
-    font-size: 24px;
-}
-
-
-.qtde-carrinho{
-    flex-direction: row;
-}
-
-
-.btn-qtde{
-    border: none;
-    font-weight: bold;
     font-size: 18px;
-    width: 48px;
-    height: 48px;
 }
 
-.btn-qtde:hover{
-    border: solid 1px;
+.preco{
+    font-weight: bold;
 }
 
-.display-qtde{
+.btn-qtd{
     text-align: center;
+    border: none;
+    font-size: 28px;
+    font-weight: bold;
+    width: 35px;
+    height: 35px;
+    padding: 0px;
+
+}
+
+.caixa-qtd{
     padding: 0px;
     margin-left: 2px;
     margin-right: 2px;
 }
 
-#cart-item{
-    width: 40px;
-    height: 40px;
-    margin-left: -3px;
+#qtd{
+    border: solid 2px #77D353;
 }
 
-.btn-cart{
-    background-color: #77D353;
+.entrada-qtd{
+    width: 25px;
+    height: 25px;
+    padding: 0px;
     border: none;
-    border-radius: 15%;
-    width: 48px;
-    height: 48px;
+    text-align: center;
+}
+.entrada-qtd:focus{
+    border: none !important;
 }
 
-#descricao{
-    word-wrap: break-word;
+.btn-exclui{
+    border:none;
 }
 
-.div-btn-comprar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#img-exclui{
+    width: 35px;
+    height: 35px;
 }
 
 .btn-comprar{
@@ -97,37 +83,75 @@ ul{
     border-radius: 10px 10px;
 }
 
+.modo-coluna{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    flex-flow: column wrap;
+    margin-left: 20px !important;
+}
 
 
-@media screen and (max-width: 768px){
-    .miniaturas-responsivo{
-        display: none;
+@media screen and (max-width: 491px){
+    #imagem-carrinho{
+        display: none !important;
     }
-    #imagem-grande-responsivo{
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+    .valor{
+        font-size: 14px;
+        font-weight: normal;
     }
-    .item-barra-vermelha{
-        display: none;
+    #img-exclui{
+        width: 20px;
+        height: 20px;
     }
-    .diretorio{
-        margin: 0px !important;
+    
+    .btn-exclui{
+        margin-top: 30px !important;
+    }
+    
+    .btn-qtd{
+        margin-top: 35px !important;
+        font-size: 16px;
+        font-weight: bold;
+        width: 22px;
+        height: 22px;    
+    }
+    .entrada-qtd{
+        width: 18px;
+        height: 18px;
+        padding: 0px;
+        border: none;
         text-align: center;
     }
-}
-
-@media screen and (max-width: 992px){
-    #container-imagem{
-        display: none !important;
+    
+    .caixa-qtd{
+        margin-top: 22px !important;
     }
-    .btn-comprar{
-        margin: 0px;
-    }   
+    .qtd-item-carrinho{
+        margin-top: 4%;
+    }
+
+    .qtd-item{
+        font-size: 12px !important;
+    }
 }
 
-@media screen and (max-width: 418px){
-    #descricao{
-        display: none !important;
+@media screen and (max-width: 429px){
+    .tamanho-titulo{
+        font-size: 12px;
+    }
+    .valor{
+        font-size: 10px;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 340px){
+    
+}
+
+@media screen and (max-width: 283px){
+    #valor{
+        font-size: 26px !important;
     }
 }
