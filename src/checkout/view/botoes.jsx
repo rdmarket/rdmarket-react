@@ -109,7 +109,7 @@ export default () => {
                         localStorage.setItem('id_pedido', response.data[0].id_pedido)
                         localStorage.setItem('cart', '[]')
                         document.location.reload(true);
-                    })
+                    })  
                 })
         }
         else {

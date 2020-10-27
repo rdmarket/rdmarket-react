@@ -14,6 +14,38 @@ export default (props) => {
 
     }
 
+    const adicionarCarrinho = (id, titulo, item) => {
+        
+        let display = document.getElementById("detalhe-campo");
+        let qtd = parseFloat (display.value);
+
+        if (!qtd == 0){
+            let carrinho = JSON.parse(localStorage.getItem("cart"));
+            let i = carrinho.findIndex(x => x.id === id);
+            
+            console.log (i)
+
+            if (i>= 0){
+                let tirarItem = carrinho.filter(function(x) {
+                    return x.id == id;
+                });
+                let conversao = parseInt(tirarItem[0].qtd);
+                conversao += qtd;
+                tirarItem[0].qtd = conversao;
+                carrinho.splice(i, 1, tirarItem[0]);
+                localStorage.setItem("cart", JSON.stringify(carrinho));
+                display.value = 0;
+                return true;
+            }
+
+            let preco = calcularPreco(item).toFixed(2); 
+            carrinho.push({id, titulo, qtd, preco})
+            localStorage.setItem("cart", JSON.stringify(carrinho))
+
+            display.value = 0;
+        }
+    }
+
     const somar = ()=>{
 
         let vlr = document.getElementById('detalhe-campo')
@@ -60,7 +92,7 @@ export default (props) => {
                                 <input id="detalhe-campo" className="qtde-item tamanhoInput" placeholder='0' />
                             </ul></li>
                             <li><button onClick={()=>somar()} className="btn-qtde mais">+</button></li>
-                            <li><button className="btn-cart ml-5"><img id="cart-item" src={require("../imagens/cart-item.png")} /></button></li>
+                            <li><button className="btn-cart ml-5" onClick={() => adicionarCarrinho(props.produto.id_produto, props.produto.ds_produto, props.produto)}><img id="cart-item" src={require("../imagens/cart-item.png")} /></button></li>
                             <li id="descricao" className="ml-1">Adicionar o item ao carrinho.</li>
                         </ul>
                         <div className="div-btn-comprar mt-5">

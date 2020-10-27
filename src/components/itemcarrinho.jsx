@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-
+import converter from  '../converterMoeda'
 
 
 export default class Carrinho extends Component 
@@ -124,7 +123,7 @@ export default class Carrinho extends Component
                             </li>
                             <a type="hidden" value={item.id}/>
                             <li className="col-5"><h1 class="tamanho-titulo mt-4">{item.titulo}</h1></li>
-                            <li class="valor mt-4">R$ {item.preco}</li>
+                            <li class="valor mt-4">R$ {converter(parseFloat(item.preco))}</li>
                             <ul  class="d-flex">
                                 <li><button class="btn-qtd menos mt-3" onClick = {() => this.diminuirQtd(item.id)}>-</button></li>
                                 <li>
