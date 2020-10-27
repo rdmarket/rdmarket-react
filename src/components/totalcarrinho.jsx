@@ -1,4 +1,5 @@
 import React from 'react';
+import converter from  '../converterMoeda'
 
 export default props =>
 {
@@ -8,6 +9,6 @@ export default props =>
         total += (item.qtd * item.preco);
     });
     
-    return <h2 id="valor">Total: R$ {total.toFixed(2)}</h2>;
+    return <h2 id="valor">Total: R$ {converter(parseFloat(total.toFixed(2)))}</h2>;
     
 }

@@ -1,47 +1,5 @@
 import React, { Component } from 'react';
-
-
-// var carrinho = [
-//     {
-//       "titulo": "Arroz",
-//       "id": 1,
-//       "preco": "7.99",
-//       "qtd": "1"
-//     },
-//     {
-//       "titulo": "Feijão",
-//       "id": 2,
-//       "preco": "10.00",
-//       "qtd": "2"
-//     },
-//     {
-//       "titulo": "Laranja",
-//       "id": 3,
-//       "preco": "10.00",
-//       "qtd": "3"
-//     },
-//     {
-//       "titulo": "Chocotone",
-//       "id": 4,
-//       "preco": "10.00",
-//       "qtd": "4"
-//     },
-//     {
-//       "titulo": "Leite",
-//       "id": 5,
-//       "preco": "10.00",
-//       "qtd": "5"
-//     },
-//     {
-//       "titulo": "Frango",
-//       "id": 6,
-//       "preco": "10.00",
-//       "qtd": "6"
-//     }
-// ]
-
-// localStorage.setItem ("cart", JSON.stringify(carrinho))
-// localStorage.clear();
+import converter from  '../converterMoeda'
 
 
 export default class Carrinho extends Component 
@@ -165,7 +123,7 @@ export default class Carrinho extends Component
                             </li>
                             <a type="hidden" value={item.id}/>
                             <li className="col-5"><h1 class="tamanho-titulo mt-4">{item.titulo}</h1></li>
-                            <li class="valor mt-4">R$ {item.preco}</li>
+                            <li class="valor mt-4">R$ {converter(parseFloat(item.preco))}</li>
                             <ul  class="d-flex">
                                 <li><button class="btn-qtd menos mt-3" onClick = {() => this.diminuirQtd(item.id)}>-</button></li>
                                 <li>

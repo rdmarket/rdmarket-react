@@ -25,13 +25,13 @@ export default (props) =>{
                 return true;
             }
             
-            let preco = parseFloat(vlr)
+            let preco = parseFloat(vlr).toFixed(2);
             carrinho.push({id, titulo, qtd, preco})
             localStorage.setItem("cart", JSON.stringify(carrinho))
 
             display.value = 0;
         }
-        
+       
     }
 
     const somar = (id) =>{
