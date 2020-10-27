@@ -18,11 +18,16 @@ export default class AlimentosBasicos extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { produtos: []}
+        this.state = { produtos: [],carrinho:0}
     }
     componentDidMount() {
         
         this.preencherProdutos()
+    }
+
+    teste = (e)=>{
+        
+        this.setState({carrinho:this.state.carrinho+e})
     }
     
     preencherProdutos = () => {
@@ -43,11 +48,11 @@ export default class AlimentosBasicos extends Component {
         const lista = this.state.produtos;
         return (
             <>
-                <Header />
+                <Header valor={this.state.carrinho}/>
                 <CaminhoHeader st={st} path={this.nomeCategoria()}/>
                 <Filtro qtd={this.getQuantidade()} />
                 <section className="container-alimentos">
-                    <ListagemProdutos caminho={IMAGE_PATH} produtos={lista} />
+                    <ListagemProdutos funcao={e =>this.teste(e)} caminho={IMAGE_PATH} produtos={lista} />
                 </section>
                 <Footer />
             </>

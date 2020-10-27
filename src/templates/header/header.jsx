@@ -2,7 +2,7 @@ import React from 'react'
 import ListagemCategoria from './listagemCategoria'
 import '../css/styles.css'
 
-export default () => {
+export default (props) => {
 
     return (
 
@@ -49,7 +49,7 @@ export default () => {
                             </a>
                         </div>
                         <div class="div-quantidade">
-                            0
+                            {props.valor}
                         </div>
                         <div class="div-fonte">
                             <span class="fonte-carrinho-total fonte-forte">Total: R$ total</span>

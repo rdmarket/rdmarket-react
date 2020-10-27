@@ -7,6 +7,8 @@ import Novidades from './novidades'
 import Ofertas from './ofertas'
 export default class Home extends Component {
 
+
+
     state = {
         valor: 0
     }
@@ -24,7 +26,7 @@ export default class Home extends Component {
     render() {
         return (
             <>
-                <Header />
+                <Header/>
 
                 <Carousel />
 
