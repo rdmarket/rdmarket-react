@@ -50,7 +50,7 @@ export default () => {
                         </div>
                         <div class="div-quantidade">
                             0
-                </div>
+                        </div>
                         <div class="div-fonte">
                             <span class="fonte-carrinho-total fonte-forte">Total: R$ total</span>
                         </div>
