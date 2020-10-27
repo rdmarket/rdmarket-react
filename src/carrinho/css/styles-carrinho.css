@@ -28,11 +28,16 @@ ul,li{
     font-size: 18px;
 }
 
-.preco{
+.img-cart{
+    width: 68px;
+    height: 91px;
+}
+
+.valor{
     font-weight: bold;
 }
 
-.btn-qtde{
+.btn-qtd{
     text-align: center;
     border: none;
     font-size: 28px;
@@ -40,17 +45,29 @@ ul,li{
     width: 35px;
     height: 35px;
     padding: 0px;
+    background:  #ffffff;
 
 }
 
-.display-qtde{
+.display-qtd{
     padding: 0px;
     margin-left: 2px;
     margin-right: 2px;
 }
 
-#qtde{
+#qtd{
     border: solid 2px #77D353;
+}
+
+.entrada-qtd{
+    width: 25px;
+    height: 25px;
+    padding: 0px;
+    border: none;
+    text-align: center;
+}
+.entrada-qtd:focus{
+    border: none !important;
 }
 
 .btn-excluir{
@@ -85,16 +102,7 @@ ul,li{
     #imagem-carrinho{
         display: none !important;
     }
-}
-
-@media screen and (max-width: 400px){
-    .tamanho-titulo{
-        font-size: 12px;
-    }
-}
-
-@media screen and (max-width: 340px){
-    .preco{
+    .valor{
         font-size: 14px;
         font-weight: normal;
     }
@@ -103,25 +111,54 @@ ul,li{
         height: 20px;
     }
     
-    .btn-excluir{
-        margin-top: 30px !important;
+    .btn-exclui{
+        margin-top: 18px !important;
     }
     
-    .btn-qtde{
-        margin-top: 35px !important;
+    .btn-qtd{
+        margin-top: 18px !important;
         font-size: 16px;
         font-weight: bold;
         width: 22px;
         height: 22px;    
     }
+    .entrada-qtd{
+        
+        width: 18px;
+        height: 18px;
+        padding: 0px;
+        border: none;
+        text-align: center;
+    }
     
-    .display-qtde{
+    .display-qtd{
         margin-top: 22px !important;
     }
+    #qtd-item-carrinho{
+        display: flex;
+        align-items: flex-start;
+    }
 
-    .qtde-item{
+    .qtd-item{
         font-size: 12px !important;
     }
+    #descricao-qtd{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 429px){
+    .tamanho-titulo{
+        font-size: 12px;
+    }
+    .valor{
+        font-size: 10px;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 340px){
+    
 }
 
 @media screen and (max-width: 283px){

@@ -4,8 +4,6 @@ import '../css/styles.css'
 
 export default () => {
 
-    localStorage.setItem('token', "false")
-
     return (
 
         <>
