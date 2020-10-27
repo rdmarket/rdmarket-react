@@ -9,7 +9,7 @@ import '../css/styles.css';
 import '../css/styles-barra-vermelha.css';
 import '../css/sucesso-compra.css';
 import $ from 'jquery'
-import Footer from  '../../templates/footer/footer'
+import Footer from '../../templates/footer/footer'
 import ConfirmaSucesso from './confirmacaoSucesso'
 import LogoHeader from './logoHeader'
 import BarraVermelha from './barraVermelha'
@@ -18,28 +18,50 @@ import TabelaResumo from './tabelaResumo'
 import ResumoEndereco from './resumoEndereco'
 import axios from 'axios'
 
-const API_PEDIDO = 'http://rdmarket-laravel.test/api/pedidos/'
+const API_CHECKOUT = 'http://rdmarket-laravel.test/api/realizarCompra/'
+
+
 
 export default class CheckoutCompra extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {pd: []}
-        this.preencherPedido()
+        this.state={conteudo:new Object}
     }
 
-    preencherPedido = () => {
+ 
+    download=(filename, text) => {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+  
+    element.style.display = 'none';
+    document.body.appendChild(element);
+  
+    element.click();
+  
+    document.body.removeChild(element);
+  }
+  
 
-        axios.get(`${API_PEDIDO}` + this.props.params.idpedido)
-            .then(resp => this.setState({pd: resp.data }))
+    salvarDados = () => {
+
+        axios.get(`${API_CHECKOUT}` + localStorage.getItem('id_pedido'))
+        .then(response => {
+            this.download("notaFiscal.txt",JSON.stringify(response.data));    
+    })
+
+        // console.log(this.state.conteudo)
 
         
+
+        $("#confirmacao_sucesso").show();
     }
 
-    aparecer = ()=> $("#confirmacao_sucesso").show();    
+
 
     render() {
-        console.log(this.state.pd[0])
+        // console.log(this.state.pd[0])
         return (
             <>
                 <ConfirmaSucesso />
@@ -47,8 +69,8 @@ export default class CheckoutCompra extends Component {
 
                 <BarraVermelha />
 
-            
-                <BarraProgresso2 /> 
+
+                <BarraProgresso2 />
 
                 <div className="container borda-container mt-3 ">
 
@@ -57,8 +79,8 @@ export default class CheckoutCompra extends Component {
                             <h5>Resumo da compra</h5>
                         </div>
                     </div>
-                    <TabelaResumo idpedido={this.props.params.idpedido} />
-                   <ResumoEndereco total={this.state.pd[0]==undefined?0:this.state.pd[0].vlr_total_pedido}/>
+                    <TabelaResumo />
+                    <ResumoEndereco />
 
                 </div>
 
@@ -69,7 +91,7 @@ export default class CheckoutCompra extends Component {
 
                         </div>
                         <div className="text-center col-md-6 col-sm-6 col-12 mb-md-0 mb-sm-0 mb-4 order-md-2 order-sm-2 order-1">
-                            <a onClick={()=>this.aparecer()} type="button" id="toggle" className="avancar">Finalizar Compra</a>
+                            <a onClick={() => this.salvarDados()} type="button" id="toggle" className="avancar">Finalizar Compra</a>
                         </div>
                     </div>
 

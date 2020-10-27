@@ -58,7 +58,7 @@ export default class FormaPagamento extends Component {
 
             this.setState({
                 num_cartao: "", num_cpf: "", nm_impresso: "",
-                nm_bandeira: "", ds_tipo_cartao: "", show_parcela: finalDigit == "bito" ? true : false,
+                nm_bandeira: "", ds_tipo_cartao: this.devolverFinalCartao(str), show_parcela: finalDigit == "bito" ? true : false,
                 show_ano: false, show_mes: false, show_cod: false
             })
 
@@ -73,8 +73,8 @@ export default class FormaPagamento extends Component {
             <>
                 <div className="col-md-5 ml-sm-4 ml-4 ml-md-0 mr-sm-4 mr-4 mr-md-0 borda-teste pagamento-div">
 
-                    <div hidden className="row mb-2">
-                        <input id="tipo_cartao" type="text" value={this.state.ds_tipo_cartao}/>
+                    <div className="row mb-2">
+                        <input hidden id="tipo_cartao" type="text" value={this.state.ds_tipo_cartao}/>
                     </div>
 
                     <div className="row mb-2">

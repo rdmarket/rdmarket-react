@@ -30,8 +30,8 @@ export default props => {
                 <Route path='/contato' component={Contato} />
                 <Route path='/cadastro' component={Cadastro} />
                 <Route path='/carrinho' component={Carrinho} />
-                <Route path='/checkout/confirmar/dados/:idcliente/:idpedido' component={ConfirmaDados} />
-                <Route path='/checkout/resumo/:idcliente/:idpedido' component={ResumoCompra} />
+                <Route path='/checkout/confirmar/dados/:idcliente' component={ConfirmaDados} />
+                <Route path='/checkout/resumo/:idcliente' component={ResumoCompra} />
                 <Route path='/historico' component={Historico} />
                 <Redirect from='*' to='/home' />
             </Router>

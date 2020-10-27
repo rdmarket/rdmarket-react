@@ -17,7 +17,7 @@ export default (props) => {
         
         let display = document.getElementById(id);
         let qtd = parseFloat (display.value);
-        props.funcao(qtd)
+        
 
         if (!qtd == 0){
             let carrinho = JSON.parse(localStorage.getItem("cart"));
