@@ -1,4 +1,5 @@
 import React from 'react'
+import converter from '../../converterMoeda'
 
 export default (props) => {
 
@@ -76,7 +77,7 @@ export default (props) => {
                     </a>
                 </div>
                 <div className="preco-produto">
-                    <h5>R$ {calcularPreco(item.valor_venda,item.p_desconto)}</h5>
+                    <h5>R$ {converter(calcularPreco(item.valor_venda,item.p_desconto))}</h5>
                 </div>
                 <div className="container-dos-botoes">
                     <input type="button" onClick={()=>subtrair(item.id_produto)} className="menos" value="-" />

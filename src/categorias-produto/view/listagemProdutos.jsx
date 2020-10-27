@@ -1,4 +1,5 @@
 import React from 'react'
+import converter from '../../converterMoeda'
 
 export default (props) => {
 
@@ -64,6 +65,16 @@ export default (props) => {
            display.value = parseInt(display.value)-1
     }
 
+    const calcularPreco = (obj) =>{
+
+        if(obj.status_desconto == 'ativo'){
+            return obj.valor_venda - (obj.valor_venda * obj.p_desconto/100)
+        }
+
+        return parseFloat(obj.valor_venda)
+
+    }
+
 
     return (props.produtos.map(item => (
 
@@ -78,7 +89,7 @@ export default (props) => {
                     </a>
                 </div>
                 <div className="preco-produto">
-                    <h5>R$ {calcularPreco(item)}</h5>
+                    <h5>R$ {converter(calcularPreco(item))}</h5>
                 </div>
                 <div className="container-dos-botoes">
                     <input type="button" onClick={()=>subtrair(item.id_produto)} className="menos" value="-" />

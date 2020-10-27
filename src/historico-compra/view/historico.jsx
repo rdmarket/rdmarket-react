@@ -16,7 +16,7 @@ export default () => {
             <div className="ml-md-5 mr-md-0 ml-sm-5 ml-5 pedidos-tela-grande">
 
                 <div id="bt-minha-conta" className="dropdown pedidos-tela-grande">
-                    <button className="btn dropdown-toggle fonte-minha-conta mb-2" type="button" id="dropdownMenuButton"
+                    {/* <button className="btn dropdown-toggle fonte-minha-conta mb-2" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Minha conta
                     </button>
@@ -24,7 +24,7 @@ export default () => {
                         <a className="dropdown-item dropdown-item-barra-vermelha hover-item" href="#">Alterar meus dados</a>
                         <a className="dropdown-item dropdown-item-barra-vermelha hover-item" href="#">Meus cartões</a>
                         <a className="dropdown-item dropdown-item-barra-vermelha hover-item" href="historico.html">Meus pedidos</a>
-                    </div>
+                    </div> */}
 
 
                     <span id="titulo-meus-pedidos" className="pl-5 pedidos-tela-grande">Meus pedidos</span>

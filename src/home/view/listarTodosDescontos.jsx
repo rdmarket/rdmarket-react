@@ -31,7 +31,7 @@ export default class ListarTodosDescontos extends Component {
 
     }
     nomeCategoria = () =>{
-       return "Descontos"
+       return "Ofertas"
     }
 
     getQuantidade = () => {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import BodyContent from './bodyContent'
 
+
 const API = 'http://rdmarket-laravel.test/api/produtos/listarDescontos';
 const IMAGE_PATH = 'http://rdmarket-laravel.test/storage/';
 
@@ -27,7 +28,7 @@ export default class Ofertas extends Component {
         m=parseFloat(m)
         m=100-m
         m=m/100
-        return n*m  
+        return n*m
     }
 
     render() {

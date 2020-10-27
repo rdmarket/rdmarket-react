@@ -27,6 +27,12 @@
    
 }
 
+
+.img-size{
+    width: 150px !important;
+    height: 150px !important;
+}
+
 .tamanhoInput{
 
     width: 20px;
