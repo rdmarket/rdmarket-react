@@ -34,10 +34,11 @@ export default (props) => {
                 tirarItem[0].qtd = conversao;
                 carrinho.splice(i, 1, tirarItem[0]);
                 localStorage.setItem("cart", JSON.stringify(carrinho));
+                display.value = 0;
                 return true;
             }
 
-            let preco = calcularPreco(item); 
+            let preco = calcularPreco(item).toFixed(2); 
             carrinho.push({id, titulo, qtd, preco})
             localStorage.setItem("cart", JSON.stringify(carrinho))
 
@@ -66,10 +67,7 @@ export default (props) => {
         if(display.value > 0)
            display.value = parseInt(display.value)-1
     }
-
     
-
-
     return (props.produtos.map(item => (
 
         <>
