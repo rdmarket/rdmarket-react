@@ -56,9 +56,9 @@ export default (props) => {
                 display.value = 0;
                 return true;
             }
-
+            let url = props.caminho + item.caminho_imagem
             let preco = calcularPreco(item.valor_venda,item.p_desconto).toFixed(2); 
-            carrinho.push({id, titulo, qtd, preco})
+            carrinho.push({id, titulo, qtd, preco, url})
             localStorage.setItem("cart", JSON.stringify(carrinho))
 
             display.value = 0;

@@ -118,7 +118,7 @@ export default class Carrinho extends Component
                         <ul class="d-flex justify-content-around tamanho-carrinho">
                             <li>
                                 <div id="imagem-carrinho">
-                                    <img src={require("../carrinho/imagens/feijao.png")} alt="..." class="img-cart" />
+                                    <img src={item.url} alt="..." class="img-cart" />
                                 </div>
                             </li>
                             <a type="hidden" value={item.id}/>

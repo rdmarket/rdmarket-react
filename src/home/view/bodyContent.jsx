@@ -25,9 +25,10 @@ export default (props) =>{
                 display.value = 0;
                 return true;
             }
-            
+
+            let url = props.path            
             let preco = parseFloat(vlr).toFixed(2);
-            carrinho.push({id, titulo, qtd, preco})
+            carrinho.push({id, titulo, qtd, preco, url})
             localStorage.setItem("cart", JSON.stringify(carrinho))
 
             display.value = 0;
