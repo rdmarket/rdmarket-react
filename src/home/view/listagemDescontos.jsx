@@ -30,7 +30,7 @@ export default (props) => {
         m=parseFloat(m)
         m=100-m
         m=m/100
-        return n*m  
+        return n*m 
     }
 
     const adicionarCarrinho = (id, titulo, item) => {
@@ -72,7 +72,7 @@ export default (props) => {
                 <a href={"#/detalhe/"+item.id_produto+"/"+item.ds_categoria}>
                      <img src={props.caminho + item.caminho_imagem} height="110px" />
                 </a>
-                <div className={item.ds_categoria}>
+                <div className={item.ds_categoria + " col-5"}>
                     <a href={"#/detalhe/"+item.id_produto+"/"+item.ds_categoria}>
                         <p>{item.ds_produto}</p>
                     </a>
