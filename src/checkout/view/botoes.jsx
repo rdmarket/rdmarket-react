@@ -1,6 +1,10 @@
 import React from 'react'
 import axios from 'axios'
+
+import $ from 'jquery'
 import { Redirect } from 'react-router'
+
+
 
 const API_POST_ENDERECO = 'http://rdmarket-laravel.test/api/endereco'
 const API_POST_CARTAO = 'http://rdmarket-laravel.test/api/checkout'
@@ -108,7 +112,9 @@ export default () => {
                     }).then(function (response) {
                         localStorage.setItem('id_pedido', response.data[0].id_pedido)
                         localStorage.setItem('cart', '[]')
-                        document.location.reload(true);
+                        // document.location.reload(true);
+                        $("#confirmacao_sucesso").show();
+
                     })  
                 })
         }
@@ -124,7 +130,9 @@ export default () => {
             }).then(function (response) {
                 localStorage.setItem('id_pedido', response.data[0].id_pedido)
                 localStorage.setItem('cart', '[]')
-                document.location.reload(true);
+                // document.location.reload(true);
+                $("#confirmacao_sucesso").show();
+
             })
 
         }
@@ -147,17 +155,17 @@ export default () => {
         // return <Redirect to="/checkout/resumo" />
 
 
-
     }
     return (
         <>
+        
             <div className="row justify-content-center mt-5">
                 <div className="text-center col-md-3 col-sm-5 col-12 order-md-2 order-sm-2 order-2">
-                    <a href="#/carrinho" className="retornar">Voltar</a>
+                    <a type="button" href="#/carrinho" className="retornar">Voltar</a>
 
                 </div>
                 <div className="text-center col-md-5 col-sm-6 col-12 mb-md-0 mb-sm-0 mb-4 order-md-2 order-sm-2 order-1">
-                    <a onClick={() => getFormulario()} href="#/checkout/resumo/1" className="avancar">Confirmar Dados</a>
+                    <a type="button" onClick={() => getFormulario()} className="avancar">Finalizar Compra</a>
                 </div>
             </div>
         </>

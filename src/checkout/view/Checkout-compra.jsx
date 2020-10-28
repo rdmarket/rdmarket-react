@@ -55,16 +55,16 @@ export default class CheckoutCompra extends Component {
 
         
 
-        $("#confirmacao_sucesso").show();
+        // $("#confirmacao_sucesso").show();
     }
 
 
 
     render() {
-        // console.log(this.state.pd[0])
+        this.salvarDados()
         return (
             <>
-                <ConfirmaSucesso />
+                
                 <LogoHeader />
 
                 <BarraVermelha />
@@ -87,11 +87,11 @@ export default class CheckoutCompra extends Component {
                 <div className="container">
                     <div className="row justify-content-center mt-5">
                         <div className="text-center col-md-6 col-sm-6 col-12 order-md-2 order-sm-2 order-2">
-                            <a type="button" href="#/checkout/confirmar/dados/1/1" className="retornar">Voltar</a>
+                            <a type="button" href="#/home" className="retornar">Ir para home</a>
 
                         </div>
                         <div className="text-center col-md-6 col-sm-6 col-12 mb-md-0 mb-sm-0 mb-4 order-md-2 order-sm-2 order-1">
-                            <a onClick={() => this.salvarDados()} type="button" id="toggle" className="avancar">Finalizar Compra</a>
+                            <a type="button" href="#/historico" id="toggle" className="avancar">Ir para pedidos</a>
                         </div>
                     </div>
 

@@ -17,6 +17,8 @@ import Footer from '../../templates/footer/footer'
 import FormaPagamento from './formaPagamento'
 import Botoes from './botoes'
 import axios from 'axios'
+import ConfirmaSucesso from './confirmacaoSucesso'
+import $ from 'jquery'
 
 const API_ENDERECO = 'http://rdmarket-laravel.test/api/endereco/listarCliente/';
 const API_CARTAO = "http://rdmarket-laravel.test/api/devolverDadosCartao/"
@@ -57,6 +59,7 @@ export default class CheckoutPagamento extends Component {
         return (
 
             <>
+                <ConfirmaSucesso />
                 <LogoHeader />
 
                 <BarraVermelha />
