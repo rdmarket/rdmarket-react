@@ -128,7 +128,7 @@ export default (props) => {
                     </div>
                     <div class="mt-4 carrinho-tela-pequena">
                         <div class="div-carrinho">
-                            <a href="../../carrinho/html/carrinho.html"><button class="bt-header"><img class="img-icones"
+                            <a href="#/carrinho"><button class="bt-header"><img class="img-icones"
                                 src={require("../imagens/carrinho.svg")} /></button></a>
                         </div>
                         <div class="div-quantidade">
