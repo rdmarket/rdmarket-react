@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react';
 import '../css/style-cadastro.css'
 import '../css/styles.css'
 import '../css/styles-barra-vermelha.css'
 import Header from  '../../templates/header/header'
 import Footer from  '../../templates/footer/footer'
 
-export default () => {
+export default class Nascimento extends Component {
 
-    return (
+    
+ render () {
+     return (
         <>
         <Header />
             <div id="barra-vermelha" className="d-flex flex-md-row justify-content-between align-items-center mt-3">
@@ -112,6 +114,6 @@ export default () => {
             </div>
             <Footer />
         </>
-    )
-
+     )
+ }
 }

@@ -15,7 +15,7 @@ export default () => {
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a className="dropdown-item" href="#">(11)4002-8922</a>
-                            <a className="dropdown-item" href="#">example@email.com</a>
+                            <a className="dropdown-item" href="#">sac@rdmarket.com</a>
                         </div>
                     </div>
 
@@ -28,7 +28,7 @@ export default () => {
                 </div>
                 <div className="ml-md-2 mt-md-0 textos">
                     <img className="img-icon-email" src={require("../imagens/email.svg")} />
-                    <h3 className="font-cab-email">example@email.com</h3>
+                    <h3 className="font-cab-email">sac@rdmarket.com</h3>
                 </div>
                 <div className="ml-md-auto mt-md-0">
                     <img className="img-icon-shield" src={require("../imagens/shield.png")} />
