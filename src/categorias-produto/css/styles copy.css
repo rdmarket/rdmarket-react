@@ -118,13 +118,13 @@
     
  }
 
-
+/* 
  #departamentos:hover #categoria{
    
     color: white !important;
     
     
- }
+ } */
 
 
  #departamentos a{
@@ -181,11 +181,11 @@
    
 }
 
-.item-categoria:hover {
+/* .item-categoria:hover {
     
     background-color: #ffffff!important;
     color: #47525e;
-}
+} */
 
 
 .itens-menu-show{
@@ -201,14 +201,14 @@
  
  }
 
-.itens-menu a:hover{
+/* .itens-menu a:hover{
 
     background-color: #c81e21;
     color: white!important;
     border-radius: 20px;
     
  
- }
+ } */
 
  .barra-pesquisa-responsiva{
 
