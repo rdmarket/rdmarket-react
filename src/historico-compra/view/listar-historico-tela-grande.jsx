@@ -31,6 +31,7 @@ export default class PedidoTelaGrande extends Component{
 
         return (
             pedidos.map(pedido =>
+                <>
                 <div className={"row item-historico " + this.preencherCorStatusPedido(pedido.desc_status_pedido) + " tela-g"}>
                     <div id="numero-pedido" className="col-12">
                         Pedido {pedido.id_pedido + ' - ' + pedido.nr_pedido}
@@ -55,7 +56,9 @@ export default class PedidoTelaGrande extends Component{
                             </div>
                         </div>
                     </div>
-                </div>               
+                </div>     
+                <hr/>    
+                </>     
             )
         )
     }
