@@ -7,7 +7,6 @@ import Footer from '../../templates/footer/footer'
 import { cpfMask } from '../mascaras';
 import axios from 'axios';
 
-
 class login extends Component {
     // Mascara do CPF
     constructor(props) {

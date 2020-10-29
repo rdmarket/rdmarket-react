@@ -123,8 +123,8 @@ export default () => {
                                     <div className="texto pt-3 alinha-texto">Seg. a Sex. das 08h às 20h - (exceto feriados)</div>
                                     <div className="email-contato pt-4 alinha-texto">
                                         <a className="link-email-atendimento" target="blank"
-                                            href="mailto:example@email.coml?subjetc=Email do site"><img className="img-email"
-                                                src={require("../imagens/email-svg-grey.svg")} /> example@email.com</a>
+                                            href="mailto:sac@rdmarket.coml?subjetc=Email do site"><img className="img-email"
+                                                src={require("../imagens/email-svg-grey.svg")} /> sac@rdmarket.com</a>
                                     </div>
                                 </div>
                             </div>

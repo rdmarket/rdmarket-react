@@ -40,7 +40,7 @@ class cadastro extends Component {
             ds_email: this.ds_email,
             num_celular: this.num_celular,
             num_fixo: this.num_fixo,
-            id_tipo_endereco: this.id_tipo_endereco,
+            id_tipo_endereco: this.id_tipo_endereco
 
         };
 
