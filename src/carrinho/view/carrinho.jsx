@@ -16,7 +16,7 @@ export default () => {
         <>
             <div class="row justify-content-center mb-5">
                 <div id="img-centro" class="col-md-2 col-5 col-sm-3">
-                    <a href="../../home/html/home_flex.html"><img src={require("../imagens/logo.png")} /></a>
+                    <a href="#/home"><img src={require("../imagens/logo.png")} /></a>
                 </div>
             </div>
             <div id="barra-vermelha" class="d-flex flex-md-row justify-content-between align-items-center mt-3">
