@@ -48,12 +48,12 @@ export default (props) => {
                                 src={require("../imagens/carrinho.svg")} /></button>
                             </a>
                         </div>
-                        <div class="div-quantidade">
+                        <div class="div-quantidade ml-3">
                             {props.valor}
                         </div>
-                        <div class="div-fonte">
+                        {/* <div class="div-fonte">
                             <span class="fonte-carrinho-total fonte-forte">Total: R$ total</span>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -132,7 +132,7 @@ export default (props) => {
                                 src={require("../imagens/carrinho.svg")} /></button></a>
                         </div>
                         <div class="div-quantidade">
-                            0
+                            {props.valor}
                 </div>
                     </div>
                 </div>

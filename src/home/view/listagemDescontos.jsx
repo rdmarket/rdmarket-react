@@ -30,7 +30,7 @@ export default (props) => {
         m=parseFloat(m)
         m=100-m
         m=m/100
-        return n*m  
+        return n*m 
     }
 
     const adicionarCarrinho = (id, titulo, item) => {
@@ -56,9 +56,9 @@ export default (props) => {
                 display.value = 0;
                 return true;
             }
-
+            let url = props.caminho + item.caminho_imagem
             let preco = calcularPreco(item.valor_venda,item.p_desconto).toFixed(2); 
-            carrinho.push({id, titulo, qtd, preco})
+            carrinho.push({id, titulo, qtd, preco, url})
             localStorage.setItem("cart", JSON.stringify(carrinho))
 
             display.value = 0;
@@ -72,7 +72,7 @@ export default (props) => {
                 <a href={"#/detalhe/"+item.id_produto+"/"+item.ds_categoria}>
                      <img src={props.caminho + item.caminho_imagem} height="110px" />
                 </a>
-                <div className={item.ds_categoria}>
+                <div className={item.ds_categoria + " col-5"}>
                     <a href={"#/detalhe/"+item.id_produto+"/"+item.ds_categoria}>
                         <p>{item.ds_produto}</p>
                     </a>

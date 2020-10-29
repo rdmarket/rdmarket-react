@@ -27,6 +27,11 @@
    
 }
 
+.espaco-descricao{
+    height: 100px;
+    width: 180px;
+}
+
 
 .img-size{
     width: 150px !important;
