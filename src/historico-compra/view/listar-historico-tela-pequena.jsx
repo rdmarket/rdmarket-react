@@ -13,9 +13,11 @@ export default class PedidoTelaPequena extends Component {
     }
 
     preencherPedido = () => {
-        let cliente = JSON.parse(localStorage.getItem('usuario'))
-        axios.get(`${API}` + cliente.id_cliente)
-            .then(resp => this.setState({ pedidos: resp.data }))
+        if (this.props.logado) {
+            let cliente = JSON.parse(localStorage.getItem('usuario'))
+            axios.get(`${API}` + cliente.id_cliente)
+                .then(resp => this.setState({ pedidos: resp.data }))
+        }
     }
 
     preencherCorStatusPedido = (status) => {

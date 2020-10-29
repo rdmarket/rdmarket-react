@@ -6,6 +6,7 @@ import Header from '../../templates/header/header'
 import Footer from '../../templates/footer/footer'
 import { cpfMask } from '../mascaras';
 import axios from 'axios';
+import { browserHistory } from 'react-router'
 
 class login extends Component {
     // Mascara do CPF
@@ -35,6 +36,8 @@ class login extends Component {
 
                 localStorage.setItem('token', JSON.stringify(res.data.access_token));
                 localStorage.setItem('usuario', JSON.stringify(res.data.usuario));
+                browserHistory.push('#/home')
+                document.location.reload(true)
             })
             .catch(err => {
                 console.log(err)
@@ -93,7 +96,7 @@ class login extends Component {
                                 <div className="form-group">
                                     <label for="exampleInputPassword1" className="font-bold">Senha:</label>
                                     <input type="password" className="form-control" id="exampleInputPassword1"
-                                        onChange={e => this.vlr_senha = e.target.value}/>
+                                        onChange={e => this.vlr_senha = e.target.value} />
                                     <button type="button" className="btn btn-link">Esqueci minha senha:</button>
                                 </div>
 
@@ -145,7 +148,7 @@ class login extends Component {
                                 </form>
                                 <hr />
                                 <div className="d-flex justify-content-center">
-                                    <a href="#/cadastro" type="button" className="btn btn-success col-12">Cadastre-se</a>
+                                    <button href="#/cadastro" type="submit" className="btn btn-success col-12">Cadastre-se</button>
                                 </div>
                             </div>
                         </div>

@@ -3,6 +3,14 @@ import ListagemCategoria from './listagemCategoria'
 import '../css/styles.css'
 
 export default (props) => {
+    const retornarCliente = () => {
+        let nomeCliente = localStorage.getItem('usuario')
+
+        if (nomeCliente == null) {
+            return 'Conta'
+        }
+        return JSON.parse(nomeCliente).nm_cliente
+    }
 
     return (
 
@@ -26,18 +34,18 @@ export default (props) => {
                     <div class="mt-5">
 
                         <div className="dropdown">
-                        <img className="img-icones" src={require("../imagens/conta.svg")} />
+                            <img className="img-icones" src={require("../imagens/conta.svg")} />
                             <a className="btn btn-secondary selectConta dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Conta
+                                {retornarCliente()}
                             </a>
 
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a className="dropdown-item selectConta" href="#/login">Login</a>
                                 <a className="dropdown-item selectConta" href="#/historico">Pedido</a>
-                                
+
                             </div>
                         </div>
-                        
+
 
 
                     </div>
@@ -106,7 +114,7 @@ export default (props) => {
                                         </a>
                                         <div class="dropdown-menu pt-0 pb-0" aria-labelledby="navbarDropdownMenuLink">
                                             <a class="dropdown-item itens-menu-show item-categoria"
-                                                href="#/login">Conta</a>
+                                                href="#/login">{retornarCliente()}</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#/descontos">Ofertas</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#/novidades">Novidades</a>
                                             <a class="dropdown-item itens-menu-show item-categoria"
@@ -133,7 +141,7 @@ export default (props) => {
                         </div>
                         <div class="div-quantidade">
                             {props.valor}
-                </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">

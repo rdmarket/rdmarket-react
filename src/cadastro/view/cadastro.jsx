@@ -6,7 +6,7 @@ import Header from '../../templates/header/header'
 import Footer from '../../templates/footer/footer'
 import { cpfMask } from '../../login/mascaras';
 import axios from 'axios';
-import { findAllByDisplayValue } from '@testing-library/react'
+import { browserHistory } from 'react-router'
 
 class cadastro extends Component {
     // Mascara do CPF
@@ -46,10 +46,13 @@ class cadastro extends Component {
 
         axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
             res => {
-                console.log(res);
+                console.log(res)
+                browserHistory.push('#/login')
+                document.location.reload(true)
             }
         ).catch(
             err => {
+                alert(err)
                 console.log(err);
             }
         )
