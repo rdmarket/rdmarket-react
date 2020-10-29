@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import OptionEndereco from './optionEndereco'
+import axios from 'axios'
 import { render } from '@testing-library/react';
+
+const API = "https://viacep.com.br/ws/";
+
+//06240155/json/
 
 export default class ConfirmaEndereco extends Component {
 
@@ -12,6 +17,17 @@ export default class ConfirmaEndereco extends Component {
             nm_rua: "", num_endereco: "", ds_complemento: "", nm_bairro: "",
             nm_cidade: "", nm_estado: ""
         }
+    }
+
+    preencherCep = (id) => {
+        let elemento = document.getElementById(id);        
+        axios.get(`${API}` + elemento.value + '/json')
+            .then(resp => this.setState({
+            nm_rua: resp.data.logradouro,
+            ds_complemento: resp.data.complemento,
+            nm_bairro: resp.data.bairro,
+            nm_cidade: resp.data.localidade,
+            nm_estado: resp.data.uf }))
     }
 
     mudarEstado = (e)=>{
@@ -153,7 +169,7 @@ export default class ConfirmaEndereco extends Component {
 
                         <div className="col-md-10">
                             <h6>CEP</h6>
-                            <input id="cep" type="text" placeholder="XXXXX-XXX" onChange={e=>this.mudarCep(e.target.value)} value={this.state.num_cep} required />
+                            <input id="cep" type="text" placeholder="XXXXX-XXX" onBlur={()=> this.preencherCep("cep")} onChange={e=>this.mudarCep(e.target.value)} value={this.state.num_cep} required />
                             <a id="link-cep" href="#">Descubra seu CEP</a>
                         </div>
 
