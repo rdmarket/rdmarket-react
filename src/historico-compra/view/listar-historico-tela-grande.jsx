@@ -1,41 +1,42 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import converter from  '../../converterMoeda'
-import converterData from  '../../converterData'
+import converter from '../../converterMoeda'
+import converterData from '../../converterData'
 
 const API = "http://rdmarket-laravel.test/api/pedidos/listarPorCliente/1";
 
-export default class PedidoTelaGrande extends Component{
+export default class PedidoTelaGrande extends Component {
     constructor(props) {
         super(props)
-        this.state = { pedidos: []}
-        this.preencherPedido ();
+        this.state = { pedidos: [] }
+        this.preencherPedido();
     }
 
-    preencherPedido = () => {        
+    preencherPedido = () => {
         axios.get(`${API}`)
             .then(resp => this.setState({ pedidos: resp.data }))
     }
 
     preencherCorStatusPedido = (status) => {
-        if (status == "Em andamento"){
+        if (status == "Em andamento") {
             return "em-processamento"
-        }else if(status == "Entregue"){
+        } else if (status == "Entregue") {
             return "entregue"
         }
         return "cancelado"
     }
 
-    render(){
-        const {pedidos} = this.state;
+    render() {
+        const { pedidos } = this.state;
 
         return (
-            pedidos.map(pedido => 
+
+            pedidos.map(pedido =>
                 <>
                     <div className={"row item-historico " + this.preencherCorStatusPedido(pedido.desc_status_pedido) + " tela-g"}>
                         <div id="numero-pedido" className="col-12">
                             Pedido {pedido.id_pedido + ' - ' + pedido.nr_pedido}
-                            <hr id="linha-pedido"/>
+                            <hr id="linha-pedido" />
                             <div className="row">
                                 <div id="status-pedido" className="col-md-6 col-sm-12">
                                     <span>Status do pedido: {pedido.desc_status_pedido}</span>
@@ -50,15 +51,16 @@ export default class PedidoTelaGrande extends Component{
                                 <div id="data-pedido" className="col-md-6 col-sm-12">
                                     <span>Data do pedido: {converterData(pedido.data_pedido)}</span>
                                 </div>
-    
+
                                 <div id="total-compra-historico" className="col-md-6 col-sm-12">
-                                    <span>Total da compra: R$ {converter (parseFloat(pedido.vlr_total_pedido))}</span>
+                                    <span>Total da compra: R$ {converter(parseFloat(pedido.vlr_total_pedido))}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br/>
-                </>               
+
+                    <br />
+                </>
             )
         )
     }
