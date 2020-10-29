@@ -6,7 +6,7 @@ import Header from '../../templates/header/header'
 import Footer from '../../templates/footer/footer'
 import { cpfMask } from '../../login/mascaras';
 import axios from 'axios';
-
+import { findAllByDisplayValue } from '@testing-library/react'
 
 class cadastro extends Component {
     // Mascara do CPF
@@ -128,7 +128,7 @@ class cadastro extends Component {
                                         <label for="cpf">CPF</label>
                                         <input type="text" className="form-control" id="cpf"
                                             placeholder="Ex: 000.000.000-00"
-                                            value={documentId} maxLength='14' onChange={e => this.handlechange(e.target.value)} />
+                                            value={documentId} onChange={e => this.handlechange(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="row">
@@ -150,9 +150,36 @@ class cadastro extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="form-group col-4">
-                                        <label for="estado">Estado:</label>
-                                        <input type="text" className="form-control" id="estado"
-                                            onChange={e => this.nm_estado = e.target.value} />
+                                        <label htmlFor="UF">UF</label>
+                                        <select id="estado" name="estado" onClick={e => this.nm_estado = e.target.value}>
+                                            <option value="AC">AC</option>
+                                            <option value="AL">AL</option>
+                                            <option value="AP">AP</option>
+                                            <option value="AM">AM</option>
+                                            <option value="BA">BA</option>
+                                            <option value="CE">CE</option>
+                                            <option value="DF">DF</option>
+                                            <option value="ES">ES</option>
+                                            <option value="GO">GO</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MT">MT</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MG">MG</option>
+                                            <option value="PA">PA</option>
+                                            <option value="PB">PB</option>
+                                            <option value="PR">PR</option>
+                                            <option value="PE">PE</option>
+                                            <option value="PI">PI</option>
+                                            <option value="RJ">RJ</option>
+                                            <option value="RN">RN</option>
+                                            <option value="RS">RS</option>
+                                            <option value="RO">RO</option>
+                                            <option value="RR">RR</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SP">SP</option>
+                                            <option value="SE">SE</option>
+                                            <option value="TO">TO</option>
+                                        </select>
                                     </div>
                                     <div className="form-group col-4">
                                         <label for="cidade">Cidade:</label>
@@ -168,7 +195,7 @@ class cadastro extends Component {
                                 <div className="row">
                                     <div className="form-group col-6">
                                         <label for="endereco">Endereço:</label>
-                                        <input type="email" className="form-control" id="endereco"
+                                        <input type="text" className="form-control" id="endereco"
                                             onChange={e => this.nm_rua = e.target.value} />
                                     </div>
                                     <div className="form-group col-md-2">
@@ -205,7 +232,7 @@ class cadastro extends Component {
 
                                 <div className="d-flex justify-content-between">
                                     <button type="button" className="btn btn-danger col-2">Limpar</button>
-                                    <button type="submit" className="btn btn-success">Cadastrar</button>
+                                    <button type="submit" href="#/login" className="btn btn-success">Cadastrar</button>
                                 </div>
                             </form>
                         </div>

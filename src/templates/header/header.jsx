@@ -69,7 +69,7 @@ export default (props) => {
                                                 id="categoria">Categorias</span>
                                         </a>
                                         <div class="dropdown-menu pt-0 pb-0 borda-none"
-                                            aria-labelledby="navbardDropdownMenuLink">
+                                            aria-labelledby="navbardDropdownMenuLink" >
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Ofertas</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Novidades</a>
                                             <a class="dropdown-item itens-menu-show item-categoria" href="#">Descontos</a>

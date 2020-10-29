@@ -39,11 +39,11 @@ export default class CheckoutPagamento extends Component {
 
         // devo substituir aqui o this.props.params.idcliente e this.props.params.idpedido
         // pelas variáveis que estão no local storage
-
-        axios.get(`${API_ENDERECO}` + this.props.params.idcliente)
+        let cliente = JSON.parse(localStorage.getItem('usuario'))
+        axios.get(`${API_ENDERECO}` + cliente.id_cliente)
             .then(resp => this.setState({ endereco: resp.data }))
 
-        axios.get(`${API_CARTAO}` + this.props.params.idcliente)
+        axios.get(`${API_CARTAO}` + cliente.id_cliente)
             .then(resp => this.setState({ cartao: resp.data }))
 
         // axios.get(`${API}`+this.props.params.desc)

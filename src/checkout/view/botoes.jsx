@@ -29,6 +29,8 @@ export default () => {
         let nm_impresso = document.getElementById("nm_titular").value
         let nm_tipo_cartao = document.getElementById("tipo_cartao").value
         let id_tipo_cartao = 0;
+        let cliente = JSON.parse(localStorage.getItem('usuario'))
+
 
         if (pagamento == "dito") {
             id_tipo_cartao = 1;
@@ -39,9 +41,8 @@ export default () => {
         }
 
         if (id_tipo_cartao != 0) {
-
             axios.post(`${API_POST_CARTAO}`, {
-                "id_cliente": 1,
+                "id_cliente": cliente.id_cliente,
                 "id_tipo_cartao": id_tipo_cartao,
                 "num_cartao": numero_cartao,
                 "num_cpf": num_cpf,
@@ -104,7 +105,7 @@ export default () => {
                     id_endereco = response.data.id;
                     //aqui vou criar o pedido
                     axios.post(`${API_POST_PEDIDO}`, {
-                        "id_cliente": 1,
+                        "id_cliente": cliente.id_cliente,
                         "itens": JSON.parse(localStorage.getItem('cart')),
                         "id_forma_pagamento": id_tipo_cartao,
                         "id_endereco": id_endereco,
@@ -115,14 +116,14 @@ export default () => {
                         // document.location.reload(true);
                         $("#confirmacao_sucesso").show();
 
-                    })  
+                    })
                 })
         }
         else {
 
             //aqui vou criar o pedido
             axios.post(`${API_POST_PEDIDO}`, {
-                "id_cliente": 1,
+                "id_cliente": cliente.id_cliente,
                 "itens": JSON.parse(localStorage.getItem('cart')),
                 "id_forma_pagamento": id_tipo_cartao,
                 "id_endereco": id_endereco,
@@ -158,7 +159,7 @@ export default () => {
     }
     return (
         <>
-        
+
             <div className="row justify-content-center mt-5">
                 <div className="text-center col-md-3 col-sm-5 col-12 order-md-2 order-sm-2 order-2">
                     <a type="button" href="#/carrinho" className="retornar">Voltar</a>

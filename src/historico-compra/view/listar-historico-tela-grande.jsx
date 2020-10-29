@@ -3,9 +3,10 @@ import axios from 'axios'
 import converter from '../../converterMoeda'
 import converterData from '../../converterData'
 
-const API = "http://rdmarket-laravel.test/api/pedidos/listarPorCliente/1";
+const API = "http://rdmarket-laravel.test/api/pedidos/listarPorCliente/";
 
 export default class PedidoTelaGrande extends Component {
+
     constructor(props) {
         super(props)
         this.state = { pedidos: [] }
@@ -13,7 +14,8 @@ export default class PedidoTelaGrande extends Component {
     }
 
     preencherPedido = () => {
-        axios.get(`${API}`)
+        let cliente = JSON.parse(localStorage.getItem('usuario'))
+        axios.get(`${API}` + cliente.id_cliente)
             .then(resp => this.setState({ pedidos: resp.data }))
     }
 

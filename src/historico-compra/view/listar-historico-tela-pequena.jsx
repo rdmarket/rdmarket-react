@@ -1,33 +1,34 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import converter from  '../../converterMoeda'
-import converterData from  '../../converterData'
+import converter from '../../converterMoeda'
+import converterData from '../../converterData'
 
-const API = "http://rdmarket-laravel.test/api/pedidos/listarPorCliente/1";
+const API = "http://rdmarket-laravel.test/api/pedidos/listarPorCliente/";
 
-export default class PedidoTelaPequena extends Component{
+export default class PedidoTelaPequena extends Component {
     constructor(props) {
         super(props)
-        this.state = { pedidos: []}
-        this.preencherPedido ();
+        this.state = { pedidos: [] }
+        this.preencherPedido();
     }
 
-    preencherPedido = () => {        
-        axios.get(`${API}`)
+    preencherPedido = () => {
+        let cliente = JSON.parse(localStorage.getItem('usuario'))
+        axios.get(`${API}` + cliente.id_cliente)
             .then(resp => this.setState({ pedidos: resp.data }))
     }
 
     preencherCorStatusPedido = (status) => {
-        if (status == "Em andamento"){
+        if (status == "Em andamento") {
             return "em-processamento"
-        }else if(status == "Entregue"){
+        } else if (status == "Entregue") {
             return "entregue"
         }
         return "cancelado"
     }
 
-    render(){
-        const {pedidos} = this.state;
+    render() {
+        const { pedidos } = this.state;
 
         return (
             pedidos.map(pedido =>
@@ -38,7 +39,7 @@ export default class PedidoTelaPequena extends Component{
 
                                 <span className="titulos-pedido-pq">Número do pedido: </span>
                                 <span className="conteudo-pedidos-pq">&nbsp;{pedido.id_pedido + ' - ' + pedido.nr_pedido}</span>
-                                <hr className="linha-pedido"/>
+                                <hr className="linha-pedido" />
 
                             </div>
                         </div>
@@ -48,7 +49,7 @@ export default class PedidoTelaPequena extends Component{
 
                                 <span className="titulos-pedido-pq">Status do pedido: </span>
                                 <span className="conteudo-pedidos-pq">&nbsp;{pedido.desc_status_pedido}</span>
-                                <hr className="linha-pedido"/>
+                                <hr className="linha-pedido" />
 
                             </div>
                         </div>
@@ -58,7 +59,7 @@ export default class PedidoTelaPequena extends Component{
 
                                 <span className="titulos-pedido-pq">Data do pedido: </span>
                                 <span className="conteudo-pedidos-pq">&nbsp;{converterData(pedido.data_pedido)}</span>
-                                <hr className="linha-pedido"/>
+                                <hr className="linha-pedido" />
 
                             </div>
                         </div>
@@ -68,7 +69,7 @@ export default class PedidoTelaPequena extends Component{
 
                                 <span className="titulos-pedido-pq">Quantidade de itens: </span>
                                 <span className="conteudo-pedidos-pq">&nbsp;{pedido.qtd_total_produtos}</span>
-                                <hr className="linha-pedido"/>
+                                <hr className="linha-pedido" />
 
                             </div>
                         </div>
@@ -76,13 +77,13 @@ export default class PedidoTelaPequena extends Component{
                         <div className="col-12 total-compra-historico">
                             <div className="row justify-content-center">
 
-                                <span>Total da compra: R$ {converter (parseFloat(pedido.vlr_total_pedido))}</span>
+                                <span>Total da compra: R$ {converter(parseFloat(pedido.vlr_total_pedido))}</span>
 
                             </div>
                         </div>
                     </div>
-                    <br/>
-                </>              
+                    <br />
+                </>
             )
         )
     }

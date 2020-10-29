@@ -76,7 +76,7 @@ export default () => {
                             <div class="div-btn-comprar mt-3">
                                 {/* aqui não pode estar o id do cliente e pedido fixado,
                                 como vai ficar no local storage, depois tem que arrumar as rotas */}
-                                <a href="#/checkout/confirmar/dados/1">
+                                <a href="#/checkout/confirmar/dados">
                                     <button class="btn-comprar">Fechar carrinho</button>
                                 </a>
                             </div>
