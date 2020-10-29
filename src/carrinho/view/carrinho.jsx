@@ -29,7 +29,7 @@ export default () => {
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">(11)4002-8922</a>
-                            <a class="dropdown-item" href="#">sac@rdmarket.com</a>
+                            <a class="dropdown-item" href="#">example@email.com</a>
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@ export default () => {
                 </div>
                 <div class="ml-md-2 mt-md-0 textos">
                     <img class="img-icon-email" src={require("../imagens/email.svg")} />
-                    <h3 class="font-cab-email">sac@rdmarket.com</h3>
+                    <h3 class="font-cab-email">example@email.com</h3>
                 </div>
                 <div class="ml-md-auto mt-md-0">
                     <img class="img-icon-shield" src={require("../imagens/shield.png")} />

@@ -124,7 +124,7 @@ export default () => {
                                     <div className="email-contato pt-4 alinha-texto">
                                         <a className="link-email-atendimento" target="blank"
                                             href="mailto:example@email.coml?subjetc=Email do site"><img className="img-email"
-                                                src={require("../imagens/email-svg-grey.svg")} /> sac@rdmarket.com</a>
+                                                src={require("../imagens/email-svg-grey.svg")} /> example@email.com</a>
                                     </div>
                                 </div>
                             </div>

@@ -166,7 +166,7 @@
  .item-categoria {
 
     background-color: #c81e21;
-    color: #ffffff!important;
+    color: #ffffff;
  }
 
 
@@ -201,7 +201,7 @@
 .item-categoria:hover {
     
     background-color: #ffffff!important;
-    color: #47525e!important;
+    color: #000000 !important;
 }
 
 
@@ -222,7 +222,7 @@
 
     background-color: #c81e21;
     color: white!important;
-     border-radius: 20px;
+    border-radius: 20px;
     
  
  }
