@@ -45,8 +45,10 @@ export default class ListagemProduto extends Component {
                 return true;
             }
 
-            let preco = this.calcularPreco(item).toFixed(2);
-            carrinho.push({ id, titulo, qtd, preco })
+
+            let url = props.caminho + item.caminho_imagem
+            let preco = calcularPreco(item).toFixed(2); 
+            carrinho.push({id, titulo, qtd, preco, url})
             localStorage.setItem("cart", JSON.stringify(carrinho))
 
             display.value = 0;
