@@ -17,6 +17,7 @@ import BarraProgresso2 from './barraProgresso2';
 import TabelaResumo from './tabelaResumo'
 import ResumoEndereco from './resumoEndereco'
 import axios from 'axios'
+import { browserHistory } from 'react-router'
 
 const API_CHECKOUT = 'http://rdmarket-laravel.test/api/realizarCompra/'
 
@@ -61,6 +62,15 @@ export default class CheckoutCompra extends Component {
 
 
     render() {
+
+        let cliente = localStorage.getItem('usuario');
+
+        if(cliente == null){
+            browserHistory.push('#/login')
+            document.location.reload(true)
+        }
+
+
         this.salvarDados()
         return (
             <>

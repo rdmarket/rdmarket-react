@@ -11,6 +11,28 @@ import Total from '../../components/totalcarrinho'
 
 export default () => {
 
+    const devolverLink = ()=>{
+
+        let user = localStorage.getItem('usuario');
+
+        if(user == null){
+            
+            return "#/login"
+        }
+        return "#/checkout/confirmar/dados"
+
+    }
+
+    const logado = () => {
+        let user = localStorage.getItem('usuario');
+
+        if(user == null){
+            
+            return true;
+        }
+        return false;
+    }
+
     return (
 
         <>
@@ -76,9 +98,12 @@ export default () => {
                             <div class="div-btn-comprar mt-3">
                                 {/* aqui não pode estar o id do cliente e pedido fixado,
                                 como vai ficar no local storage, depois tem que arrumar as rotas */}
-                                <a href="#/checkout/confirmar/dados">
-                                    <button class="btn-comprar">Fechar carrinho</button>
+                                
+                                <a href={devolverLink()}>
+                                    <p style={{color:"red"}} hidden={!logado()} >*Você precisa estar logado para fechar a compra</p>
+                                    <button hidden={logado()} class="btn-comprar">Fechar carrinho</button>
                                 </a>
+                                
                             </div>
                         </li>
                     </ul>

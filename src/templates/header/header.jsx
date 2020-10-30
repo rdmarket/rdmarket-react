@@ -20,6 +20,22 @@ export default class Header extends Component {
         this.state = { valor: parseInt(localStorage.getItem('qtdCarrinho')) }
     }
 
+    logado=()=>{
+        let cliente = localStorage.getItem('usuario')
+
+        if(cliente==null){
+            return true;
+        }
+        return false;
+    }
+
+    logout=()=>{
+
+        localStorage.clear()
+        document.location.reload(true)
+
+    }
+
     render() {
         return (
 
@@ -49,7 +65,8 @@ export default class Header extends Component {
                                 </a>
 
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a className="dropdown-item selectConta" href="#/login">Login</a>
+                                    <a hidden={!this.logado()} className="dropdown-item selectConta" href="#/login">Login</a>
+                                    <a onClick={()=>this.logout()} hidden={this.logado()} className="dropdown-item selectConta" href="#/home">Logout</a>                                    
                                     <a className="dropdown-item selectConta" href="#/historico">Pedido</a>
 
                                 </div>
