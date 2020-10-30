@@ -76,6 +76,7 @@ export default class Carrinho extends Component {
 
 
             this.refresh()
+            document.location.reload(true);
         }
 
 
@@ -106,6 +107,7 @@ export default class Carrinho extends Component {
             console.log(localStorage.getItem("cart"))
 
             this.refresh()
+            document.location.reload(true);
         }
     }
 
