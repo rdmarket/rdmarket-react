@@ -61,6 +61,8 @@ export default class Carrinho extends Component {
             aux += 1;
             elemento.value = aux;
 
+            localStorage.setItem('qtd_cart', parseInt(localStorage.getItem('qtd_cart')) + 1)
+
             let i = this.state.itens.findIndex(x => x.id === id);// i = ao index do item.id que vamos substituir
             let itens = [...this.state.itens]; // copia o state
             var tirarItem = itens.filter(function (item) {
