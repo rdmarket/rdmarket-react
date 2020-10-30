@@ -20,6 +20,7 @@ export default () => {
 
     const getFormulario = () => {
 
+        localStorage.setItem('qtd_cart',0)
 
         //esses são os valores do cartão
         let pagamento = document.getElementById("tipo_cartao").value

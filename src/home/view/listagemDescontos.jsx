@@ -38,6 +38,8 @@ export default (props) => {
         let display = document.getElementById(id);
         let qtd = parseFloat (display.value);
 
+        props.func(display.value)
+
         if (!qtd == 0){
             let carrinho = JSON.parse(localStorage.getItem("cart"));
             let i = carrinho.findIndex(x => x.id === id);

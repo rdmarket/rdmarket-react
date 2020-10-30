@@ -19,6 +19,7 @@ import Botoes from './botoes'
 import axios from 'axios'
 import ConfirmaSucesso from './confirmacaoSucesso'
 import $ from 'jquery'
+import { browserHistory } from 'react-router'
 
 const API_ENDERECO = 'http://rdmarket-laravel.test/api/endereco/listarCliente/';
 const API_CARTAO = "http://rdmarket-laravel.test/api/devolverDadosCartao/"
@@ -37,9 +38,18 @@ export default class CheckoutPagamento extends Component {
 
     preencherDados = () => {
 
+        
+
+
         // devo substituir aqui o this.props.params.idcliente e this.props.params.idpedido
         // pelas variáveis que estão no local storage
         let cliente = JSON.parse(localStorage.getItem('usuario'))
+        
+        if(cliente == null){
+            browserHistory.push('#/login')
+            document.location.reload(true)
+        }
+        
         axios.get(`${API_ENDERECO}` + cliente.id_cliente)
             .then(resp => this.setState({ endereco: resp.data }))
 

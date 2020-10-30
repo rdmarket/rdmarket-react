@@ -23,6 +23,16 @@ export default class Home extends Component {
             this.setState({ valor: this.state.valor - 1 })
     }
 
+    aumentarValor=(e)=>{
+        let id1 = document.getElementById("id_vlr1")
+        let id2 = document.getElementById("id_vlr2")
+        
+        id1.innerHTML=parseInt(e) + parseInt(id1.innerHTML);
+        id2.innerHTML= parseInt(e) + parseInt(id2.innerHTML);
+
+        localStorage.setItem('qtd_cart',parseInt(e) + JSON.parse(localStorage.getItem('qtd_cart')))    
+    }
+
     render() {
         return (
             <>
@@ -34,14 +44,14 @@ export default class Home extends Component {
                     <h3>Novidades</h3>
                     <a href="#/novidades" className="btn-comprar-a">Mais novidades</a>
                 </div>
-                <Novidades />
+                <Novidades func={e=>this.aumentarValor(e)} />
                 
                 <div className="meu-jubo">
                     <h3>Ofertas</h3>
                     <a href="#/descontos" className="btn-comprar-a">Mais ofertas</a>
                 </div>
                 
-                <Ofertas />
+                <Ofertas func={e=>this.aumentarValor(e)} />
 
 
                 <Footer />

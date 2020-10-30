@@ -19,7 +19,7 @@ class cadastro extends Component {
 
     handlechange(e) {
         this.setState({ documentId: cpfMask(e) })
-        this.num_cpf = this.state.documentId
+        this.num_cpf = cpfMask(e)
     }
     // IMPLEMENTAÇÃO DO LOGIN 
     handleSubmit = e => {

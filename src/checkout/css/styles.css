@@ -114,7 +114,7 @@
 .itens-menu a:hover{
 
     background-color: #c81e21;
-    color: white !important;
+    /* color: white !important; */
     border-radius: 20px;
     
  
@@ -124,7 +124,7 @@
 
  #departamentos:hover #categoria{
    
-    color: white !important;
+    /* color: white !important; */
     
     
  }
@@ -151,7 +151,7 @@
     
 
     background-color: #c81e21;
-    color: white !important;
+    /* color: white !important; */
     border-radius: 20px;
 
  }
