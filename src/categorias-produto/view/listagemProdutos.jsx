@@ -20,11 +20,15 @@ export default class ListagemProduto extends Component {
 
     }
 
+    
     adicionarCarrinho = (id, titulo, item) => {
 
         let display = document.getElementById(id);
         let qtd = parseFloat(display.value);
 
+        // this.addDisplay(parseInt(display.value));
+        // alert(this.state.valor_total)
+        this.props.func(display.value)
 
         if (!qtd == 0) {
             let carrinho = JSON.parse(localStorage.getItem("cart"));

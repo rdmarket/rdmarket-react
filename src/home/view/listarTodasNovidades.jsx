@@ -43,16 +43,26 @@ export default class AlimentosBasicos extends Component {
         return this.state.produtos.length
     }
 
+    aumentarValor=(e)=>{
+        let id1 = document.getElementById("id_vlr1")
+        let id2 = document.getElementById("id_vlr2")
+        
+        id1.innerHTML=parseInt(e) + parseInt(id1.innerHTML);
+        id2.innerHTML= parseInt(e) + parseInt(id2.innerHTML);
+
+        localStorage.setItem('qtd_cart',parseInt(e) + JSON.parse(localStorage.getItem('qtd_cart')))    
+    }
+    
     render() {
         let st = ">";
         const lista = this.state.produtos;
         return (
             <>
-                <Header valor={this.state.carrinho}/>
+                <Header contador={this.state.vlr}/>
                 <CaminhoHeader st={st} path={this.nomeCategoria()}/>
                 <Filtro qtd={this.getQuantidade()} />
                 <section className="container-alimentos">
-                    <ListagemProdutos funcao={e =>this.teste(e)} caminho={IMAGE_PATH} produtos={lista} />
+                    <ListagemProdutos func={e=>this.aumentarValor(e)}  caminho={IMAGE_PATH} produtos={lista} />
                 </section>
                 <Footer />
             </>

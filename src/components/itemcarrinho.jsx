@@ -17,8 +17,13 @@ export default class Carrinho extends Component
     removerItem = (id) => {
         let i = this.state.itens.findIndex(x => x.id === id);// i = ao index do item.id que vamos exluir
         let itemParaRemover = [...this.state.itens]; // copia o state
+        
+        localStorage.setItem('qtd_cart',parseInt(localStorage.getItem('qtd_cart'))-parseInt(itemParaRemover[i].qtd))
+
+        
         itemParaRemover.splice(i, 1); // passa o index do objeto que quer remomver 1 vez
         localStorage.setItem("cart", JSON.stringify(itemParaRemover)) //salva o novo State no LocalStorage
+          
         this.refresh();
         document.location.reload(true);
         // this.state.itens.forEach(item => {
@@ -85,6 +90,8 @@ export default class Carrinho extends Component
             aux -= 1;
             elemento.value = aux;
 
+            localStorage.setItem('qtd_cart',parseInt(localStorage.getItem('qtd_cart'))-1)
+
             let i = this.state.itens.findIndex(x => x.id === id);// i = ao index do item.id que vamos substituir
             let itens = [...this.state.itens]; // copia o state
             var tirarItem = itens.filter(function(item) {
@@ -118,7 +125,7 @@ export default class Carrinho extends Component
                         <ul class="d-flex justify-content-around tamanho-carrinho">
                             <li>
                                 <div id="imagem-carrinho">
-                                    <img src={item.url} alt="..." class="img-cart" />
+                                    <img src={require("../carrinho/imagens/feijao.png")} alt="..." class="img-cart" />
                                 </div>
                             </li>
                             <a type="hidden" value={item.id}/>

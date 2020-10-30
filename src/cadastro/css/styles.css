@@ -121,7 +121,7 @@
 
  #departamentos:hover #categoria{
    
-    color: white !important;
+    /* color: white !important; */
     
     
  }
@@ -184,7 +184,7 @@
 .item-categoria:hover {
     
     background-color: #ffffff!important;
-    color: #47525e;
+    color: #47525e !important;
 }
 
 
@@ -204,7 +204,7 @@
 .itens-menu a:hover{
 
     background-color: #c81e21;
-    color: white!important;
+    /* color: white!important; */
     border-radius: 20px;
     
  
