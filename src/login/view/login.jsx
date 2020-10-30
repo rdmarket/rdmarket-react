@@ -7,6 +7,7 @@ import Footer from '../../templates/footer/footer'
 import { cpfMask } from '../mascaras';
 import axios from 'axios';
 import { browserHistory } from 'react-router'
+import '../css/horus.css';
 
 class login extends Component {
     // Mascara do CPF
@@ -44,8 +45,19 @@ class login extends Component {
             })
     };
 
+    state = {
+        isPasswordShown: false
+    };
+
+    togglePasswordVisiblity = () => {
+        const { isPasswordShown } = this.state;
+        this.setState({ isPasswordShown: !isPasswordShown });
+    };
+
+
     render() {
         const { documentId } = this.state
+        const { isPasswordShown } = this.state;
         return (
             <>
                 < Header />
@@ -95,8 +107,14 @@ class login extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label for="exampleInputPassword1" className="font-bold">Senha:</label>
-                                    <input type="password" className="form-control" id="exampleInputPassword1"
-                                        onChange={e => this.vlr_senha = e.target.value} />
+                                    <input className="form-control" id="exampleInputPassword1"
+                                        onChange={e => this.vlr_senha = e.target.value} type={isPasswordShown ? "text" : "password"} />
+
+                                    <button type="button" className="fa fa-eye olho-horus" onClick={this.togglePasswordVisiblity}>
+                                        <img width="20px" height="20px"
+                                            src={require("../imagens/eye-icon.png")} />
+                                    </button>
+                                    < br />
                                     <button type="button" className="btn btn-link">Esqueci minha senha:</button>
                                 </div>
 
@@ -134,10 +152,14 @@ class login extends Component {
                                             placeholder="Ex: 000.000.000-00"
                                             value={documentId} maxLength='14' onChange={e => this.handlechange(e.target.value)} />
                                     </div>
-                                    <div className="form-group col-12">
+                                    <div className="form-group col-10">
                                         <label for="exampleInputPassword1" className="font-bold">Senha:</label>
                                         <input type="password" className="form-control" id="exampleInputPassword1"
-                                            onChange={e => this.vlr_senha = e.target.value} />
+                                            onChange={e => this.vlr_senha = e.target.value}
+                                            type={isPasswordShown ? "text" : "password"} />
+                                        <img width="20px" height="20px" className="fa fa-eye olho-horus"
+                                            src={require("../imagens/eye-icon.png")} onClick={this.togglePasswordVisiblity} />
+                                        < br />
                                         <button type="button" className="btn btn-link">Esqueci minha senha:</button>
                                     </div>
 

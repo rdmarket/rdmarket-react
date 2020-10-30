@@ -4,7 +4,7 @@ import '../css/styles.css'
 import '../css/styles-barra-vermelha.css'
 import Header from '../../templates/header/header'
 import Footer from '../../templates/footer/footer'
-import { cpfMask } from '../../login/mascaras';
+import { cpfMask, validadata, validarSenha } from '../../login/mascaras';
 import axios from 'axios';
 import { browserHistory } from 'react-router'
 
@@ -58,9 +58,19 @@ class cadastro extends Component {
         )
     };
 
+    state = {
+        isPasswordShown: false
+    };
+
+    togglePasswordVisiblity = () => {
+        const { isPasswordShown } = this.state;
+        this.setState({ isPasswordShown: !isPasswordShown });
+    };
+
 
     render() {
         const { documentId } = this.state
+        const { isPasswordShown } = this.state;
         return (
             <>
                 <Header />
@@ -102,6 +112,8 @@ class cadastro extends Component {
                         <div className="row">
                             <form className="col-12">
                                 <h4>Cliente, bem vindo!</h4>
+
+                                {/* NOME, SOBRENOME E DATA DE NASCIMENTO */}
                                 <div className="row">
                                     <div className="form-group col-4">
                                         <label for="nome">Nome:</label>
@@ -115,17 +127,20 @@ class cadastro extends Component {
                                     </div>
                                     <div className="form-group col-3">
                                         <label for="dataNascimento">Data de nascimento</label>
-                                        <input type="date" className="form-control" id="dataNascimento"
-                                            onChange={e => this.data_nascimento = e.target.value} />
+                                        <input type="date" className="form-control" id="nascimento"
+                                            onChange={e => this.data_nascimento = e.target.value}
+                                            onBlur={validadata} />
                                     </div>
                                 </div>
+                                {/* EMAIL E CPF */}
                                 <div className="row">
                                     <div className="form-group col-md-8">
                                         <label htmlFor="exampleInputEmail1">Email</label>
                                         <input type="email" className="form-control" id="exampleInputEmail1"
                                             aria-describedby="emailHelp"
                                             placeholder="name@example.com"
-                                            onChange={e => this.ds_email = e.target.value} />
+                                            onChange={e => this.ds_email = e.target.value}
+                                            pattern="[^. ][A-Za-z0-9.]*[^. ][@][A-Za-z0-9.]*[^. ]" />
                                     </div>
                                     <div className="form-group col-4">
                                         <label for="cpf">CPF</label>
@@ -152,9 +167,10 @@ class cadastro extends Component {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="form-group col-4">
-                                        <label htmlFor="UF">UF</label>
-                                        <select id="estado" name="estado" onClick={e => this.nm_estado = e.target.value}>
+                                    <div className="form-group col-md-2">
+                                        <label htmlFor="estado">Estado:</label>
+                                        <select className="ls-select form-control"
+                                            onClick={e => this.nm_estado = e.target.value}>
                                             <option value="AC">AC</option>
                                             <option value="AL">AL</option>
                                             <option value="AP">AP</option>
@@ -184,12 +200,12 @@ class cadastro extends Component {
                                             <option value="TO">TO</option>
                                         </select>
                                     </div>
-                                    <div className="form-group col-4">
+                                    <div className="form-group col-5">
                                         <label for="cidade">Cidade:</label>
                                         <input type="tex" className="form-control" id="cidade"
                                             onChange={e => this.nm_cidade = e.target.value} />
                                     </div>
-                                    <div className="form-group col-4">
+                                    <div className="form-group col-5">
                                         <label for="bairro">Bairro:</label>
                                         <input type="text" className="form-control" id="bairro"
                                             onChange={e => this.nm_bairro = e.target.value} />
@@ -212,8 +228,8 @@ class cadastro extends Component {
                                             onChange={e => this.ds_complemento = e.target.value} />
                                     </div>
                                     <div className="form-group col-md-2">
-                                        <label htmlFor="tipo_endereco">Tipo endereço</label>
-                                        <select name="select-simples" class="ls-select"
+                                        <label htmlFor="tipo_endereco">Tipo endereço:</label>
+                                        <select name="select-simples" class="ls-select form-control"
                                             onClick={e => this.id_tipo_endereco = e.target.value}>
                                             <option value="Residencial">Residencial</option>
                                             <option value="Comercial">Comercial</option>
@@ -223,13 +239,19 @@ class cadastro extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="form-group col-md-6">
-                                        <label htmlFor="senha">Senha</label>
-                                        <input type="password" className="form-control" id="exampleInputPassword1"
-                                            onChange={e => this.vlr_senha = e.target.value} />
+                                        <label htmlFor="senha">Senha
+                                        <span id="impForcaSenha"></span></label>
+                                        <input type="password" className="form-control" id="senha"
+                                            onChange={e => this.vlr_senha = e.target.value}
+                                            type={isPasswordShown ? "text" : "password"} />
+                                        <img width="20px" height="20px" className="fa fa-eye olho-horus"
+                                            src={require("../imagens/eye-icon.png")} onClick={this.togglePasswordVisiblity} />
+                                        < br />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label htmlFor="confirmeSenha">Confirme a senha</label>
-                                        <input type="password" className="form-control" id="exampleInputPassword1" />
+                                        <input type="password" className="form-control" id="senhaConf"
+                                            onBlur={validarSenha} />
                                     </div>
                                 </div>
 

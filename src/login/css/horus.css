@@ -1,0 +1,9 @@
+/* BUTTON OLHO */
+.olho-horus{
+    background: none;
+    border: none;
+    position: relative;
+    left: 100%;
+    top: -32px;
+    width: 20px !important;
+}
