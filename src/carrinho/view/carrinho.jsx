@@ -29,7 +29,7 @@ export default () => {
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">(11)4002-8922</a>
-                            <a class="dropdown-item" href="#">example@email.com</a>
+                            <a class="dropdown-item" href="#">sac@rdmarket.com</a>
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@ export default () => {
                 </div>
                 <div class="ml-md-2 mt-md-0 textos">
                     <img class="img-icon-email" src={require("../imagens/email.svg")} />
-                    <h3 class="font-cab-email">example@email.com</h3>
+                    <h3 class="font-cab-email">sac@rdmarket.com</h3>
                 </div>
                 <div class="ml-md-auto mt-md-0">
                     <img class="img-icon-shield" src={require("../imagens/shield.png")} />
@@ -76,7 +76,7 @@ export default () => {
                             <div class="div-btn-comprar mt-3">
                                 {/* aqui não pode estar o id do cliente e pedido fixado,
                                 como vai ficar no local storage, depois tem que arrumar as rotas */}
-                                <a href="#/checkout/confirmar/dados/1">
+                                <a href="#/checkout/confirmar/dados">
                                     <button class="btn-comprar">Fechar carrinho</button>
                                 </a>
                             </div>

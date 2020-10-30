@@ -38,7 +38,15 @@ export default class ItemDetalhe extends Component {
        return this.props.params.path+">"+(new Object(this.state.produto[0])).ds_produto
     }
 
-   
+    aumentarValor=(e)=>{
+        let id1 = document.getElementById("id_vlr1")
+        let id2 = document.getElementById("id_vlr2")
+        
+        id1.innerHTML=parseInt(e) + parseInt(id1.innerHTML);
+        id2.innerHTML= parseInt(e) + parseInt(id2.innerHTML);
+
+        localStorage.setItem('qtd_cart',parseInt(e) + JSON.parse(localStorage.getItem('qtd_cart')))    
+    }
 
     render() {
         let st = ">";
@@ -52,7 +60,7 @@ export default class ItemDetalhe extends Component {
                     <CaminhoHeader st={st} path={this.nomeCategoria()} />
                     <div className="container">
                         <ImagemProduto path_image={IMAGE_PATH+obj.caminho_imagem} />
-                        <InformacaoProduto produto={obj} path={IMAGE_PATH}/>
+                        <InformacaoProduto func={e=>this.aumentarValor(e)} produto={obj} path={IMAGE_PATH}/>
                     </div>
                 </article>
                 <Footer />

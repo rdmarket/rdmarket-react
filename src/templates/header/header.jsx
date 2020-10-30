@@ -2,11 +2,22 @@ import React, { Component } from 'react'
 import ListagemCategoria from './listagemCategoria'
 import '../css/styles.css'
 
+
 export default class Header extends Component {
 
-    constructor(props){
+    retornarCliente = () => {
+        let nomeCliente = localStorage.getItem('usuario')
+
+        if (nomeCliente == null) {
+            return 'Conta'
+        }
+        return JSON.parse(nomeCliente).nm_cliente
+    }
+
+
+    constructor(props) {
         super(props)
-        this.state={valor: parseInt(localStorage.getItem('qtdCarrinho'))}
+        this.state = { valor: parseInt(localStorage.getItem('qtdCarrinho')) }
     }
 
     render() {
@@ -34,8 +45,8 @@ export default class Header extends Component {
                             <div className="dropdown">
                                 <img className="img-icones" src={require("../imagens/conta.svg")} />
                                 <a className="btn btn-secondary selectConta dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Conta
-                            </a>
+                                    {this.retornarCliente()}
+                                </a>
 
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a className="dropdown-item selectConta" href="#/login">Login</a>
@@ -43,8 +54,6 @@ export default class Header extends Component {
 
                                 </div>
                             </div>
-
-
 
                         </div>
                         <div class="mt-5 ">
@@ -75,7 +84,7 @@ export default class Header extends Component {
                                                     id="categoria">Categorias</span>
                                             </a>
                                             <div class="dropdown-menu pt-0 pb-0 borda-none"
-                                                aria-labelledby="navbardDropdownMenuLink">
+                                                aria-labelledby="navbardDropdownMenuLink" >
                                                 <a class="dropdown-item itens-menu-show item-categoria" href="#">Ofertas</a>
                                                 <a class="dropdown-item itens-menu-show item-categoria" href="#">Novidades</a>
                                                 <a class="dropdown-item itens-menu-show item-categoria" href="#">Descontos</a>
@@ -89,6 +98,7 @@ export default class Header extends Component {
                                             <a href="#/novidades" class="nav-link">Novidades</a>
                                         </li>
 
+
                                         <li class="nav-item itens-menu">
                                             <a class="nav-link" href="#/contato">Contato</a>
                                         </li>
@@ -98,6 +108,8 @@ export default class Header extends Component {
                         </div>
                     </div>
                 </div>
+
+
                 <div class="container tela-pequena">
                     <div class="d-flex justify-content-between mt-5">
                         <div class="mt-2 cat">
@@ -112,7 +124,7 @@ export default class Header extends Component {
                                             </a>
                                             <div class="dropdown-menu pt-0 pb-0" aria-labelledby="navbarDropdownMenuLink">
                                                 <a class="dropdown-item itens-menu-show item-categoria"
-                                                    href="#/login">Conta</a>
+                                                    href="#/login">{this.retornarCliente()}</a>
                                                 <a class="dropdown-item itens-menu-show item-categoria" href="#/descontos">Ofertas</a>
                                                 <a class="dropdown-item itens-menu-show item-categoria" href="#/novidades">Novidades</a>
                                                 <a class="dropdown-item itens-menu-show item-categoria"
@@ -125,33 +137,26 @@ export default class Header extends Component {
                                             </div>
                                         </li>
                                     </ul>
+
                                 </div>
                             </nav>
-                        </div>
-                        <div class="borda-flex">
-                            <a id="topo" href="../../home/html/home_flex.html"><img id="logo-img" src={require("../imagens/logo.png")}
-                                type="img" /></a>
-                        </div>
-                        <div class="mt-4 carrinho-tela-pequena">
-                            <div class="div-carrinho">
-                                <a href="#/carrinho"><button class="bt-header"><img class="img-icones"
-                                    src={require("../imagens/carrinho.svg")} /></button></a>
-                            </div>
+
                             <div id="id_vlr2" class="div-quantidade">
-                            {localStorage.getItem('qtd_cart')}
+                                {localStorage.getItem('qtd_cart')}
                             </div>
+
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="barra-pesquisa" class="borda-flex-tamanho">
-                                <div class="input-group mt-2">
-                                    <input type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
-                                        aria-label="Recipient's username" aria-describedby="button-addon2" />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary bt-header-pesquisa" type="button"
-                                            id="button-addon2"><img width="20px" height="20px"
-                                                src={require("../imagens/pesquisa.svg")} /></button>
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="barra-pesquisa" class="borda-flex-tamanho">
+                                    <div class="input-group mt-2">
+                                        <input type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
+                                            aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary bt-header-pesquisa" type="button"
+                                                id="button-addon2"><img width="20px" height="20px"
+                                                    src={require("../imagens/pesquisa.svg")} /></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
