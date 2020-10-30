@@ -161,7 +161,7 @@ export default class ConfirmaEndereco extends Component {
 
                         <div className="col-md-10">
                             <h6>Numero endereço</h6>
-                            <input id="num_endereco" type="text" placeholder="174" onChange={e=>this.mudarEndereco(e.target.value)} value={this.state.num_endereco} required />
+                            <input id="num_endereco" type="text" onChange={e=>this.mudarEndereco(e.target.value)} value={this.state.num_endereco} required />
                         </div>
 
                     </div>

@@ -97,7 +97,7 @@ class cadastro extends Component {
                     </div>
                     <div className="ml-md-2 mt-md-0 textos">
                         <img className="img-icon-email" src={require("../imagens/email.svg")} />
-                        <h3 className="font-cab-email">example@email.com</h3>
+                        <h3 className="font-cab-email">sac@rdmarket.com</h3>
                     </div>
                     <div className="ml-md-auto mt-md-0">
                         <img className="img-icon-shield" src={require("../imagens/shield.png")} />
