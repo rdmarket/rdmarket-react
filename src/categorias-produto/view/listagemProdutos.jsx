@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import converter from '../../converterMoeda'
 import { extend } from 'jquery'
+import '../../cart-animation.css'
+import AnimacaoCarrinho from '../../cart-animation-view'
+import animar from '../../cart-animation'
 
 export default class ListagemProduto extends Component {
 
@@ -23,6 +26,7 @@ export default class ListagemProduto extends Component {
     
     adicionarCarrinho = (id, titulo, item) => {
 
+        animar()
         let display = document.getElementById(id);
         let qtd = parseFloat(display.value);
 
@@ -84,6 +88,7 @@ export default class ListagemProduto extends Component {
         return (this.props.produtos.map(item => (
 
             <>
+                <AnimacaoCarrinho />
                 <article className="item">
                     <a href={"#/detalhe/" + item.id_produto + "/" + item.ds_categoria}>
                         <img src={this.props.caminho + item.caminho_imagem} height="110px" />

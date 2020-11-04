@@ -7,6 +7,8 @@ import Footer from '../../templates/footer/footer'
 import { cpfMask, validadata, validarSenha } from '../../login/mascaras';
 import axios from 'axios';
 import { browserHistory } from 'react-router'
+import swal from 'sweetalert';
+
 
 class cadastro extends Component {
     // Mascara do CPF
@@ -46,9 +48,12 @@ class cadastro extends Component {
 
         axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
             res => {
-                console.log(res)
-                browserHistory.push('#/login')
-                document.location.reload(true)
+                
+                swal("Cadastro realizado com sucesso!","","success")
+                    .then((value) => {
+                        browserHistory.push('#/login')
+                        document.location.reload(true)
+                    });
             }
         ).catch(
             err => {

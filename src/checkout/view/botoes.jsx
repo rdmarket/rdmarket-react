@@ -10,7 +10,7 @@ const API_POST_ENDERECO = 'http://rdmarket-laravel.test/api/endereco'
 const API_POST_CARTAO = 'http://rdmarket-laravel.test/api/checkout'
 const API_POST_PEDIDO = 'http://rdmarket-laravel.test/api/pedidos/gerarPedido'
 
-export default () => {
+export default (props) => {
 
     const devolverFinalCartao = (str) => {
 
@@ -115,7 +115,7 @@ export default () => {
                         localStorage.setItem('id_pedido', response.data[0].id_pedido)
                         localStorage.setItem('cart', '[]')
                         // document.location.reload(true);
-                        $("#confirmacao_sucesso").show();
+                        props.enviarNumPedido(response.data[0].nr_pedido)
 
                     })
                 })
@@ -130,10 +130,13 @@ export default () => {
                 "id_endereco": id_endereco,
                 "nr_parcelas": num_parcelas
             }).then(function (response) {
+                //console.log(response.data[0].nr_pedido)
                 localStorage.setItem('id_pedido', response.data[0].id_pedido)
                 localStorage.setItem('cart', '[]')
+                //localStorage.setItem('nr_pedido', response.data[0].nr_pedido)
                 // document.location.reload(true);
-                $("#confirmacao_sucesso").show();
+                props.enviarNumPedido(response.data[0].nr_pedido)
+                
 
             })
 

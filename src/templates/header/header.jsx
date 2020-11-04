@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
 import ListagemCategoria from './listagemCategoria'
 import '../css/styles.css'
+import axios from 'axios'
+import ListagemProdutos from '../../categorias-produto/view/listagemProdutos'
+import ListagemProduto from '../../categorias-produto/view/listagemProdutos'
+
 
 
 export default class Header extends Component {
+
+
+    constructor(props) {
+        super(props)
+        this.state = { valor: parseInt(localStorage.getItem('qtdCarrinho')),keyword:''}
+    }
+
 
     retornarCliente = () => {
         let nomeCliente = localStorage.getItem('usuario')
@@ -15,10 +26,12 @@ export default class Header extends Component {
     }
 
 
-    constructor(props) {
-        super(props)
-        this.state = { valor: parseInt(localStorage.getItem('qtdCarrinho')) }
+    capturarMudanca=(e)=>{
+        this.setState({valor:this.state.valor,keyword:e})
+        
     }
+
+   
 
     logado=()=>{
         let cliente = localStorage.getItem('usuario')
@@ -36,6 +49,16 @@ export default class Header extends Component {
 
     }
 
+    aumentarValor=(e)=>{
+        let id1 = document.getElementById("id_vlr1")
+        let id2 = document.getElementById("id_vlr2")
+        
+        id1.innerHTML=parseInt(e) + parseInt(id1.innerHTML);
+        id2.innerHTML= parseInt(e) + parseInt(id2.innerHTML);
+
+        localStorage.setItem('qtd_cart',parseInt(e) + JSON.parse(localStorage.getItem('qtd_cart')))    
+    }
+
     render() {
         return (
 
@@ -48,11 +71,11 @@ export default class Header extends Component {
                         </div>
                         <div id="barra-pesquisa" class="borda-flex-tamanho">
                             <div class="input-group mb-3 mt-5">
-                                <input type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
+                                <input onChange={e=>this.capturarMudanca(e.target.value)} type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
                                     aria-label="Recipient's username" aria-describedby="button-addon2" />
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary bt-header-pesquisa" type="button"
-                                        id="button-addon2"><img width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></button>
+                                    <a href={"#/busca/"+this.state.keyword}  class="btn btn-outline-secondary bt-header-pesquisa" type="button"
+                                        id="button-addon2"><img width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></a>
                                 </div>
                             </div>
                         </div>
@@ -167,12 +190,12 @@ export default class Header extends Component {
                             <div class="col-12">
                                 <div id="barra-pesquisa" class="borda-flex-tamanho">
                                     <div class="input-group mt-2">
-                                        <input type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
+                                        <input onChange={e=>this.capturarMudanca(e.target.value)} type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
                                             aria-label="Recipient's username" aria-describedby="button-addon2" />
                                         <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary bt-header-pesquisa" type="button"
+                                            <a href={"#/busca/"+this.state.keyword}  class="btn btn-outline-secondary bt-header-pesquisa" type="button"
                                                 id="button-addon2"><img width="20px" height="20px"
-                                                    src={require("../imagens/pesquisa.svg")} /></button>
+                                                    src={require("../imagens/pesquisa.svg")} /></a>
                                         </div>
                                     </div>
                                 </div>
