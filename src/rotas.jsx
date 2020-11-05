@@ -14,6 +14,7 @@ import ConfirmaDados from './checkout/view/Checkout-pagamento'
 import ResumoCompra from './checkout/view/Checkout-compra'
 import Historico from './historico-compra/view/historico'
 import Busca from './busca-produto/view/buscaProduto'
+import EsqueciSenha from './recuperacao-senha/view/recuperarSenha'
 
 
 export default props => {
@@ -35,6 +36,7 @@ export default props => {
                 <Route path='/checkout/resumo' component={ResumoCompra} />
                 <Route path='/historico' component={Historico} />
                 <Route path='/busca/:keyword' component={Busca} />
+                <Route path='/esqueciminhasenha' component={EsqueciSenha} />
 
                 <Redirect from='*' to='/home' />
             </Router>
