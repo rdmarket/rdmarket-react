@@ -89,8 +89,9 @@ export default class Header extends Component {
 
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a hidden={!this.logado()} className="dropdown-item selectConta" href="#/login">Login</a>
-                                    <a onClick={()=>this.logout()} hidden={this.logado()} className="dropdown-item selectConta" href="#/home">Logout</a>                                    
-                                    <a className="dropdown-item selectConta" href="#/historico">Pedido</a>
+                                    <a onClick={()=>this.logout()} hidden={this.logado()} className="dropdown-item selectConta" href="#/home">Logout</a> 
+                                    <a className="dropdown-item selectConta" href="#/dados">Minha conta</a>                                   
+                                    <a className="dropdown-item selectConta" href="#/historico">Meus Pedidos</a>
 
                                 </div>
                             </div>
