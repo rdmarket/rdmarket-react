@@ -64,13 +64,13 @@ export default class Header extends Component {
 
             <>
                 <div class="container tela-grande">
-                    <div class="d-flex justify-content-between mt-5">
+                    <div class="d-flex justify-content-between">
                         <div class="borda-flex">
                             <a id="topo" href="#/home"><img id="logo-img" src={require('../imagens/logo.png')}
                                 type="img" /></a>
                         </div>
                         <div id="barra-pesquisa" class="borda-flex-tamanho">
-                            <div class="input-group mb-3 mt-5">
+                            <div class="input-group  mt-5">
                                 <input onChange={e=>this.capturarMudanca(e.target.value)} type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
                                     aria-label="Recipient's username" aria-describedby="button-addon2" />
                                 <div class="input-group-append">
@@ -151,7 +151,7 @@ export default class Header extends Component {
 
 
                 <div class="container tela-pequena">
-                    <div class="d-flex justify-content-between mt-5">
+                    <div class="d-flex justify-content-between">
                         <div class="mt-2 cat">
                             <nav class="navbar navbar-expand navbar-light">
                                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -186,11 +186,11 @@ export default class Header extends Component {
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div id="barra-pesquisa" class="borda-flex-tamanho">
-                                    <div class="input-group mt-2">
-                                        <input onChange={e=>this.capturarMudanca(e.target.value)} type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
+                        <div className="row">
+                            <div className="col-12">
+                                <div id="barra-pesquisa" >
+                                    <div class="input-group mt-3">
+                                        <input onChange={e=>this.capturarMudanca(e.target.value)} type="text" class="form-control" placeholder="pesquise seu produto"
                                             aria-label="Recipient's username" aria-describedby="button-addon2" />
                                         <div class="input-group-append">
                                             <a href={"#/busca/"+this.state.keyword}  class="btn btn-outline-secondary bt-header-pesquisa" type="button"

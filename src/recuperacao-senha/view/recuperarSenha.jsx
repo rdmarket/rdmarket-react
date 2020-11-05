@@ -16,8 +16,6 @@ export default class RecuperarSenha extends Component {
     // Mascara do CPF
     constructor(props) {
         super(props)
-
-
     }
 
     handleCpf = (e) => {
