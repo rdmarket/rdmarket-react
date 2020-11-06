@@ -29,7 +29,7 @@ export default class CheckoutPagamento extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { cartao: [], endereco: [] }
+        this.state = { cartao: [], endereco: [], nr_pedido:0}
     }
     componentDidMount() {
 
@@ -61,6 +61,13 @@ export default class CheckoutPagamento extends Component {
 
     }
 
+    enviarPedido=(nr)=>{
+
+        this.setState({...this.state,nr_pedido:nr})
+
+        $("#confirmacao_sucesso").show();
+    }
+
     render() {
 
         const endereco = this.state.endereco;
@@ -69,7 +76,7 @@ export default class CheckoutPagamento extends Component {
         return (
 
             <>
-                <ConfirmaSucesso />
+                <ConfirmaSucesso num_pedido={this.state.nr_pedido} />
                 <LogoHeader />
 
                 <BarraVermelha />
@@ -85,7 +92,7 @@ export default class CheckoutPagamento extends Component {
 
                         </div>
 
-                        <Botoes />
+                        <Botoes enviarNumPedido={(e)=>this.enviarPedido(e)} />
                     </form>
                 </div>
                 <Footer />

@@ -118,7 +118,7 @@ class login extends Component {
                                             src={require("../imagens/eye-icon.png")} />
                                     </button>
                                     < br />
-                                    <button type="button" className="btn btn-link">Esqueci minha senha:</button>
+                                    <a href="#/esqueciminhasenha" className="btn btn-link">Esqueci minha senha</a>
                                 </div>
 
                                 <div className="d-flex justify-content-between">
@@ -163,7 +163,7 @@ class login extends Component {
                                         <img width="20px" height="20px" className="fa fa-eye olho-horus"
                                             src={require("../imagens/eye-icon.png")} onClick={this.togglePasswordVisiblity} />
                                         < br />
-                                        <button type="button" className="btn btn-link">Esqueci minha senha:</button>
+                                        <a href="#/esqueciminhasenha" className="btn btn-link">Esqueci minha senha</a>
                                     </div>
 
                                     <div className="d-flex justify-content-between">

@@ -13,6 +13,19 @@ import Carrinho from './carrinho/view/carrinho'
 import ConfirmaDados from './checkout/view/Checkout-pagamento'
 import ResumoCompra from './checkout/view/Checkout-compra'
 import Historico from './historico-compra/view/historico'
+import Busca from './busca-produto/view/buscaProduto'
+<<<<<<< HEAD
+import Dados from './conta/views/dados/dados'
+import EditarDados from './conta/views/dados/editarDados'
+import Enderecos from './conta/views/enderecos/enderecos'
+import AdicionarEndereco from './conta/views/enderecos/AdicionarEndereco'
+import EditarEndereco from './conta/views/enderecos/editarEndereco'
+import Cartoes from './conta/views/cartoes/cartoes'
+import AdicionarCartao from './conta/views/cartoes/AdicionarCartao'
+import EditarCartao from './conta/views/cartoes/editarCartao'
+=======
+import EsqueciSenha from './recuperacao-senha/view/recuperarSenha'
+>>>>>>> cb9456fa27a32e8123bda10f3fd97a26e9789c2c
 
 
 export default props => {
@@ -33,6 +46,20 @@ export default props => {
                 <Route path='/checkout/confirmar/dados' component={ConfirmaDados} />
                 <Route path='/checkout/resumo' component={ResumoCompra} />
                 <Route path='/historico' component={Historico} />
+                <Route path='/busca/:keyword' component={Busca} />
+<<<<<<< HEAD
+                <Route path='/dados' component={Dados} />
+                <Route path='/editarDados' component={EditarDados} />
+                <Route path='/enderecos' component={Enderecos} />
+                <Route path='/adicionarEndereco' component={AdicionarEndereco} />
+                <Route path='/editarEndereco' component={EditarEndereco} />
+                <Route path='/cartoes' component={Cartoes} />
+                <Route path='/adicionarCartao' component={AdicionarCartao} />
+                <Route path='/editarCartao' component={EditarCartao} />
+=======
+                <Route path='/esqueciminhasenha' component={EsqueciSenha} />
+>>>>>>> cb9456fa27a32e8123bda10f3fd97a26e9789c2c
+
                 <Redirect from='*' to='/home' />
             </Router>
         </>
