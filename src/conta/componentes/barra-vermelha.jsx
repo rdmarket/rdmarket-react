@@ -17,8 +17,6 @@ export default props => {
               <a className="dropdown-item dropdown-item-barra-vermelha hover-item" href="#/dados">Meus dados</a>
               <a className="dropdown-item dropdown-item-barra-vermelha hover-item" href="#/enderecos">Meus endereços</a>
               <a className="dropdown-item dropdown-item-barra-vermelha hover-item" href="#/cartoes">Meus cartões</a>
-              <a className="dropdown-item dropdown-item-barra-vermelha hover-item" href="#/historico">Meus
-                  endereços</a>
             </div>
             <span id="titulo-meus-pedidos" className="pl-5 pedidos-tela-grande">{props.titulo}</span>
           </div>
@@ -33,7 +31,6 @@ export default props => {
               <a className="dropdown-item hover-item" href="#/dados">Meus dados</a>
               <a className="dropdown-item hover-item" href="#/enderecos">Meus endereços</a>
               <a className="dropdown-item hover-item" href="#/cartoes">Meus cartões</a>
-              <a className="dropdown-item hover-item" href="#/historico">Meus endereços</a>
             </div>
             <span id="titulo-meus-pedidos" className="pl-5 pedidos-tela-pequena">{props.titulo}</span>
           </div>
@@ -51,7 +48,6 @@ export default props => {
               <a className="dropdown-item hover-item" href="#/dados">Meu dados</a>
               <a className="dropdown-item hover-item" href="#/enderecos">Meus endereços</a>
               <a className="dropdown-item hover-item" href="#/cartoes">Meus cartões</a>
-              <a className="dropdown-item hover-item" href="#/historico">Meus endereços</a>
             </div>
           </div>
         </div>

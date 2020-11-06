@@ -4,8 +4,46 @@ import '../../css/barra-vermelha.css'
 import Header from '../../../templates/header/header'
 import BarraVermelha from '../../componentes/barra-vermelha'
 import Footer from '../../../templates/footer/footer'
+import axios from 'axios'
+import swal from 'sweetalert';
+import { browserHistory } from 'react-router'
+
+// const API_EDITAR = 'http://rdmarket-laravel.test/api/cartao/editarCartao/';
+const API_ATUALIZAR = 'http://rdmarket-laravel.test/api/cartao/atualizarCartao/';
 
 export default () => {
+
+    const atualizarCartao = () => {
+
+        let cliente = JSON.parse(localStorage.getItem('usuario'));
+        let tipoCartao = document.getElementById('tipoCartao').value;
+        let numeroCartao = document.getElementById('numeroCartao').value;
+        let cpfTitular = document.getElementById('cpfTitular').value;
+        let nomeTitular = document.getElementById('nomeTitular').value;
+        let bandeira ='AUTOMATICO';
+
+
+        axios.post(`${API_ATUALIZAR}`, {
+
+            "id_cliente": cliente.id_cliente,
+            "id_tipo_cartao": tipoCartao,
+            "num_cartao": numeroCartao,
+            "num_cpf": cpfTitular,
+            "nm_impresso": nomeTitular,
+            "nm_bandeira": bandeira
+        })
+            .then(function (response) {
+                swal("Cartão atualizado com sucesso!", "", "success")
+                    .then((value) => {
+                        browserHistory.push('#/cartoes')
+                        document.location.reload(true)
+                    });
+            }).catch(function (response) {
+
+                alert('Ocorreu um erro, tente novamente');
+            });
+    }
+
 
     return (
         <>
@@ -21,8 +59,12 @@ export default () => {
                                 <input type="tex" className="form-control" id="numeroCartao" placeholder="0000.0000.0000.0000" />
                             </div>
                             <div className="form-group col-4">
-                                <label htmlFor="cvv">CVV</label>
-                                <input type="tex" className="form-control" id="endereco" />
+                                <label htmlFor="tipoCartao">Tipo de Cartão</label>
+                                <select id="tipoCartao" name="select-simples" className="ls-select form-control">
+                                    <option selected>Selecione uma opção</option>
+                                    <option value="Débito">Débito</option>
+                                    <option value="Crédito">Crédito</option>
+                                </select>
                             </div>
                         </div>
                         <div className="row">
@@ -84,7 +126,7 @@ export default () => {
                                 <a href="#/cartoes" type="button" className="btn btn-danger danger" style={{ width: '100%' }}>Voltar</a>
                             </div>
                             <div className="col-4">
-                                <a type="button" className="btn btn-success" style={{ width: '100%' }}>Salvar</a>
+                                <a type="button" className="btn btn-success" style={{ width: '100%' }} onClick={ () => atualizarCartao()}>Salvar</a>
                             </div>
                         </div>
                     </div>

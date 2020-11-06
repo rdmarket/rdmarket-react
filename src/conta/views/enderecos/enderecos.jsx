@@ -3,10 +3,18 @@ import '../../css/styles.css'
 import '../../css/barra-vermelha.css'
 import Header from '../../../templates/header/header'
 import BarraVermelha from '../../componentes/barra-vermelha'
-import CardEndereco from '../../componentes/card-endereco'
+import ListarEnderecos from './ListarEnderecos'
 import Footer from '../../../templates/footer/footer'
 
 export default () => {
+  const verificarLogado = () => {
+    let nomeCliente = localStorage.getItem('usuario')
+
+    if (nomeCliente == null) {
+        return false
+    }
+    return true
+}
 
   return (
     <>
@@ -16,7 +24,7 @@ export default () => {
       <div className="container">
         <div className="row justify-content-around">
 
-          <CardEndereco tipo="Tipo de Endereço" logradouro="Rua do Sol" numero="123" complemento="-" bairro="Parque Veraneio" cidade="Ubatuba" estado="SP" cep="04567-000" />
+          <ListarEnderecos logado={() => verificarLogado()} />
 
         </div>
         <div className="row justify-content-start mt-3">

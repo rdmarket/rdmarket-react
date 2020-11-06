@@ -3,10 +3,19 @@ import '../../css/styles.css'
 import '../../css/barra-vermelha.css'
 import Header from '../../../templates/header/header'
 import BarraVermelha from '../../componentes/barra-vermelha'
-import Cartao from '../../componentes/card-cartao'
+import ListarCartoes from './ListarCartoes'
 import Footer from '../../../templates/footer/footer'
 
 export default () => {
+
+    const verificarLogado = () => {
+        let nomeCliente = localStorage.getItem('usuario')
+    
+        if (nomeCliente == null) {
+            return false
+        }
+        return true
+    }
 
     return (
         <>
@@ -14,8 +23,8 @@ export default () => {
             <BarraVermelha titulo="Meus cartões" />
 
             <div className="container">
-                <div className="row justify-content-around">
-                    <Cartao titulo="Tipo de cartão" numero="1234.1234.1234.1234" cpf="111.111.111-11" nome="Priscila Perez" />
+                <div className="row justify-content-center">
+                    <ListarCartoes logado={() => verificarLogado()} />
                 </div>
                 <div className="row justify-content-start mt-3">
                     <div className="col-4">

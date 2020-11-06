@@ -1,5 +1,4 @@
 import React from 'react'
-import '../css/styles.css'
 
 export default props => {
 
@@ -8,7 +7,7 @@ export default props => {
         <div className="col-4 mt-5">
             <div className="card bg-light">
                 <div className="card-header">
-                    <h5>{props.titulo}</h5>
+                    <h5>{props.tipo}</h5>
                 </div>
                 <div className="card-body">
                     <div className="row justify-content-start ml-3">
@@ -43,7 +42,7 @@ export default props => {
                     </div>
                     <div className="row justify-content-start mt-3">
                         <div className="col-3">
-                            <a href="#/editaCartao" className="btn btn-secondary secondary">Editar</a>
+                            <a href="#/editarCartao" className="btn btn-secondary secondary">Editar</a>
                         </div>
                         <div className="col-3">
                             <button className="btn btn-danger danger">Excluir</button>
