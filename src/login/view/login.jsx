@@ -8,6 +8,7 @@ import { cpfMask } from '../mascaras';
 import axios from 'axios';
 import { browserHistory } from 'react-router'
 import '../css/horus.css';
+import {validaCpf} from '../Validacoes';
 
 class login extends Component {
     // Mascara do CPF
@@ -101,9 +102,11 @@ class login extends Component {
                                 <h4>Faça seu login:</h4>
                                 <div className="form-group">
                                     <label for="cpf" className="font-bold"> CPF:</label>
-                                    <input type="text" className="form-control" id="cpf"
-                                        placeholder="Ex: 000.000.000-00" value={documentId}
-                                        maxLength='14' onChange={e => this.handlechange(e.target.value)} />
+                                    <input type="text" className="form-control nome" id="cpf"
+                                        placeholder="Ex: 000.000.000-00"                                        value={documentId}
+                                        maxLength='14' 
+                                        onChange={e => this.handlechange(e.target.value)}
+                                        onBlur={() => validaCpf()}/>
                                 </div>
                                 <div className="form-group">
                                     <label for="exampleInputPassword1" className="font-bold">Senha:</label>

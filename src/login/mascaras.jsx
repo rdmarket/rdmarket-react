@@ -7,6 +7,31 @@ export const cpfMask = value => {
         .replace(/(-\d{2})\d+?$/, '$1') // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada
 }
 
+export const telMask = value => {   
+    return value 
+        .replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '($1) $2')
+        .replace(/(\d{4})(\d)/, '$1-$2')
+        .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+        .replace(/(-\d{4})\d+?$/, '$1')
+}
+
+export const celMask = value => {   
+    return value 
+        .replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '($1) $2')
+        .replace(/(\d{4})(\d)/, '$1-$2')
+        .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+        .replace(/(-\d{4})\d+?$/, '$1')
+}
+
+export const cepMask = value => {
+    return value
+        .replace(/\D/g, '')
+        .replace(/(\d{5})(\d)/, '$1-$2')
+        .replace(/(-\d{3})\d+?$/, '$1')
+}
+
 export const validadata = () => {
     let data = document.getElementById("nascimento").value; // pega o valor do input
     data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
@@ -25,16 +50,9 @@ export const validadata = () => {
     if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
 
     if (idade < 18) {
-        alert("Pessoas menores de 18 não podem se cadastrar.");
-        return false;
+        return true;
     }
 
-    // if (idade >= 18 && idade <= 60) {
-    //     alert("Maior de 18, pode se cadastrar.");
-    //     return true;
-    // }
-
-    // se for maior que 60 não vai acontecer nada!
     return false;
 }
 
@@ -50,3 +68,12 @@ export const validarSenha = () => {
         return false;
     }
 }
+
+// export const validaNome = () => {
+    // let nome = document.getElementsByClassName("nome")
+// 
+    // if (nome.length() < 3 || nome.length() > 20){
+        // 
+        // return false
+    // }
+// }

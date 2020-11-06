@@ -4,16 +4,30 @@ import '../css/styles.css'
 import '../css/styles-barra-vermelha.css'
 import Header from '../../templates/header/header'
 import Footer from '../../templates/footer/footer'
-import { cpfMask, validadata, validarSenha } from '../../login/mascaras';
+import { cpfMask, validadata, validarSenha, telMask, cepMask, celMask } from '../../login/mascaras';
 import axios from 'axios';
 import { browserHistory } from 'react-router'
+import {
+    validaNome, validaSobrenome, validaEmail, validaCpf, validaTelefone, validaCelular,
+    validaCep
+} from '../Validacoes';
 
 class cadastro extends Component {
     // Mascara do CPF
     constructor(props) {
         super(props)
 
-        this.state = { documentId: '' }
+        this.state = {
+            documentId: '',
+            nome: false,
+            sobrenome: false,
+            data_nascimento: false,
+            email: false,
+            cpf: false,
+            telefone: false,
+            celular: false,
+            cep: false
+        }
         this.handlechange = this.handlechange.bind(this)
     }
 
@@ -21,6 +35,28 @@ class cadastro extends Component {
         this.setState({ documentId: cpfMask(e) })
         this.num_cpf = cpfMask(e)
     }
+
+    //Mascara telefone
+    handleTel(e) {
+        let tel = document.getElementById('telefone')
+        this.num_fixo = telMask(e)
+        tel.value = this.num_fixo;
+    }
+
+    //Mascara celular
+    handleCel(e) {
+        let cel = document.getElementById('celular')
+        this.num_celular = celMask(e)
+        cel.value = this.num_celular
+    }
+
+    //Mascara CEP
+    handleCep(e) {
+        let cep = document.getElementById('cep')
+        this.num_cep = cepMask(e)
+        cep.value = this.num_cep
+    }
+
     // IMPLEMENTAÇÃO DO LOGIN 
     handleSubmit = e => {
         e.preventDefault();
@@ -44,19 +80,46 @@ class cadastro extends Component {
 
         };
 
-        axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
-            res => {
-                console.log(res)
-                browserHistory.push('#/login')
-                document.location.reload(true)
-            }
-        ).catch(
-            err => {
-                alert(err)
-                console.log(err);
-            }
-        )
-    };
+        this.setState({
+            nome: validaNome(this.nm_cliente),
+            sobrenome: validaSobrenome(this.sobrenome),
+            data_nascimento: validadata(this.data_nascimento),
+            email: validaEmail(this.ds_email),
+            cpf: validaCpf(this.num_cpf),
+            telefone: validaTelefone(this.num_fixo),
+            celular: validaCelular(this.num_celular),
+            cep: validaCep(this.num_cep)
+        })
+
+        // console.log(this.state)
+        // console.log(validaNome(this.nm_cliente))
+        // console.log(validaSobrenome(this.sobrenome))
+        // console.log(validadata(this.data_nascimento))
+        // console.log(validaEmail(this.ds_email))
+        // console.log(validaCpf(this.num_cpf))
+        // console.log(validaTelefone(this.num_fixo))
+        // console.log(validaCelular(this.num_celular))
+        // console.log(validaCep(this.num_cep))
+
+        if (!validaNome(this.nm_cliente) && !validaSobrenome(this.sobrenome)
+             && !validadata(this.data_nascimento) && !validaEmail(this.ds_email) &&
+            !validaCpf(this.num_cpf) && !validaTelefone(this.num_fixo) && !validaCelular(this.num_celular)
+             && !validaCep(this.num_cep)) {
+
+            axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
+                res => {
+                    console.log(res)
+                    browserHistory.push('#/login')
+                    document.location.reload(true)
+                }
+            ).catch(
+                err => {
+                    alert(err)
+                    console.log(err);
+                }
+            )
+        }
+    }
 
     state = {
         isPasswordShown: false
@@ -119,58 +182,68 @@ class cadastro extends Component {
                                         <label for="nome">Nome:</label>
                                         <input type="text" className="form-control" id="nome"
                                             onChange={e => this.nm_cliente = e.target.value} />
+                                        <p hidden={!this.state.nome}>Nome invalido</p>
                                     </div>
                                     <div className="form-group col-5">
                                         <label for="sobrenome">Sobrenome:</label>
                                         <input type="text" className="form-control" id="sobrenome"
                                             onChange={e => this.sobrenome = e.target.value} />
+                                        <p hidden={!this.state.sobrenome}>Sobrenome invalido</p>
                                     </div>
                                     <div className="form-group col-3">
                                         <label for="dataNascimento">Data de nascimento</label>
                                         <input type="date" className="form-control" id="nascimento"
                                             onChange={e => this.data_nascimento = e.target.value}
-                                            onBlur={validadata} />
+                                        />
+                                        <p hidden={!this.state.data_nascimento}>Menor de 18 anos</p>
                                     </div>
                                 </div>
                                 {/* EMAIL E CPF */}
                                 <div className="row">
                                     <div className="form-group col-md-8">
                                         <label htmlFor="exampleInputEmail1">Email</label>
-                                        <input type="email" className="form-control" id="exampleInputEmail1"
+                                        <input type="email" className="form-control" id="email"
                                             aria-describedby="emailHelp"
                                             placeholder="name@example.com"
                                             onChange={e => this.ds_email = e.target.value}
                                             pattern="[^. ][A-Za-z0-9.]*[^. ][@][A-Za-z0-9.]*[^. ]" />
+                                        <p hidden={!this.state.email}>Email invalido</p>
                                     </div>
                                     <div className="form-group col-4">
                                         <label for="cpf">CPF</label>
                                         <input type="text" className="form-control" id="cpf"
                                             placeholder="Ex: 000.000.000-00"
                                             value={documentId} onChange={e => this.handlechange(e.target.value)} />
+                                        <p hidden={!this.state.cpf}>CPF invalido</p>
                                     </div>
                                 </div>
+
+                                {/*Telefones e cep*/}
                                 <div className="row">
                                     <div className="form-group col-4">
                                         <label for="telefone">Telefone</label>
-                                        <input type="tel" className="form-control" id="telefone" placeholder="Ex.: (00) 0000-0000"
-                                            onChange={e => this.num_fixo = e.target.value} />
+                                        <input type="tel" className="form-control " id="telefone" placeholder="Ex.: (00) 0000-0000"
+                                            onChange={e => this.handleTel(e.target.value)} />
+                                        <p hidden={!this.state.telefone}>Telefone invalido</p>
                                     </div>
                                     <div className="form-group col-4">
                                         <label for="celular">Celular</label>
-                                        <input type="tel" className="form-control" id="celular" placeholder="Ex.: (00) 00000-0000"
-                                            onChange={e => this.num_celular = e.target.value} />
+                                        <input type="tel" className="form-control " id="celular" placeholder="Ex.: (00) 00000-0000"
+                                            onChange={e => this.handleCel(e.target.value)} />
+                                        <p hidden={!this.state.celular}>Celular invalido</p>
                                     </div>
                                     <div className="form-group col-4">
                                         <label for="cep">CEP:</label>
                                         <input type="text" className="form-control" id="cep"
-                                            onChange={e => this.num_cep = e.target.value} />
+                                            onChange={e => this.handleCep(e.target.value)} />
+                                        <p hidden={!this.state.cep}>Cep invalido</p>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="form-group col-md-2">
                                         <label htmlFor="estado">Estado:</label>
                                         <select className="ls-select form-control"
-                                            onClick={e => this.nm_estado = e.target.value}>
+                                            onChange={e => this.nm_estado = e.target.value}>
                                             <option value="AC">AC</option>
                                             <option value="AL">AL</option>
                                             <option value="AP">AP</option>
