@@ -20,7 +20,7 @@ export default (props) => {
 
     const getFormulario = () => {
 
-        localStorage.setItem('qtd_cart',0)
+        localStorage.setItem('qtd_cart', 0)
 
         //esses são os valores do cartão
         let pagamento = document.getElementById("tipo_cartao").value
@@ -136,7 +136,7 @@ export default (props) => {
                 //localStorage.setItem('nr_pedido', response.data[0].nr_pedido)
                 // document.location.reload(true);
                 props.enviarNumPedido(response.data[0].nr_pedido)
-                
+
 
             })
 

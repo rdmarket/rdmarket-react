@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
+*{
+
+ font-family: 'Lato', sans-serif;  
+ font-size: 16px;
+ color: #47525e;
+ 
+}
+
+.btn-success{
+    background-color: #77D353;
+    color: #ffffff;
+    border-style: none;
+}
+
+.btn-danger{
+    background-color: #969faa;
+    color: #ffffff;
+    border-style: none;
+}
+
+.btn-conta{
+    border-style: none;
+}
+
+.btn-link{
+    color: #47525e;
+}
+
+h4{
+    color: #47525e;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.font-bold {
+    color: #47525e;
+    font-size: 20px;
+    font-weight: bold;
+}

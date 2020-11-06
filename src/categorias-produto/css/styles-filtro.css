@@ -12,6 +12,16 @@
     margin-right: 50px;
     align-self: center;
 }
+
+
+.bt-filtro :hover{
+
+    background-color: white !important;
+    color: rgb(100, 100, 100) !important;
+    font-weight: bold !important;
+    border-radius: 20px;
+}
+
 .bt-drop{
     background-color: transparent;
     color: #47525E;
@@ -28,5 +38,5 @@
     background-color: #c81e21;
 }
 .dropdown-menu :hover{
-    /* color: white; */
+    /* /color: white; */
 }

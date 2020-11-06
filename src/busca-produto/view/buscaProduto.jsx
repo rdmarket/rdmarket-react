@@ -56,6 +56,66 @@ export default class extends Component {
         return this.state.dados.length
     }
 
+    calcularPreco = (obj) => {
+
+        if (obj.status_desconto == 'ativo') {
+            return obj.valor_venda - (obj.valor_venda * obj.p_desconto / 100)
+        }
+
+        return obj.valor_venda
+
+    }
+
+    capturarFiltro = (n) => {
+
+        axios.get(`${API_BUSCA}` + this.props.params.keyword)
+            .then(resp => {
+
+                let aux = resp.data;
+
+                for (let i = 0; i < aux.length; i++) {
+
+                    if (n == 1) {
+
+                        if (!(parseFloat(this.calcularPreco(aux[i])) > 0 && parseFloat(this.calcularPreco(aux[i])) <= 10.0)) {
+                            aux.splice(i, 1);
+                            i--;
+                        }
+                    }
+                    else if (n == 2) {
+
+                        if (!(parseFloat(this.calcularPreco(aux[i])) > 10.0 && parseFloat(this.calcularPreco(aux[i])) <= 25.0)) {
+                            aux.splice(i, 1);
+                            i--;
+                        }
+                    }
+                    else if (n == 3) {
+
+                        if (!(parseFloat(this.calcularPreco(aux[i])) > 25.0 && parseFloat(this.calcularPreco(aux[i])) <= 50.0)) {
+                            aux.splice(i, 1);
+                            i--;
+                        }
+                    }
+                    else if (n == 4) {
+
+                        if (!(parseFloat(this.calcularPreco(aux[i])) > 50.0 && parseFloat(this.calcularPreco(aux[i])) <= 100.0)) {
+                            aux.splice(i, 1);
+                            i--;
+                        }
+                    }
+                    else if (n == 5) {
+
+                        if (!(parseFloat(this.calcularPreco(aux[i])) > 100.0)) {
+                            aux.splice(i, 1);
+                            i--;
+                        }
+                    }
+                }
+
+                this.setState({ ...this.state, dados: aux });
+            })
+    }
+
     render() {
         let st = ">";
         const lista = this.state.dados;
@@ -63,7 +123,7 @@ export default class extends Component {
             <>
                 <Header contador={this.state.vlr} />
                 <CaminhoHeader st={st} path={this.nomeCategoria()} />
-                <Filtro qtd={this.getQuantidade()} />
+                <Filtro func={e => this.capturarFiltro(e)} qtd={this.getQuantidade()} />
                 <section className="container-alimentos">
                     <ListagemProdutos func={e => this.aumentarValor(e)} caminho={IMAGE_PATH} produtos={lista} />
                 </section>
