@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import converter from '../../converterMoeda'
-import { extend } from 'jquery'
 import '../../cart-animation.css'
 import AnimacaoCarrinho from '../../cart-animation-view'
 import animar from '../../cart-animation'
@@ -84,6 +83,7 @@ export default class ListagemProduto extends Component {
         if (display.value > 0)
             display.value = parseInt(display.value) - 1
     }
+
     render() {
         return (this.props.produtos.map(item => (
 

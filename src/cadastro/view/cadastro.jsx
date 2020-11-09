@@ -14,10 +14,7 @@ import {
 } from '../Validacoes';
 import swal from 'sweetalert';
 
-
-
 const API = "https://viacep.com.br/ws/";
-
 
 class cadastro extends Component {
     // Mascara do CPF
@@ -94,6 +91,7 @@ class cadastro extends Component {
 
         };
 
+
         this.setState({
             nome: validaNome(this.nm_cliente),
             sobrenome: validaSobrenome(this.sobrenome),
@@ -109,9 +107,9 @@ class cadastro extends Component {
 
 
         if (!validaNome(this.nm_cliente) && !validaSobrenome(this.sobrenome)
-             && !validadata(this.data_nascimento) && !validaEmail(this.ds_email) &&
+            && !validadata(this.data_nascimento) && !validaEmail(this.ds_email) &&
             !validaCpf(this.num_cpf) && !validaTelefone(this.num_fixo) && !validaCelular(this.num_celular)
-             && !validaCep(this.num_cep)) {
+            && !validaCep(this.num_cep)) {
 
                 axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
                     res => {

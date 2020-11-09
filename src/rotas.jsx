@@ -12,6 +12,7 @@ import Carrinho from './carrinho/view/carrinho'
 import ConfirmaDados from './checkout/view/Checkout-pagamento'
 import ResumoCompra from './checkout/view/Checkout-compra'
 import Historico from './historico-compra/view/historico'
+import HistoricoPesquisa from './historico-compra/view/historico-pesquisa'
 import Busca from './busca-produto/view/buscaProduto'
 import Dados from './conta/views/dados/dados'
 import EditarDados from './conta/views/dados/editarDados'
@@ -27,7 +28,7 @@ import EsqueciSenha from './recuperacao-senha/view/recuperarSenha'
 export default props => {
 
     return (
-        
+
         <>
             <Router history={hashHistory}>
                 <Route path='/home' component={Home} />
@@ -42,6 +43,7 @@ export default props => {
                 <Route path='/checkout/confirmar/dados' component={ConfirmaDados} />
                 <Route path='/checkout/resumo' component={ResumoCompra} />
                 <Route path='/historico' component={Historico} />
+                <Route path='/historico-pesquisa/:num' component={HistoricoPesquisa} />
                 <Route path='/busca/:keyword' component={Busca} />
                 <Route path='/dados' component={Dados} />
                 <Route path='/editarDados' component={EditarDados} />
@@ -57,5 +59,5 @@ export default props => {
             </Router>
         </>
     )
-
+    
 }
