@@ -25,6 +25,24 @@ export default () => {
         }
         return true
     }
+
+    const vericarBotao = (idInput, idBotao) => {
+        let input = document.getElementById(idInput);
+        let botao = document.getElementById(idBotao);
+
+        if (!(input.value == "")){
+            return botao.hidden = false
+        }
+        
+        botao.hidden = true;
+    }
+
+    const registraPalavraChave = (input, botao) => {
+        let elemento = document.getElementById(input);
+        let campo = document.getElementById(botao);
+        campo.href = "#/historico-pesquisa/" + elemento.value;
+    }
+    
     return (
 
         <>
@@ -51,11 +69,14 @@ export default () => {
 
                     <div className="mt-1 mr-5  pesquisa-pedido pedidos-tela-grande">
                         <div className="input-group tamanho-input-pedido">
-                            <input type="text" className="form-control" placeholder="pesquise pelo nº do pedido"
-                                aria-label="Recipient's username" aria-describedby="button-addon2" />
+                            <input type="text" className="form-control" id="pesquisar1" placeholder="pesquise pelo nº do pedido"
+                                aria-label="Recipient's username" aria-describedby="button-addon2"
+                                onChange = {() => vericarBotao("pesquisar1","botao-pesquisar1")} />
                             <div className="input-group-append">
-                                <button className="btn btn-outline-secondary bt-pesquisa-pedido" type="button"
-                                    id="button-addon2"><img width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></button>
+                                <a hidden = "true" className="btn btn-outline-secondary bt-pesquisa-pedido"
+                                         type="button"  onClick = {() => registraPalavraChave("pesquisar1", "botao-pesquisar1")}
+                                         href = "#/historico"
+                                    id="botao-pesquisar1"><img width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></a>
                             </div>
                         </div>
                     </div>
@@ -110,10 +131,13 @@ export default () => {
             <div className="container-fluid pedidos-tela-pequena">
                 <div className="input-group  ml-auto mr-auto tamanho-input-pedido">
                     <input type="text" className="form-control" placeholder="digite o nº do pedido"
-                        aria-label="Recipient's username" aria-describedby="button-addon2" />
+                        aria-label="Recipient's username" aria-describedby="botao-pesquisar2" id="pesquisar2"
+                        onChange = {() => vericarBotao("pesquisar2", "botao-pesquisar2")}/>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary bt-pesquisa-pedido" type="button" id="button-addon2"><img
-                            width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></button>
+                        <a hidden = "true" className="btn btn-outline-secondary bt-pesquisa-pedido" type="button" id="botao-pesquisar2"
+                        onClick = {() => registraPalavraChave("pesquisar2", "botao-pesquisar2")}
+                        href = "#/historico"><img
+                            width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></a>
                     </div>
                 </div>
 
@@ -123,10 +147,13 @@ export default () => {
             <div className="container-fluid pedidos-tela-pequena-2">
                 <div className="input-group  ml-auto mr-auto tamanho-input-pedido">
                     <input type="text" className="form-control" placeholder="digite o nº do pedido"
-                        aria-label="Recipient's username" aria-describedby="button-addon2" />
+                        aria-label="Recipient's username" aria-describedby="botao-pesquisar3" id="pesquisar3"
+                        onChange = {() => vericarBotao("pesquisar3", "botao-pesquisar3")}/>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary bt-pesquisa-pedido" type="button" id="button-addon2"><img
-                            width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></button>
+                        <a hidden = "true" className="btn btn-outline-secondary bt-pesquisa-pedido" type="button" id="botao-pesquisar3"
+                        onClick = {() => registraPalavraChave("pesquisar3", "botao-pesquisar3")}
+                        href = "#/historico"><img
+                            width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></a>
                     </div>
                 </div>
             </div>

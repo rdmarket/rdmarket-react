@@ -13,6 +13,7 @@ import Carrinho from './carrinho/view/carrinho'
 import ConfirmaDados from './checkout/view/Checkout-pagamento'
 import ResumoCompra from './checkout/view/Checkout-compra'
 import Historico from './historico-compra/view/historico'
+import HistoricoPesquisa from './historico-compra/view/historico-pesquisa'
 
 
 export default props => {
@@ -33,6 +34,7 @@ export default props => {
                 <Route path='/checkout/confirmar/dados' component={ConfirmaDados} />
                 <Route path='/checkout/resumo' component={ResumoCompra} />
                 <Route path='/historico' component={Historico} />
+                <Route path='/historico-pesquisa/:num' component={HistoricoPesquisa} />
                 <Redirect from='*' to='/home' />
             </Router>
         </>
