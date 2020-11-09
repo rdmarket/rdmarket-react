@@ -14,12 +14,22 @@ import ConfirmaDados from './checkout/view/Checkout-pagamento'
 import ResumoCompra from './checkout/view/Checkout-compra'
 import Historico from './historico-compra/view/historico'
 import HistoricoPesquisa from './historico-compra/view/historico-pesquisa'
+import Busca from './busca-produto/view/buscaProduto'
+import Dados from './conta/views/dados/dados'
+import EditarDados from './conta/views/dados/editarDados'
+import Enderecos from './conta/views/enderecos/enderecos'
+import AdicionarEndereco from './conta/views/enderecos/AdicionarEndereco'
+import EditarEndereco from './conta/views/enderecos/editarEndereco'
+import Cartoes from './conta/views/cartoes/cartoes'
+import AdicionarCartao from './conta/views/cartoes/AdicionarCartao'
+import EditarCartao from './conta/views/cartoes/editarCartao'
+import EsqueciSenha from './recuperacao-senha/view/recuperarSenha'
 
 
 export default props => {
 
     return (
-        
+
         <>
             <Router history={hashHistory}>
                 <Route path='/home' component={Home} />
@@ -35,9 +45,20 @@ export default props => {
                 <Route path='/checkout/resumo' component={ResumoCompra} />
                 <Route path='/historico' component={Historico} />
                 <Route path='/historico-pesquisa/:num' component={HistoricoPesquisa} />
+                <Route path='/busca/:keyword' component={Busca} />
+                <Route path='/dados' component={Dados} />
+                <Route path='/editarDados' component={EditarDados} />
+                <Route path='/enderecos' component={Enderecos} />
+                <Route path='/adicionarEndereco' component={AdicionarEndereco} />
+                <Route path='/editarEndereco' component={EditarEndereco} />
+                <Route path='/cartoes' component={Cartoes} />
+                <Route path='/adicionarCartao' component={AdicionarCartao} />
+                <Route path='/editarCartao' component={EditarCartao} />
+                <Route path='/esqueciminhasenha' component={EsqueciSenha} />
+
                 <Redirect from='*' to='/home' />
             </Router>
         </>
     )
-
+    
 }
