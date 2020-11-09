@@ -32,6 +32,14 @@ export const cepMask = value => {
         .replace(/(-\d{3})\d+?$/, '$1')
 }
 
+export const dataMask = value => {
+    return value
+        .replace (/\D/g, '')
+        .replace (/(\d{2})(\d)/, '$1/$2')
+        .replace (/(\d{2})(\d)/, '$1/$2')
+        .replace (/(\d{4})\d+?$/,'$1')
+}
+
 export const validadata = () => {
     let data = document.getElementById("nascimento").value; // pega o valor do input
     data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
@@ -40,16 +48,17 @@ export const validadata = () => {
     // para o IE onde será inserido no formato dd/MM/yyyy
     if (data_array[0].length != 4) {
         data = data_array[2] + "-" + data_array[1] + "-" + data_array[0]; // remonto a data no formato yyyy/MM/dd
-    }
+    } 
 
     // comparo as datas e calculo a idade
     let hoje = new Date();
     let nasc = new Date(data);
     let idade = hoje.getFullYear() - nasc.getFullYear();
     let m = hoje.getMonth() - nasc.getMonth();
-    if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
+    //if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
 
-    if (idade < 18) {
+
+    if (idade < 18 || isNaN(data)) {
         return true;
     }
 

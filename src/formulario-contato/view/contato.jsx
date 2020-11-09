@@ -6,6 +6,7 @@ import Footer from '../../templates/footer/footer'
 import axios from 'axios'
 import swal from 'sweetalert';
 import { browserHistory } from 'react-router'
+import {validaEmail} from '../Validacao'
 
 const API_EMAIL = 'http://rdmarket-laravel.test/api/email'
 

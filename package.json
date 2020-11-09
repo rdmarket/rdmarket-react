@@ -16,11 +16,8 @@
     "react-hook-form": "^6.10.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-<<<<<<< HEAD
-    "react-yup": "^1.19.0"
-=======
+    "react-yup": "^1.19.0",
     "sweetalert": "^2.1.2"
->>>>>>> f6649fd1833f9c6a1e74ad04910bb926f69f2d6c
   },
   "scripts": {
     "start": "react-scripts start",

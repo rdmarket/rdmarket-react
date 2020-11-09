@@ -4,18 +4,20 @@ import '../css/styles.css'
 import '../css/styles-barra-vermelha.css'
 import Header from '../../templates/header/header'
 import Footer from '../../templates/footer/footer'
-import { cpfMask, validadata, validarSenha, telMask, cepMask, celMask } from '../../login/mascaras';
+import { cpfMask, validadata, validarSenha, telMask, cepMask, celMask, dataMask
+    } from '../../login/mascaras';
 import axios from 'axios';
 import { browserHistory } from 'react-router'
-<<<<<<< HEAD
 import {
     validaNome, validaSobrenome, validaEmail, validaCpf, validaTelefone, validaCelular,
     validaCep
 } from '../Validacoes';
-=======
 import swal from 'sweetalert';
 
->>>>>>> f6649fd1833f9c6a1e74ad04910bb926f69f2d6c
+
+
+const API = "https://viacep.com.br/ws/";
+
 
 class cadastro extends Component {
     // Mascara do CPF
@@ -62,6 +64,13 @@ class cadastro extends Component {
         cep.value = this.num_cep
     }
 
+    //Mascara data nascimento
+    // handleData(e){
+        // let data = document.getElementById('nascimento')
+        // this.data_nascimento = dataMask(e)
+        // data.value = this.data_nascimento
+    // }
+
     // IMPLEMENTAÇÃO DO LOGIN 
     handleSubmit = e => {
         e.preventDefault();
@@ -85,7 +94,6 @@ class cadastro extends Component {
 
         };
 
-<<<<<<< HEAD
         this.setState({
             nome: validaNome(this.nm_cliente),
             sobrenome: validaSobrenome(this.sobrenome),
@@ -97,53 +105,32 @@ class cadastro extends Component {
             cep: validaCep(this.num_cep)
         })
 
-        // console.log(this.state)
-        // console.log(validaNome(this.nm_cliente))
-        // console.log(validaSobrenome(this.sobrenome))
-        // console.log(validadata(this.data_nascimento))
-        // console.log(validaEmail(this.ds_email))
-        // console.log(validaCpf(this.num_cpf))
-        // console.log(validaTelefone(this.num_fixo))
-        // console.log(validaCelular(this.num_celular))
-        // console.log(validaCep(this.num_cep))
+        
+
 
         if (!validaNome(this.nm_cliente) && !validaSobrenome(this.sobrenome)
              && !validadata(this.data_nascimento) && !validaEmail(this.ds_email) &&
             !validaCpf(this.num_cpf) && !validaTelefone(this.num_fixo) && !validaCelular(this.num_celular)
              && !validaCep(this.num_cep)) {
 
-            axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
-                res => {
-                    console.log(res)
-                    browserHistory.push('#/login')
-                    document.location.reload(true)
-                }
-            ).catch(
-                err => {
-                    alert(err)
-                    console.log(err);
-                }
-            )
-        }
+                axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
+                    res => {
+                        
+                        swal("Cadastro realizado com sucesso!","","success")
+                            .then((value) => {
+                                browserHistory.push('#/login')
+                                document.location.reload(true)
+                            });
+                    }
+                ).catch(
+                    err => {
+                        alert(err)
+                        console.log(err);
+                        
+                    }
+                )
+            };
     }
-=======
-        axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
-            res => {
-                
-                swal("Cadastro realizado com sucesso!","","success")
-                    .then((value) => {
-                        browserHistory.push('#/login')
-                        document.location.reload(true)
-                    });
-            }
-        ).catch(
-            err => {
-                alert(err)
-                console.log(err);
-            }
-        )
-    };
->>>>>>> f6649fd1833f9c6a1e74ad04910bb926f69f2d6c
 
     state = {
         isPasswordShown: false
@@ -206,20 +193,20 @@ class cadastro extends Component {
                                         <label for="nome">Nome:</label>
                                         <input type="text" className="form-control" id="nome"
                                             onChange={e => this.nm_cliente = e.target.value} />
-                                        <p hidden={!this.state.nome}>Nome invalido</p>
+                                        <div className="alert alert-danger" hidden={!this.state.nome}>Nome invalido</div>
                                     </div>
                                     <div className="form-group col-5">
                                         <label for="sobrenome">Sobrenome:</label>
                                         <input type="text" className="form-control" id="sobrenome"
                                             onChange={e => this.sobrenome = e.target.value} />
-                                        <p hidden={!this.state.sobrenome}>Sobrenome invalido</p>
+                                        <div className="alert alert-danger" hidden={!this.state.sobrenome}>Sobrenome invalido</div>
                                     </div>
                                     <div className="form-group col-3">
                                         <label for="dataNascimento">Data de nascimento</label>
                                         <input type="date" className="form-control" id="nascimento"
                                             onChange={e => this.data_nascimento = e.target.value}
                                         />
-                                        <p hidden={!this.state.data_nascimento}>Menor de 18 anos</p>
+                                        <div className="alert alert-danger" hidden={!this.state.data_nascimento}>Data de nascimento invalida</div>
                                     </div>
                                 </div>
                                 {/* EMAIL E CPF */}
@@ -231,14 +218,14 @@ class cadastro extends Component {
                                             placeholder="name@example.com"
                                             onChange={e => this.ds_email = e.target.value}
                                             pattern="[^. ][A-Za-z0-9.]*[^. ][@][A-Za-z0-9.]*[^. ]" />
-                                        <p hidden={!this.state.email}>Email invalido</p>
+                                        <div className="alert alert-danger" hidden={!this.state.email}>Email invalido</div>
                                     </div>
                                     <div className="form-group col-4">
                                         <label for="cpf">CPF</label>
                                         <input type="text" className="form-control" id="cpf"
                                             placeholder="Ex: 000.000.000-00"
                                             value={documentId} onChange={e => this.handlechange(e.target.value)} />
-                                        <p hidden={!this.state.cpf}>CPF invalido</p>
+                                        <div className="alert alert-danger" hidden={!this.state.cpf}>CPF invalido</div>
                                     </div>
                                 </div>
 
@@ -248,19 +235,19 @@ class cadastro extends Component {
                                         <label for="telefone">Telefone</label>
                                         <input type="tel" className="form-control " id="telefone" placeholder="Ex.: (00) 0000-0000"
                                             onChange={e => this.handleTel(e.target.value)} />
-                                        <p hidden={!this.state.telefone}>Telefone invalido</p>
+                                        <div className="alert alert-danger" hidden={!this.state.telefone}>Telefone invalido</div>
                                     </div>
                                     <div className="form-group col-4">
                                         <label for="celular">Celular</label>
                                         <input type="tel" className="form-control " id="celular" placeholder="Ex.: (00) 00000-0000"
                                             onChange={e => this.handleCel(e.target.value)} />
-                                        <p hidden={!this.state.celular}>Celular invalido</p>
+                                        <div className="alert alert-danger" hidden={!this.state.celular}>Celular invalido</div>
                                     </div>
                                     <div className="form-group col-4">
                                         <label for="cep">CEP:</label>
                                         <input type="text" className="form-control" id="cep"
                                             onChange={e => this.handleCep(e.target.value)} />
-                                        <p hidden={!this.state.cep}>Cep invalido</p>
+                                        <div className="alert alert-danger" hidden={!this.state.cep}>Cep invalido</div>
                                     </div>
                                 </div>
                                 <div className="row">
