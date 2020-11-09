@@ -18,7 +18,7 @@ import Historico from './historico-compra/view/historico'
 export default props => {
 
     return (
-        
+
         <>
             <Router history={hashHistory}>
                 <Route path='/home' component={Home} />
@@ -37,5 +37,5 @@ export default props => {
             </Router>
         </>
     )
-
+    
 }

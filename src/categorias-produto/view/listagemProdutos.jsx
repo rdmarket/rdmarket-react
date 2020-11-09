@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import converter from '../../converterMoeda'
-import { extend } from 'jquery'
+
 
 export default class ListagemProduto extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
 
-        this.state={valor_total:0}
+        this.state = { valor_total: 0 }
     }
 
     calcularPreco = (obj) => {
@@ -20,7 +20,7 @@ export default class ListagemProduto extends Component {
 
     }
 
-    
+
     adicionarCarrinho = (id, titulo, item) => {
 
         let display = document.getElementById(id);
@@ -51,8 +51,8 @@ export default class ListagemProduto extends Component {
 
 
             let url = this.props.caminho + item.caminho_imagem
-            let preco = this.calcularPreco(item).toFixed(2); 
-            carrinho.push({id, titulo, qtd, preco, url})
+            let preco = this.calcularPreco(item).toFixed(2);
+            carrinho.push({ id, titulo, qtd, preco, url })
             localStorage.setItem("cart", JSON.stringify(carrinho))
 
             display.value = 0;
@@ -80,6 +80,7 @@ export default class ListagemProduto extends Component {
         if (display.value > 0)
             display.value = parseInt(display.value) - 1
     }
+
     render() {
         return (this.props.produtos.map(item => (
 
