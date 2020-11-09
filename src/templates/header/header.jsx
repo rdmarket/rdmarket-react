@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
 import ListagemCategoria from './listagemCategoria'
 import '../css/styles.css'
+import axios from 'axios'
+import ListagemProdutos from '../../categorias-produto/view/listagemProdutos'
+import ListagemProduto from '../../categorias-produto/view/listagemProdutos'
+
 
 
 export default class Header extends Component {
+
+
+    constructor(props) {
+        super(props)
+        this.state = { valor: parseInt(localStorage.getItem('qtdCarrinho')),keyword:''}
+    }
+
 
     retornarCliente = () => {
         let nomeCliente = localStorage.getItem('usuario')
@@ -15,10 +26,12 @@ export default class Header extends Component {
     }
 
 
-    constructor(props) {
-        super(props)
-        this.state = { valor: parseInt(localStorage.getItem('qtdCarrinho')) }
+    capturarMudanca=(e)=>{
+        this.setState({valor:this.state.valor,keyword:e})
+        
     }
+
+   
 
     logado=()=>{
         let cliente = localStorage.getItem('usuario')
@@ -36,23 +49,33 @@ export default class Header extends Component {
 
     }
 
+    aumentarValor=(e)=>{
+        let id1 = document.getElementById("id_vlr1")
+        let id2 = document.getElementById("id_vlr2")
+        
+        id1.innerHTML=parseInt(e) + parseInt(id1.innerHTML);
+        id2.innerHTML= parseInt(e) + parseInt(id2.innerHTML);
+
+        localStorage.setItem('qtd_cart',parseInt(e) + JSON.parse(localStorage.getItem('qtd_cart')))    
+    }
+
     render() {
         return (
 
             <>
                 <div class="container tela-grande">
-                    <div class="d-flex justify-content-between mt-5">
+                    <div class="d-flex justify-content-between">
                         <div class="borda-flex">
                             <a id="topo" href="#/home"><img id="logo-img" src={require('../imagens/logo.png')}
                                 type="img" /></a>
                         </div>
                         <div id="barra-pesquisa" class="borda-flex-tamanho">
-                            <div class="input-group mb-3 mt-5">
-                                <input type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
+                            <div class="input-group  mt-5">
+                                <input onChange={e=>this.capturarMudanca(e.target.value)} type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
                                     aria-label="Recipient's username" aria-describedby="button-addon2" />
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary bt-header-pesquisa" type="button"
-                                        id="button-addon2"><img width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></button>
+                                    <a href={"#/busca/"+this.state.keyword}  class="btn btn-outline-secondary bt-header-pesquisa" type="button"
+                                        id="button-addon2"><img width="20px" height="20px" src={require("../imagens/pesquisa.svg")} /></a>
                                 </div>
                             </div>
                         </div>
@@ -66,8 +89,9 @@ export default class Header extends Component {
 
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a hidden={!this.logado()} className="dropdown-item selectConta" href="#/login">Login</a>
-                                    <a onClick={()=>this.logout()} hidden={this.logado()} className="dropdown-item selectConta" href="#/home">Logout</a>                                    
-                                    <a className="dropdown-item selectConta" href="#/historico">Pedido</a>
+                                    <a onClick={()=>this.logout()} hidden={this.logado()} className="dropdown-item selectConta" href="#/home">Logout</a> 
+                                    <a className="dropdown-item selectConta" href="#/dados">Minha conta</a>                                   
+                                    <a className="dropdown-item selectConta" href="#/historico">Meus Pedidos</a>
 
                                 </div>
                             </div>
@@ -128,7 +152,7 @@ export default class Header extends Component {
 
 
                 <div class="container tela-pequena">
-                    <div class="d-flex justify-content-between mt-5">
+                    <div class="d-flex justify-content-between">
                         <div class="mt-2 cat">
                             <nav class="navbar navbar-expand navbar-light">
                                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -163,16 +187,16 @@ export default class Header extends Component {
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div id="barra-pesquisa" class="borda-flex-tamanho">
-                                    <div class="input-group mt-2">
-                                        <input type="text" class="form-control tamanhoInput" placeholder="pesquise seu produto"
+                        <div className="row">
+                            <div className="col-12">
+                                <div id="barra-pesquisa" >
+                                    <div class="input-group mt-3">
+                                        <input onChange={e=>this.capturarMudanca(e.target.value)} type="text" class="form-control" placeholder="pesquise seu produto"
                                             aria-label="Recipient's username" aria-describedby="button-addon2" />
                                         <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary bt-header-pesquisa" type="button"
+                                            <a href={"#/busca/"+this.state.keyword}  class="btn btn-outline-secondary bt-header-pesquisa" type="button"
                                                 id="button-addon2"><img width="20px" height="20px"
-                                                    src={require("../imagens/pesquisa.svg")} /></button>
+                                                    src={require("../imagens/pesquisa.svg")} /></a>
                                         </div>
                                     </div>
                                 </div>

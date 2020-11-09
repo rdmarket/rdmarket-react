@@ -1,0 +1,18 @@
+#notification {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 10px;
+    background-color:rgb(198, 247, 214);
+    z-index: 2000;
+    display: none;
+    border-radius: 5px;
+
+}
+#fonte-animacao{
+    color: 	rgb(19, 128, 26);
+    font-size: 1.2vw;
+    font-weight: 500;
+}
+
+

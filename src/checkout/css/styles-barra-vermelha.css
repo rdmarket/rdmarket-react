@@ -82,8 +82,8 @@
 }
 .dropdown-item{
 
-    background-color:#C81E21;
-    color: white;
+    background-color:#C81E21 !important;
+    color: white !important;
 }
 
 .dropdown-toggle{
