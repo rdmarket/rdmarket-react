@@ -7,7 +7,10 @@ import Novidades from './novidades'
 import Ofertas from './ofertas'
 export default class Home extends Component {
 
-
+    constructor(props){
+        super(props)
+        
+    }
 
     state = {
         valor: 0
@@ -36,6 +39,7 @@ export default class Home extends Component {
     render() {
         return (
             <>
+                
                 <Header/>
 
                 <Carousel />
@@ -44,6 +48,7 @@ export default class Home extends Component {
                     <h3>Novidades</h3>
                     <a href="#/novidades" className="btn-comprar-a">Mais novidades</a>
                 </div>
+
                 <Novidades func={e=>this.aumentarValor(e)} />
                 
                 <div className="meu-jubo">
@@ -53,6 +58,7 @@ export default class Home extends Component {
                 
                 <Ofertas func={e=>this.aumentarValor(e)} />
 
+                
 
                 <Footer />
             </>

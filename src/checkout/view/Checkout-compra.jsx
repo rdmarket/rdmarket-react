@@ -18,6 +18,7 @@ import TabelaResumo from './tabelaResumo'
 import ResumoEndereco from './resumoEndereco'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
+import converter from '../../converterMoeda';
 
 const API_CHECKOUT = 'http://rdmarket-laravel.test/api/realizarCompra/'
 
@@ -32,9 +33,50 @@ export default class CheckoutCompra extends Component {
 
  
     download=(filename, text) => {
+
+    let _nota = JSON.parse(text);
+    console.log(JSON.parse(text));
+
+     let html_tag_begin = "<html>";
+     let html_tag_end = "</html>";
+     
+     let head_tag_begin = "<head>";
+     let head_tag_end = "</head>";
+
+     let style_tag_begin = "<style>";
+     let style_tag_end = "</style>"
+
+     let style_content="body{background-color:#C81E21}"+
+     "ul{text-decoration: none;list-style: none;padding:10}"+
+     "div{text-align:center;width:400px;"+
+     "position:relative;left:35%;background-color:white;padding:10px;border:3px dotted #323132}"+
+     "li{border-bottom:1px solid #686180;margin:0;padding:0;color:#323132}"+
+     "h3{color:#323132}"+
+     "h4{color:#323132}"+
+     "h2{color:#323132}"+
+     "h1{color:#77D353}";
+     
+
+     let body_tag_begin = "<body>";
+     let body_tag_end = "</body>";
+
+     let content="<h1 style='text-align:center'>RD Market</h1><div><h3> Data de emissão: "+_nota.dt_emissao+"</h3><hr/>";
+     
+     content+="<ul>";
+     _nota.itens_nota.forEach(element => {
+        content+="<li>"+element.ds_produto+" R$ "+ converter( parseFloat(element.vl_unitario))+" x"+element.qt_item+"</li>";
+     });
+     content+="</ul>"
+     content+="<h4> Número da nota: "+_nota.nr_nf+"</h4><hr/>";
+     content+="<h4> Valor total da compra: R$"+ converter(parseFloat(_nota.vl_nota))+"</h4>"
+     content+="<hr/><h2> Volte sempre </h2></div>";
+     content=html_tag_begin+head_tag_begin+style_tag_begin+style_content+style_tag_end+head_tag_end+
+             body_tag_begin+content+body_tag_end+html_tag_end;
+
+    
     var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+    element.setAttribute('download', filename+".html");
   
     element.style.display = 'none';
     document.body.appendChild(element);

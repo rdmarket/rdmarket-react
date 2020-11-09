@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import converter from '../converterMoeda'
-
+import "./item-removido.css"
 
 export default class Carrinho extends Component {
     constructor(props) {
         super(props)
-        this.state = { itens: [] }
+        this.state = { itens: [], message: false }
         this.refresh()
     }
 
@@ -14,6 +14,9 @@ export default class Carrinho extends Component {
     }
 
     removerItem = (id) => {
+        
+        
+
         let i = this.state.itens.findIndex(x => x.id === id);// i = ao index do item.id que vamos exluir
         let itemParaRemover = [...this.state.itens]; // copia o state
 
@@ -22,12 +25,20 @@ export default class Carrinho extends Component {
 
         itemParaRemover.splice(i, 1); // passa o index do objeto que quer remomver 1 vez
         localStorage.setItem("cart", JSON.stringify(itemParaRemover)) //salva o novo State no LocalStorage
+         
+        this.setState({...this.state,message:true})
 
         this.refresh();
-        document.location.reload(true);
+
+
+        
         // this.state.itens.forEach(item => {
         //     this.atribuirQtd(item.id, item.qtd);          
         // });
+       
+        setTimeout(()=>{
+            document.location.reload(true); 
+         },750)
 
     }
 
@@ -113,6 +124,7 @@ export default class Carrinho extends Component {
         }
     }
 
+
     atribuirQtd = (id, qtd) => {
         let elemento = document.getElementById(id);
         elemento.value = qtd;
@@ -123,33 +135,37 @@ export default class Carrinho extends Component {
 
         return (
             itens.map(item => (
+                <>
+                    <div hidden={!this.state.message} className="item-removido-carrinho">
+                        <h2 className="h2-remover-item">Item removido!</h2>
+                    </div>
 
-                <li onLoad={() => this.atribuirQtd(item.id, item.qtd)}>
-                    <ul class="d-flex justify-content-around tamanho-carrinho">
-                        <li>
-                            <div id="imagem-carrinho">
-                                <img src={item.url} alt="..." class="img-cart" />
-                            </div>
-                        </li>
-                        <a type="hidden" value={item.id} />
-                        <li className="col-5"><h1 class="tamanho-titulo mt-4">{item.titulo}</h1></li>
-                        <li class="valor mt-4">R$ {converter(parseFloat(item.preco))}</li>
-                        <ul class="d-flex">
-                            <li><button class="btn-qtd menos mt-3" onClick={() => this.diminuirQtd(item.id)}>-</button></li>
+                    <li onLoad={() => this.atribuirQtd(item.id, item.qtd)}>
+                        <ul class="d-flex justify-content-around tamanho-carrinho">
                             <li>
-                                <ul id="qtd-item-carrinho" class="caixa-qtd text-center mt-1">
-                                    <li class="qtd-item" id="descricao-qtd">Qtd:</li>
-                                    <li class="qtd-item" id="qtd"><input id={item.id} onChange={() => this.inputQtd(item.id)} className="entrada-qtd" type="text" /></li>
-                                </ul>
+                                <div id="imagem-carrinho">
+                                    <img src={item.url} alt="..." class="img-cart" />
+                                </div>
                             </li>
-                            <li><button class="btn-qtd mais mt-3" onClick={() => this.aumentarQtd(item.id)}>+</button></li>
+                            <a type="hidden" value={item.id} />
+                            <li className="col-5"><h1 class="tamanho-titulo mt-4">{item.titulo}</h1></li>
+                            <li class="valor mt-4">R$ {converter(parseFloat(item.preco))}</li>
+                            <ul class="d-flex">
+                                <li><button class="btn-qtd menos mt-3" onClick={() => this.diminuirQtd(item.id)}>-</button></li>
+                                <li>
+                                    <ul id="qtd-item-carrinho" class="caixa-qtd text-center mt-1">
+                                        <li class="qtd-item" id="descricao-qtd">Qtd:</li>
+                                        <li class="qtd-item" id="qtd"><input id={item.id} onChange={() => this.inputQtd(item.id)} className="entrada-qtd" type="text" /></li>
+                                    </ul>
+                                </li>
+                                <li><button class="btn-qtd mais mt-3" onClick={() => this.aumentarQtd(item.id)}>+</button></li>
+                            </ul>
+                            <li><button class="btn-exclui mt-4" onClick={() => this.removerItem(item.id)}><img id="img-exclui" src={require("../carrinho/imagens/lixo.png")} /></button></li>
                         </ul>
-                        <li><button class="btn-exclui mt-4" onClick={() => this.removerItem(item.id)}><img id="img-exclui" src={require("../carrinho/imagens/lixo.png")} /></button></li>
-                    </ul>
-                </li>
+                    </li>
 
 
-
+                </>
             ))
         )
 

@@ -1,14 +1,44 @@
 import React from 'react'
 import '../css/contato.css'
 import '../css/styles.css'
-import Header from  '../../templates/header/header'
-import Footer from  '../../templates/footer/footer'
+import Header from '../../templates/header/header'
+import Footer from '../../templates/footer/footer'
+import axios from 'axios'
+import swal from 'sweetalert';
+import { browserHistory } from 'react-router'
 
-export default () => {
+const API_EMAIL = 'http://rdmarket-laravel.test/api/email'
+
+export default (props) => {
+
+    const enviarFormularioContato = () => {
+        let nome = document.getElementById("nome_completo").value;
+        let email = document.getElementById("email_contato").value;
+        let assunto = document.getElementById("assunto").value;
+        let mensagem = document.getElementById("mensagem_corpo").value;
+
+
+        axios.post(`${API_EMAIL}`, {
+            "nome": nome,
+            "email": email,
+            "assunto": assunto,
+            "mensagem": mensagem
+        }).then(function (response) {
+            swal("Email enviado com sucesso", "", "success")
+                .then((value) => {
+                    browserHistory.push('#/home')
+                    document.location.reload(true)
+                });
+        }).catch(function (err) {
+            alert("Preencha os dados corretamente");
+        })
+
+
+    }
 
     return (
         <>
-        <Header />
+            <Header />
             <div id="barra-vermelha" className="d-flex flex-md-row justify-content-between">
                 <div className="ml-md-5 mr-md-0 ml-sm-4">
                     <img className="img-phone textos" src={require("../imagens/headphones.svg")} />
@@ -25,39 +55,39 @@ export default () => {
                                 <form className="tamanho-form-contato">
                                     <div className="form-group">
                                         <label for="exampleFormControlInput1">Nome Completo*</label>
-                                        <input type="text" className="form-control f-nome-completo" id="exampleFormControlInput1"
+                                        <input type="text" className="form-control f-nome-completo" id="nome_completo"
                                             placeholder="Digite seu nome completo" required />
-                                        <div className="alert alert-danger alert-nome-completo id-no-disp-1"  role="alert">
+                                        <div className="alert alert-danger alert-nome-completo id-no-disp-1" role="alert">
                                             Este campo deve conter pelo menos 5 caracteres
                                 </div>
-                                        <div className="alert alert-danger alert-nomeComNumero id-no-disp-2"  role="alert">
+                                        <div className="alert alert-danger alert-nomeComNumero id-no-disp-2" role="alert">
                                             Números ou caracteres especiais como (*, @, #, $, %, -, _, etc) não podem ser inseridos neste campo
                                 </div>
                                     </div>
                                     <div className="form-group">
                                         <label for="exampleFormControlInput1">Email*</label>
-                                        <input type="email" className="form-control f-email" id="exampleFormControlInput1"
+                                        <input type="email" className="form-control f-email" id="email_contato"
                                             placeholder="name@example.com" required />
-                                        <div className="alert alert-danger alert-email id-no-disp-3"  role="alert">
+                                        <div className="alert alert-danger alert-email id-no-disp-3" role="alert">
                                             Por favor, digite um email válido!
                                 </div>
                                     </div>
                                     <div className="form-group">
                                         <label for="exampleFormControlInput1">Assunto*</label>
-                                        <input type="text" className="form-control f-assunto" id="exampleFormControlInput1"
+                                        <input type="text" className="form-control f-assunto" id="assunto"
                                             placeholder="Digite o assunto do contato" required />
-                                        <div className="alert alert-danger alert-assunto id-no-disp-4"  role="alert">
+                                        <div className="alert alert-danger alert-assunto id-no-disp-4" role="alert">
                                             Este campo deve conter pelo menos 10 caracteres
                                 </div>
-                                        <div className="alert alert-danger alert-assuntoComNumero id-no-disp-5"  role="alert">
+                                        <div className="alert alert-danger alert-assuntoComNumero id-no-disp-5" role="alert">
                                             Números ou caracteres especiais como (*, @, #, $, %, -, _, etc) não podem ser inseridos neste campo
                                 </div>
                                     </div>
                                     <div className="form-group">
                                         <label for="exampleFormControlTextarea1">Mensagem*</label>
-                                        <textarea className="form-control f-mensagem" id="exampleFormControlTextarea1" rows="4"
+                                        <textarea className="form-control f-mensagem" id="mensagem_corpo" rows="4"
                                             placeholder="Digite a sua mensagem" required></textarea>
-                                        <div className="alert alert-danger alert-mensagem id-no-disp-6"  role="alert">
+                                        <div className="alert alert-danger alert-mensagem id-no-disp-6" role="alert">
                                             Campo de mensagem vazio! Por favor, insira a sua mensagem
                                 </div>
                                     </div>
@@ -66,49 +96,18 @@ export default () => {
                                     </div>
 
 
-                                    <div className="row justify-content-around bt-formulario-contato tela-g">
-                                        <div>
+                                    <div className="row justify-content-around bt-formulario-contato">
+                                        <div className="col-md-5 col-sm-12">
                                             <button className="btn btn-primary bt-limpar" type="reset">Limpar</button>
                                         </div>
-                                        <div>
-                                            <button className="btn btn-primary bt-enviar" type="submit">Enviar</button>
+                                        <div className="col-md-5 col-sm-12">
+                                            <button className="btn btn-primary bt-enviar" onClick={()=>enviarFormularioContato()} type="button">Enviar</button>
                                         </div>
                                     </div>
 
-
-                                    <div className="row justify-content-around bt-formulario-contato tela-m">
-                                        <div>
-                                            <button className="btn btn-primary bt-limpar" type="reset">Limpar</button>
-                                        </div>
-                                        <div>
-                                            <button className="btn btn-primary bt-enviar" type="submit">Enviar</button>
-                                        </div>
-                                    </div>
-
-
-                                    <div className="row justify-content-around bt-formulario-contato tela-p">
-                                        <div>
-                                            <button className="btn btn-primary bt-limpar" type="reset">Limpar</button>
-                                        </div>
-                                        <div>
-                                            <button className="btn btn-primary bt-enviar" type="submit">Enviar</button>
-                                        </div>
-                                    </div>
-
-
-                                    <div className="row justify-content-around bt-formulario-contato tela-p2">
-                                        <div>
-                                            <button className="btn btn-primary bt-limpar" type="reset">Limpar</button>
-                                        </div>
-                                        <div>
-                                            <button className="btn btn-primary bt-enviar" type="submit">Enviar</button>
-                                        </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>
-
-
                         <div className="col-md-1 col-sm-0 empty"></div>
                         <br /><br /><br /><br />
                         <div className="col-md-5 col-sm-12 links-contato">
@@ -133,7 +132,7 @@ export default () => {
                 </div>
             </section>
 
-        <Footer />
+            <Footer />
         </>
     )
 

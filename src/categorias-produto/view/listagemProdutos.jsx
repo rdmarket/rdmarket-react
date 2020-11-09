@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import converter from '../../converterMoeda'
-import { extend } from 'jquery'
+import '../../cart-animation.css'
+import AnimacaoCarrinho from '../../cart-animation-view'
+import animar from '../../cart-animation'
 
 export default class ListagemProduto extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
 
-        this.state={valor_total:0}
+        this.state = { valor_total: 0 }
     }
 
     calcularPreco = (obj) => {
@@ -20,9 +22,10 @@ export default class ListagemProduto extends Component {
 
     }
 
-    
+
     adicionarCarrinho = (id, titulo, item) => {
 
+        animar()
         let display = document.getElementById(id);
         let qtd = parseFloat(display.value);
 
@@ -51,8 +54,8 @@ export default class ListagemProduto extends Component {
 
 
             let url = this.props.caminho + item.caminho_imagem
-            let preco = this.calcularPreco(item).toFixed(2); 
-            carrinho.push({id, titulo, qtd, preco, url})
+            let preco = this.calcularPreco(item).toFixed(2);
+            carrinho.push({ id, titulo, qtd, preco, url })
             localStorage.setItem("cart", JSON.stringify(carrinho))
 
             display.value = 0;
@@ -80,10 +83,12 @@ export default class ListagemProduto extends Component {
         if (display.value > 0)
             display.value = parseInt(display.value) - 1
     }
+
     render() {
         return (this.props.produtos.map(item => (
 
             <>
+                <AnimacaoCarrinho />
                 <article className="item">
                     <a href={"#/detalhe/" + item.id_produto + "/" + item.ds_categoria}>
                         <img src={this.props.caminho + item.caminho_imagem} height="110px" />
@@ -94,7 +99,8 @@ export default class ListagemProduto extends Component {
                         </a>
                     </div>
                     <div className="preco-produto">
-                        <h5>R$ {converter(this.calcularPreco(item))}</h5>
+                        <h6 hidden={item.status_desconto=="desativado"?true:false}>De <strike> R$ {converter(parseFloat(item.valor_venda))}</strike></h6>
+                        <h5><span hidden={item.status_desconto=="desativado"?true:false}>Por </span>R$ {converter(this.calcularPreco(item))}</h5>
                     </div>
                     <div className="container-dos-botoes">
                         <input type="button" onClick={() => this.subtrair(item.id_produto)} className="menos" value="-" />
