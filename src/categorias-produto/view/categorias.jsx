@@ -11,6 +11,7 @@ import axios from 'axios'
 import CaminhoHeader from './caminhoHeader'
 import Filtro from './filtro'
 import ListagemProdutos from './listagemProdutos'
+import Pagination from "react-js-pagination";
 
 const API = 'http://rdmarket-laravel.test/api/produtos/listarPorTipo/';
 const IMAGE_PATH = 'http://rdmarket-laravel.test/storage/';
@@ -19,34 +20,43 @@ export default class Categorias extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { produtos: [], vlr: 0 }
-    }
-    componentDidMount() {
+        this.state = { produtos: [], vlr: 0, isLoading: true, pg: 1 }
 
-        this.preencherImagens()
     }
+
+    componentWillMount() {
+        this.obterDadosDeProduto();
+    }
+
+    obterDadosDeProduto(pageNumber = 1) {
+
+        const url = `http://rdmarket-laravel.test/api/produtos/listarPorTipoPaginate/${this.props.params.desc}?page=${pageNumber}`;
+        axios.get(url).then(resp => {
+            // console.log(resp.data);
+            this.setState({ produtos: resp.data, isLoading: false, pg: pageNumber })
+            console.log(this.state.produtos)
+
+        });
+
+    }
+
     componentWillReceiveProps(nextProps) {
         this.props = nextProps
-        this.preencherImagens()
+        this.setState({ ...this.state, isLoading: true })
+        this.obterDadosDeProduto()
 
-        this.state.produtos.forEach(element => {
+        this.state.produtos.data.forEach(element => {
             document.getElementById(element.id_produto).value = 0
         });
     }
 
-    preencherImagens = () => {
 
-        axios.get(`${API}` + this.props.params.desc)
-            .then(resp => this.setState({ produtos: resp.data, vlr: this.state.vlr }))
-
-
-    }
     nomeCategoria = () => {
-        return (new Object(this.state.produtos[0])).ds_categoria
+        return (new Object(this.state.produtos.data[0])).ds_categoria
     }
 
     getQuantidade = () => {
-        return this.state.produtos.length
+        return [this.state.produtos.data.length, this.state.produtos.total]
     }
 
     aumentarValor = (e) => {
@@ -71,67 +81,92 @@ export default class Categorias extends Component {
 
     capturarFiltro = (n) => {
 
-        axios.get(`${API}` + this.props.params.desc)
-            .then(resp => {
 
-                let aux = resp.data;
+        const url = `http://rdmarket-laravel.test/api/produtos/listarPorTipoPaginate/${this.props.params.desc}?page=${this.state.pg}`;
+        axios.get(url).then(resp => {
+            // console.log(resp.data);
 
-                for (let i = 0; i < aux.length; i++) {
+            // console.log(this.state.produtos)
 
-                    if (n == 1) {
+            let aux = resp.data;
 
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 0 && parseFloat(this.calcularPreco(aux[i])) <= 10.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
-                    }
-                    else if (n == 2) {
+            for (let i = 0; i < aux.data.length; i++) {
 
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 10.0 && parseFloat(this.calcularPreco(aux[i])) <= 25.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
-                    }
-                    else if (n == 3) {
+                if (n == 1) {
 
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 25.0 && parseFloat(this.calcularPreco(aux[i])) <= 50.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
-                    }
-                    else if (n == 4) {
-
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 50.0 && parseFloat(this.calcularPreco(aux[i])) <= 100.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
-                    }
-                    else if (n == 5) {
-
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 100.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 0 && parseFloat(this.calcularPreco(aux.data[i])) <= 10.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
                     }
                 }
+                else if (n == 2) {
 
-                this.setState({ ...this.state, produtos: aux });
-            })
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 10.0 && parseFloat(this.calcularPreco(aux.data[i])) <= 25.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
+                    }
+                }
+                else if (n == 3) {
+
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 25.0 && parseFloat(this.calcularPreco(aux.data[i])) <= 50.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
+                    }
+                }
+                else if (n == 4) {
+
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 50.0 && parseFloat(this.calcularPreco(aux.data[i])) <= 100.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
+                    }
+                }
+                else if (n == 5) {
+
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 100.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
+
+            this.setState({ produtos: aux, isLoading: false})
+
+
+        });
     }
 
     render() {
         let st = ">";
-        const lista = this.state.produtos;
-        return (
-            <>
+
+        if (this.state.isLoading) {
+            return (<>
                 <Header contador={this.state.vlr} />
-                <CaminhoHeader st={st} path={this.nomeCategoria()} />
-                <Filtro func={e => this.capturarFiltro(e)} qtd={this.getQuantidade()} />
-                <section className="container-alimentos">
-                    <ListagemProdutos func={e => this.aumentarValor(e)} caminho={IMAGE_PATH} produtos={lista} />
-                </section>
-                <Footer />
-            </>
-        )
+                <CaminhoHeader st={st} path={"carregando"} />
+            </>)
+        }
+        else {
+            const { data, current_page, per_page, total } = this.state.produtos;
+            return (
+                <>
+                    <Header contador={this.state.vlr} />
+                    <CaminhoHeader st={st} path={this.nomeCategoria()} />
+                    <Filtro func={e => this.capturarFiltro(e)} qtd={this.getQuantidade()} />
+                    <section className="container-alimentos">
+                        <ListagemProdutos func={e => this.aumentarValor(e)} caminho={IMAGE_PATH} produtos={data} />
+                        <Pagination
+                            activePage={current_page}
+                            totalItemsCount={total}
+                            itemsCountPerPage={per_page}
+                            onChange={(pageNumber) => this.obterDadosDeProduto(pageNumber)}
+                            itemClass="page-item"
+                            linkClass="page-link"
+                            firstPageText="Primeiro"
+                            lastPageText="Último"
+                        />
+                    </section>
+                    <Footer />
+                </>
+            )
+        }
     }
 }

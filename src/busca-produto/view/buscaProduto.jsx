@@ -5,6 +5,7 @@ import Filtro from '../../categorias-produto/view/filtro'
 import ListagemProdutos from '../../categorias-produto/view/listagemProdutos'
 import Header from '../../templates/header/header'
 import Footer from '../../templates/footer/footer'
+import Pagination from "react-js-pagination";
 
 const API_BUSCA = 'http://rdmarket-laravel.test/api/produtos/listarPorPesquisa/';
 const IMAGE_PATH = 'http://rdmarket-laravel.test/storage/';
@@ -12,33 +13,52 @@ export default class extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { dados: [] }
+        this.state = { produtos: [], vlr: 0, isLoading: true, pg: 1 }
 
     }
 
-    componentDidMount = () => {
-        this.loadData();
+    // componentDidMount = () => {
+    //     this.loadData();
+    // }
+
+    componentWillMount() {
+        this.obterDadosDeProduto();
     }
 
     componentWillReceiveProps(nextProps) {
         this.props = nextProps
-        this.loadData()
+        this.setState({ ...this.state, isLoading: true })
+        this.obterDadosDeProduto()
 
     }
 
-    loadData = () => {
+    obterDadosDeProduto(pageNumber = 1) {
 
-        axios.get(`${API_BUSCA}` + this.props.params.keyword)
-            .then(resp => {
+        const url = `http://rdmarket-laravel.test/api/produtos/listarPorPesquisaPaginate/${this.props.params.keyword}?page=${pageNumber}`;
+        axios.get(url).then(resp => {
+            // console.log(resp.data);
+            this.setState({ produtos: resp.data, isLoading: false, pg: pageNumber })
+            // console.log(this.state.produtos)
 
-                this.setState({ dados: resp.data });
-
-            }).catch(resp => {
-                    this.setState({ dados: [] })
-                }
-            )
+        }).catch(resp => {
+            this.setState({ produtos: [] })
+        });
 
     }
+
+    // loadData = () => {
+
+    //     axios.get(`${API_BUSCA}` + this.props.params.keyword)
+    //         .then(resp => {
+
+    //             this.setState({ dados: resp.data });
+
+    //         }).catch(resp => {
+    //                 this.setState({ dados: [] })
+    //             }
+    //         )
+
+    // }
     aumentarValor = (e) => {
         let id1 = document.getElementById("id_vlr1")
         let id2 = document.getElementById("id_vlr2")
@@ -53,7 +73,7 @@ export default class extends Component {
     }
 
     getQuantidade = () => {
-        return this.state.dados.length
+        return [this.state.produtos.data.length, this.state.produtos.total]
     }
 
     calcularPreco = (obj) => {
@@ -68,67 +88,91 @@ export default class extends Component {
 
     capturarFiltro = (n) => {
 
-        axios.get(`${API_BUSCA}` + this.props.params.keyword)
-            .then(resp => {
 
-                let aux = resp.data;
+        const url = `http://rdmarket-laravel.test/api/produtos/listarPorPesquisaPaginate/${this.props.params.keyword}?page=${this.state.pg}`;
+        axios.get(url).then(resp => {
+            // console.log(resp.data);
 
-                for (let i = 0; i < aux.length; i++) {
+            // console.log(this.state.produtos)
 
-                    if (n == 1) {
+            let aux = resp.data;
 
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 0 && parseFloat(this.calcularPreco(aux[i])) <= 10.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
-                    }
-                    else if (n == 2) {
+            for (let i = 0; i < aux.data.length; i++) {
 
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 10.0 && parseFloat(this.calcularPreco(aux[i])) <= 25.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
-                    }
-                    else if (n == 3) {
+                if (n == 1) {
 
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 25.0 && parseFloat(this.calcularPreco(aux[i])) <= 50.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
-                    }
-                    else if (n == 4) {
-
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 50.0 && parseFloat(this.calcularPreco(aux[i])) <= 100.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
-                    }
-                    else if (n == 5) {
-
-                        if (!(parseFloat(this.calcularPreco(aux[i])) > 100.0)) {
-                            aux.splice(i, 1);
-                            i--;
-                        }
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 0 && parseFloat(this.calcularPreco(aux.data[i])) <= 10.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
                     }
                 }
+                else if (n == 2) {
 
-                this.setState({ ...this.state, dados: aux });
-            })
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 10.0 && parseFloat(this.calcularPreco(aux.data[i])) <= 25.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
+                    }
+                }
+                else if (n == 3) {
+
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 25.0 && parseFloat(this.calcularPreco(aux.data[i])) <= 50.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
+                    }
+                }
+                else if (n == 4) {
+
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 50.0 && parseFloat(this.calcularPreco(aux.data[i])) <= 100.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
+                    }
+                }
+                else if (n == 5) {
+
+                    if (!(parseFloat(this.calcularPreco(aux.data[i])) > 100.0)) {
+                        aux.data.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
+
+            this.setState({ produtos: aux, isLoading: false })
+
+
+        });
     }
 
     render() {
         let st = ">";
-        const lista = this.state.dados;
-        return (
-            <>
+        if (this.state.isLoading) {
+            return (<>
                 <Header contador={this.state.vlr} />
-                <CaminhoHeader st={st} path={this.nomeCategoria()} />
-                <Filtro func={e => this.capturarFiltro(e)} qtd={this.getQuantidade()} />
-                <section className="container-alimentos">
-                    <ListagemProdutos func={e => this.aumentarValor(e)} caminho={IMAGE_PATH} produtos={lista} />
-                </section>
-                <Footer />
-            </>
-        )
+                <CaminhoHeader st={st} path={"carregando"} />
+            </>)
+        }
+        else {
+            const { data, current_page, per_page, total } = this.state.produtos;
+            return (
+                <>
+                    <Header contador={this.state.vlr} />
+                    <CaminhoHeader st={st} path={this.nomeCategoria()} />
+                    <Filtro func={e => this.capturarFiltro(e)} qtd={this.getQuantidade()} />
+                    <section className="container-alimentos">
+                        <ListagemProdutos func={e => this.aumentarValor(e)} caminho={IMAGE_PATH} produtos={data} />
+                        <Pagination
+                            activePage={current_page}
+                            totalItemsCount={total}
+                            itemsCountPerPage={per_page}
+                            onChange={(pageNumber) => this.obterDadosDeProduto(pageNumber)}
+                            itemClass="page-item"
+                            linkClass="page-link"
+                            firstPageText="Primeiro"
+                            lastPageText="Último"
+                        />
+                    </section>
+                    <Footer />
+                </>
+            )
+        }
     }
 }
