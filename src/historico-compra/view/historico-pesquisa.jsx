@@ -186,7 +186,7 @@ export default class PedidoPesquisaTelaGrande extends Component {
 
                 {/*em processamento  */}
                 <div className="container mt-5 container-historico">
-                   {this.state.pedidos[0] == null ? <h2>Nenhum pedido encontrado! Tente novamente. ;-;</h2> : <PedidosTelaGrande pedidos = {this.state.pedidos} />}
+                   {this.state.pedidos[0] == null ? <h2>Nenhum pedido encontrado! Verifique o número e tente novamente.</h2> : <PedidosTelaGrande pedidos = {this.state.pedidos} />}
                    {this.state.pedidos[0] == null ? <h2></h2> : <PedidosTelaPequena pedidos = {this.state.pedidos} />}
                    {this.state.pedidos[0] == null ? <h2></h2> : <PedidosTelaPequena2 pedidos = {this.state.pedidos} />} 
                 </div>
