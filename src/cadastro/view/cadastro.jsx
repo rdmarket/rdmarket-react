@@ -253,6 +253,7 @@ class cadastro extends Component {
                                         <label htmlFor="estado">Estado:</label>
                                         <select className="ls-select form-control"
                                             onChange={e => this.nm_estado = e.target.value}>
+                                            <option value="null">--</option>
                                             <option value="AC">AC</option>
                                             <option value="AL">AL</option>
                                             <option value="AP">AP</option>
@@ -313,6 +314,7 @@ class cadastro extends Component {
                                         <label htmlFor="tipo_endereco">Tipo endereço:</label>
                                         <select name="select-simples" class="ls-select form-control"
                                             onClick={e => this.id_tipo_endereco = e.target.value}>
+                                            <option value="null">Escolha uma opção</option>
                                             <option value="Residencial">Residencial</option>
                                             <option value="Comercial">Comercial</option>
                                             <option value="Cobrança">Cobrança</option>

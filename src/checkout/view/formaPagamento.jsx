@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import OptionCartao from './optionCartao'
+import {cartaoMask, codMask, cpfMask} from '../Mascaras'
 
 export default class FormaPagamento extends Component {
 
@@ -18,12 +19,19 @@ export default class FormaPagamento extends Component {
 
     }
 
+    handleCod(e) {
+        let cod = document.getElementById('cod_card')
+        cod.value = codMask(e)
+    }
+
     mudarNumeroCartao = (e) => {
+        e = cartaoMask(e)
         this.setState({
             ...this.state, num_cartao: e
         })
     }
     mudarCpf = (e) => {
+        e = cpfMask(e)
         this.setState({
             ...this.state, num_cpf: e
         })
@@ -98,6 +106,7 @@ export default class FormaPagamento extends Component {
                         <div className="col-12 mb-2">
                             <h6>Método de pagamento</h6>
                             <select id="selectCartao" onChange={() => this.mudarOptions()} required>
+                                <option>Selecione uma opção</option>
                                 <option>Novo cartão de crédito</option>
                                 <option>Novo cartão de débito</option>
                                 <OptionCartao cartao={this.props.cartao} />
@@ -119,6 +128,7 @@ export default class FormaPagamento extends Component {
                         <div hidden={this.state.show_mes} className="col-3 mb-2">
                             <h6>Mês</h6>
                             <select>
+                                <option>--</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -137,6 +147,7 @@ export default class FormaPagamento extends Component {
                         <div hidden={this.state.show_ano} className="col-4">
                             <h6>Ano</h6>
                             <select>
+                                <option>----</option>
                                 <option>2023</option>
                                 <option>2024</option>
                                 <option>2025</option>
@@ -156,7 +167,7 @@ export default class FormaPagamento extends Component {
                     <div hidden={this.state.show_cod} className="row mb-2">
                         <div className="col-7">
                             <h6>Código de segurança</h6>
-                            <input type="text" placeholder="" required />
+                            <input type="text" id="cod_card" placeholder="" onChange={e => this.handleCod(e.target.value)} required />
                         </div>
                     </div>
 
@@ -178,6 +189,7 @@ export default class FormaPagamento extends Component {
                         <div className="col-3">
 
                             <select id="num_parcelas">
+                                <option>--</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>

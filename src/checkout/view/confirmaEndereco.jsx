@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import OptionEndereco from './optionEndereco'
 import axios from 'axios'
 import { render } from '@testing-library/react';
+import {cepMask} from '../Mascaras'
 
 const API = "https://viacep.com.br/ws/";
 
@@ -35,6 +36,7 @@ export default class ConfirmaEndereco extends Component {
         })
     }
     mudarCep = (e)=>{
+        e = cepMask(e)
         this.setState({...this.state,num_cep: e
         })
     }
@@ -104,9 +106,19 @@ export default class ConfirmaEndereco extends Component {
                         <div className="col-md-12">
                             <h6>Selecionar o tipo de endereço</h6>
                             <select onChange={() => this.mudarInputs()} id="meuSelect">
+                                <option>Escolha uma opção</option>
                                 <option>Novo Endereco</option>
                                 <OptionEndereco endereco={this.props.endereco} />
                             </select>
+                        </div>
+
+                    </div>
+                    <div className="row mb-3">
+
+                        <div className="col-md-12">
+                            <h6>CEP</h6>
+                            <input id="cep" type="text" placeholder="XXXXX-XXX" onBlur={()=> this.preencherCep("cep")} onChange={e=>this.mudarCep(e.target.value)} value={this.state.num_cep} required />
+                            <a id="link-cep" href="#">Descubra seu CEP</a>
                         </div>
 
                     </div>
@@ -116,6 +128,7 @@ export default class ConfirmaEndereco extends Component {
                             <h6>Estado</h6>
                             <select id="estado">
                                 <option>{this.state.nm_estado}</option>
+                                <option>--</option>
                                 <option>SP</option>
                                 <option>AM</option>
                                 <option>RJ</option>
@@ -132,9 +145,10 @@ export default class ConfirmaEndereco extends Component {
                                 <option>RS</option>
                             </select>
                         </div>
-                        <div className="col-md-4 mb-3">
+                        <div className="col-md-8 mb-4">
                             <h6>Tipo de endereço</h6>
                             <select id="tipo_endereco">
+                                <option>Escolha uma opção</option>
                                 <option hidden={this.state.id_endereco==0?false:true}>{this.state.ds_tipo_endereco}</option>
                                 <option hidden={this.state.id_endereco!=0?true:false}>Residencial</option>
                                 <option hidden={this.state.id_endereco!=0?true:false}>Comercial</option>
@@ -142,7 +156,7 @@ export default class ConfirmaEndereco extends Component {
                                 
                             </select>
                         </div>
-                        <div className="col-md-8 mb-3">
+                        <div className="col-md-12 mb-3">
                             <h6>Cidade</h6>
                             <input id="cidade" type="text" placeholder="Brasília" onChange={e=>this.mudarCidade(e.target.value)}
                              value={this.state.nm_cidade} />
@@ -159,23 +173,12 @@ export default class ConfirmaEndereco extends Component {
                     </div>
                     <div className="row mb-3">
 
-                        <div className="col-md-10">
+                        <div className="col-md-6">
                             <h6>Numero endereço</h6>
                             <input id="num_endereco" type="text" onChange={e=>this.mudarEndereco(e.target.value)} value={this.state.num_endereco} required />
                         </div>
 
-                    </div>
-                    <div className="row mb-3">
-
-                        <div className="col-md-10">
-                            <h6>CEP</h6>
-                            <input id="cep" type="text" placeholder="XXXXX-XXX" onBlur={()=> this.preencherCep("cep")} onChange={e=>this.mudarCep(e.target.value)} value={this.state.num_cep} required />
-                            <a id="link-cep" href="#">Descubra seu CEP</a>
-                        </div>
-
-                    </div>
-                    <div className="row mb-3">
-                        <div className="col-md-12">
+                        <div className="col-md-6">
                             <h6>Complemento</h6>
                             <input id="complemento" type="text" onChange={e=>this.mudarComplemento(e.target.value)} value={this.state.ds_complemento} placeholder="A" />
                         </div>
