@@ -4,8 +4,9 @@ import '../css/styles.css'
 import '../css/styles-barra-vermelha.css'
 import Header from '../../templates/header/header'
 import Footer from '../../templates/footer/footer'
-import { cpfMask, validadata, validarSenha, telMask, cepMask, celMask, dataMask
-    } from '../../login/mascaras';
+import {
+    cpfMask, validadata, validarSenha, telMask, cepMask, celMask, dataMask
+} from '../../login/mascaras';
 import axios from 'axios';
 import { browserHistory } from 'react-router'
 import {
@@ -63,9 +64,9 @@ class cadastro extends Component {
 
     //Mascara data nascimento
     // handleData(e){
-        // let data = document.getElementById('nascimento')
-        // this.data_nascimento = dataMask(e)
-        // data.value = this.data_nascimento
+    // let data = document.getElementById('nascimento')
+    // this.data_nascimento = dataMask(e)
+    // data.value = this.data_nascimento
     // }
 
     // IMPLEMENTAÇÃO DO LOGIN 
@@ -103,7 +104,7 @@ class cadastro extends Component {
             cep: validaCep(this.num_cep)
         })
 
-        
+
 
 
         if (!validaNome(this.nm_cliente) && !validaSobrenome(this.sobrenome)
@@ -111,23 +112,23 @@ class cadastro extends Component {
             !validaCpf(this.num_cpf) && !validaTelefone(this.num_fixo) && !validaCelular(this.num_celular)
             && !validaCep(this.num_cep)) {
 
-                axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
-                    res => {
-                        
-                        swal("Cadastro realizado com sucesso!","","success")
-                            .then((value) => {
-                                browserHistory.push('#/login')
-                                document.location.reload(true)
-                            });
-                    }
-                ).catch(
-                    err => {
-                        alert(err)
-                        console.log(err);
-                        
-                    }
-                )
-            };
+            axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
+                res => {
+
+                    swal("Cadastro realizado com sucesso!", "", "success")
+                        .then((value) => {
+                            browserHistory.push('#/login')
+                            document.location.reload(true)
+                        });
+                }
+            ).catch(
+                err => {
+                    alert(err)
+                    console.log(err);
+
+                }
+            )
+        };
     }
 
     state = {

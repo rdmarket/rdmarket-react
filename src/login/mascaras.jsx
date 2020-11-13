@@ -58,7 +58,7 @@ export const validadata = () => {
     //if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
 
 
-    if (idade < 18 || isNaN(data)) {
+    if (idade < 18 ) {
         return true;
     }
 
