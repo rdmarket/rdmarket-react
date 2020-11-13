@@ -1,32 +1,41 @@
 import React from 'react'
 import '../../css/styles.css'
 import '../../css/barra-vermelha.css'
-import Header from  '../../../templates/header/header'
+import Header from '../../../templates/header/header'
 import BarraVermelha from '../../componentes/barra-vermelha'
 import ListarDados from './ListarDados'
-import Footer from  '../../../templates/footer/footer'
+import Footer from '../../../templates/footer/footer'
+import { browserHistory } from 'react-router'
 
 
 export default () => {
 
-  const verificarLogado = () => {
-    let nomeCliente = localStorage.getItem('usuario')
+    const verificarLogado = () => {
+        let nomeCliente = localStorage.getItem('usuario')
 
-    if (nomeCliente == null) {
-        return false
+        if (nomeCliente == null) {
+            return false
+        }
+        return true
     }
-    return true
-}
 
-    return (
-        <>
-        <Header />
-        <BarraVermelha titulo="Meus dados" />
+    let cliente = JSON.parse(localStorage.getItem('usuario'))
 
-        <ListarDados logado={() => verificarLogado()}/>
+    if (cliente == null) {
+        browserHistory.push('#/login')
+        document.location.reload(true)
+    }
 
-        <Footer />
-        </>
-    )
+    else {
+        return (
+            <>
+                <Header />
+                <BarraVermelha titulo="Meus dados" />
 
+                <ListarDados logado={() => verificarLogado()} />
+
+                <Footer />
+            </>
+        )
+    }
 }

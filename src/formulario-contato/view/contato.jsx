@@ -32,6 +32,7 @@ export default (props) => {
                 });
         }).catch(function (err) {
             alert("Preencha os dados corretamente");
+            // console.log(err)
         })
 
 
