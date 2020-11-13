@@ -7,8 +7,8 @@ export const cpfMask = value => {
         .replace(/(-\d{2})\d+?$/, '$1') // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada
 }
 
-export const telMask = value => {   
-    return value 
+export const telMask = value => {
+    return value
         .replace(/\D/g, '')
         .replace(/(\d{2})(\d)/, '($1) $2')
         .replace(/(\d{4})(\d)/, '$1-$2')
@@ -16,8 +16,8 @@ export const telMask = value => {
         .replace(/(-\d{4})\d+?$/, '$1')
 }
 
-export const celMask = value => {   
-    return value 
+export const celMask = value => {
+    return value
         .replace(/\D/g, '')
         .replace(/(\d{2})(\d)/, '($1) $2')
         .replace(/(\d{4})(\d)/, '$1-$2')
@@ -34,10 +34,10 @@ export const cepMask = value => {
 
 export const dataMask = value => {
     return value
-        .replace (/\D/g, '')
-        .replace (/(\d{2})(\d)/, '$1/$2')
-        .replace (/(\d{2})(\d)/, '$1/$2')
-        .replace (/(\d{4})\d+?$/,'$1')
+        .replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '$1/$2')
+        .replace(/(\d{2})(\d)/, '$1/$2')
+        .replace(/(\d{4})\d+?$/, '$1')
 }
 
 export const validadata = () => {
@@ -48,7 +48,7 @@ export const validadata = () => {
     // para o IE onde será inserido no formato dd/MM/yyyy
     if (data_array[0].length != 4) {
         data = data_array[2] + "-" + data_array[1] + "-" + data_array[0]; // remonto a data no formato yyyy/MM/dd
-    } 
+    }
 
     // comparo as datas e calculo a idade
     let hoje = new Date();
@@ -61,7 +61,6 @@ export const validadata = () => {
     if (idade < 18) {
         return true;
     }
-
     return false;
 }
 

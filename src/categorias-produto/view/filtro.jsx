@@ -6,7 +6,7 @@ export default (props) => {
         <>
             <article className="filtros">
                 <div className="text-products">
-                    <p id="txt-produtos">Mostrando {props.qtd} de {props.qtd}</p>
+                    <p id="txt-produtos">Mostrando {props.qtd[0]} de {props.qtd[1]}</p>
                 </div>
                 <div className="dropdown-filtro">
                     <div className="btn-group-dp">

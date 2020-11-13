@@ -4,8 +4,9 @@ import '../css/styles.css'
 import '../css/styles-barra-vermelha.css'
 import Header from '../../templates/header/header'
 import Footer from '../../templates/footer/footer'
-import { cpfMask, validadata, validarSenha, telMask, cepMask, celMask, dataMask
-    } from '../../login/mascaras';
+import {
+    cpfMask, validadata, validarSenha, telMask, cepMask, celMask, dataMask
+} from '../../login/mascaras';
 import axios from 'axios';
 import { browserHistory } from 'react-router'
 import {
@@ -33,6 +34,28 @@ class cadastro extends Component {
             cep: false
         }
         this.handlechange = this.handlechange.bind(this)
+    }
+
+    consultaCep = () => {
+        let cep = document.getElementById ("cep");
+        let endereco = document.getElementById ("endereco");
+        let complemento = document.getElementById ("complemento");
+        let bairro = document.getElementById ("bairro");
+        let cidade = document.getElementById ("cidade");
+        let uf = document.getElementById ("uf");        
+        
+        axios.get(`${API}` + cep.value.replace ("-", "") + "/json/")
+                .then(resp =>  (endereco.value = resp.data.logradouro, 
+                    complemento.value = resp.data.complemento, 
+                    bairro.value = resp.data.bairro,
+                    cidade.value = resp.data.localidade, 
+                    uf.value = resp.data.uf,
+                    this.nm_rua = resp.data.logradouro,
+                    this.ds_complemento = resp.data.complemento,
+                    this.nm_bairro = resp.data.bairro,
+                    this.nm_cidade = resp.data.localidade,
+                    this.nm_estado = resp.data.uf))
+                            
     }
 
     handlechange(e) {
@@ -63,9 +86,9 @@ class cadastro extends Component {
 
     //Mascara data nascimento
     // handleData(e){
-        // let data = document.getElementById('nascimento')
-        // this.data_nascimento = dataMask(e)
-        // data.value = this.data_nascimento
+    // let data = document.getElementById('nascimento')
+    // this.data_nascimento = dataMask(e)
+    // data.value = this.data_nascimento
     // }
 
     // IMPLEMENTAÇÃO DO LOGIN 
@@ -103,7 +126,7 @@ class cadastro extends Component {
             cep: validaCep(this.num_cep)
         })
 
-        
+
 
 
         if (!validaNome(this.nm_cliente) && !validaSobrenome(this.sobrenome)
@@ -111,23 +134,23 @@ class cadastro extends Component {
             !validaCpf(this.num_cpf) && !validaTelefone(this.num_fixo) && !validaCelular(this.num_celular)
             && !validaCep(this.num_cep)) {
 
-                axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
-                    res => {
-                        
-                        swal("Cadastro realizado com sucesso!","","success")
-                            .then((value) => {
-                                browserHistory.push('#/login')
-                                document.location.reload(true)
-                            });
-                    }
-                ).catch(
-                    err => {
-                        alert(err)
-                        console.log(err);
-                        
-                    }
-                )
-            };
+            axios.post('http://rdmarket-laravel.test/api/cadastrar', data).then(
+                res => {
+
+                    swal("Cadastro realizado com sucesso!", "", "success")
+                        .then((value) => {
+                            browserHistory.push('#/login')
+                            document.location.reload(true)
+                        });
+                }
+            ).catch(
+                err => {
+                    alert(err)
+                    console.log(err);
+
+                }
+            )
+        };
     }
 
     state = {
@@ -244,14 +267,15 @@ class cadastro extends Component {
                                     <div className="form-group col-4">
                                         <label for="cep">CEP:</label>
                                         <input type="text" className="form-control" id="cep"
-                                            onChange={e => this.handleCep(e.target.value)} />
+                                            onChange={e => this.handleCep(e.target.value)}
+                                            onBlur = {() => this.consultaCep()} />
                                         <div className="alert alert-danger" hidden={!this.state.cep}>Cep invalido</div>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="form-group col-md-2">
                                         <label htmlFor="estado">Estado:</label>
-                                        <select className="ls-select form-control"
+                                        <select className="ls-select form-control" id="uf"
                                             onChange={e => this.nm_estado = e.target.value}>
                                             <option value="null">--</option>
                                             <option value="AC">AC</option>
