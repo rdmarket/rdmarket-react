@@ -7,10 +7,16 @@ import Footer from '../../../templates/footer/footer'
 import axios from 'axios'
 import swal from 'sweetalert';
 import { browserHistory } from 'react-router'
+import {cepMask} from '../../Mascaras'
 
 const API_ENDERECO = 'http://rdmarket-laravel.test/api/endereco/adicionarEndereco/';
 
 export default () => {
+
+    // const handleCep = (e) => {
+        // let cep = document.getElementById('cep')
+        // cep.value = cepMask(e)
+    // }
 
     const adicionarEndereco = () => {
 
